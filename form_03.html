@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head id="headId">
+<meta charset="EUC-KR">
+<title>Object</title>
+
+<script type="text/javascript">
+
+	function formSubmit(){
+		/* 
+		var i;
+		for(i=0; i < 6; i++)
+		alert("안녕하세요 >>> : " + i + "번째"); 
+		*/
+		// 자바스크립트 입력				// 브라우저 출력
+		alert("안녕하세요 >>> ");		// 안녕하세요 >>>
+		alert(window);				// [object Window]
+		alert(window.navigator);	// [object Navigator]
+		alert(window.history);		// [object History]
+		alert(window.location);		// http://localhost:8088/testWeb/html_1/form_03.html
+		alert(window.screen);		// [object Screen]
+		alert(window.doucment);		// undefined
+		alert(window.document.getElementById("headId"));
+		alert(window.document.getElementById("bodyId"));
+		alert(window.document.getElementById("formId"));
+	}
+</script>
+	
+</head>
+<body id="bodyId">
+	<form id="formId">
+		<input type="text" id="mid" name="mid" value="아이디"><br>
+		<input type="button" value="보내기" onclick="formSubmit()">
+	</form>
+</body>
+</html>
