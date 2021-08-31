@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>getData Form Test</title>
+	<!-- 자바스크립트 블럭 -->
+	<script type="text/javascript">
+		alert("자바스크립트 블럭 시작 >>> : ");
+		
+		function checkAction(){
+			alert("checkAction 함수 내부에 진입 >>> : ");
+			console.log("checkAction 함수 내부에 진입 >>> : ");
+			
+			var form0 = document.forms[0];
+			alert("form0 >>> : " + form0);
+			
+			var a = form0.mname.value;
+			alert("a >>> : " + a);
+			var b = form0.maddr.value;
+			alert("b >>> : " + b);
+			
+			form0.action = "/testWeb/jsp/getDate.jsp";
+			form0.method = "GET";
+			form0.enctype = "application/x-www-form-urlencoded";
+			
+			var form1 = document.forms[1];
+			alert("form1 >>> : " + form1);
+			
+			form0.submit();
+		}
+	</script>
+</head>
+<body>
+	<form id="getDataForm" name="getDataForm">
+		  <!--
+		  action="http://localhost:8088/testWeb/jsp/getDate.jsp"
+		  method="GET"
+		  enctype="application/x-www-from-urlencoded" 
+		  -->
+		  
+		이름 : <input type="text" id="mname" name="mname"><br>
+		주소 : <input type="text" id="maddr" name="maddr"><br>
+		<!-- 
+		<input type="submit" value="보내기"
+		 -->
+		<input type="submit" value="보내기" style="Color:red" onclick="checkAction()">
+		<input type="reset" value="다시" style="Color:blue">
+	</form>
+</body>
+</html>
