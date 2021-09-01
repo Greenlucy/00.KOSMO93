@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+	<title>로그인 폼</title>
+</head>
+<body>
+	<h3>로그인 폼</h3>
+	<hr>
+	<!-- 
+		다이나믹 빌드 프레임워크 가 
+		"/testWeb/WebContent/jsp/html_1_jsp.jsp" -> "/testWeb/jsp/html_1.jsp.jsp"
+		http://localhost:8088/testWeb/jsp/html_1.jsp.jsp?mid=2222&mpw=4444
+		
+		id 어트리뷰트 : attribute
+		The HTML id attreibute is used to specify a unique id for an HTML element.
+		: html 요소에서 하나만 선택할 때 사용
+		
+		name 어트리뷰트 : attribute
+		The name attribute specifies a name for an HTML element
+		This name attribute can be used to reference the element in a JavaScript.
+		For a <form> element, the name attribute is used a reference when the date is submitted.
+		: html 요소에서 하나 또는 여러개 선택할 때 사용
+		: form 태그에서 사용할 때는 해당 엘리먼트 value(date : 데이터)를 서버로 넘기는 변수명 역할을 한다.
+	 -->
+	<form action="/testWeb/jsp/html_1_jsp.jsp" method="post">
+	<table border="2">
+		<tr>
+			<td>사용자 아이디 : </td>
+			<td><input type="text" size="15" name="mid" value="abcd...."></td>
+		</tr>
+		<tr>
+			<td>비밀번호 : </td>
+			<td><input type="password" size="15" name="mpw" value="비밀번호 입력하기"></td>
+		</tr>
+		<tr>
+			<td>체크박스</td>
+			<td><input type="checkbox">음악감상 <input type="checkbox">스포츠</td>
+		</tr>
+		<tr>
+			<td>라디오버튼</td>
+			<td><input type="radio">여자
+				<input type="radio">남자</td>
+		</tr>
+		<tr>
+			<td>셀렉트</td>
+			<td><select>
+			<option>학생</option>학생
+			<option>회사원</option>회사원
+			<option>무직</option>무직
+			</select></td>
+		</tr>
+		<tr>
+			<td>파일</td>
+			<td><input type="file"></td>
+		</tr>
+		<tr>
+			<td>텍스트에어리어</td>
+			<td><textarea rows="4" cols="10">정보를 입력하세요.</textarea></td>
+		</tr>
+		<tr>
+			<td>히든태그</td>
+			<td><input tye="hidden"></td>
+		</tr>
+	</table>
+		<br>
+		<input type="button" value="보내기버튼">		
+		<input type="submit" value="보내기">
+		<input type="reset" value="다시">
+	</form>
+</body>
+</html>
