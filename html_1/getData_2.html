@@ -3,13 +3,13 @@
 <head>
 	<meta charset="EUC-KR">
 	<title>getData Form Test</title>
-	<!-- ¿⁄πŸΩ∫≈©∏≥∆Æ ∫Ì∑∞ -->
+	<!-- ÏûêÎ∞îÏä§ÌÅ¨Î¶ΩÌä∏ Î∏îÎü≠ -->
 	<script type="text/javascript">
-		alert("¿⁄πŸΩ∫≈©∏≥∆Æ ∫Ì∑∞ Ω√¿€ >>> : ");
+		alert("ÏûêÎ∞îÏä§ÌÅ¨Î¶ΩÌä∏ Î∏îÎü≠ ÏãúÏûë >>> : ");
 		
 		function formFunction(){
-			alert("formFunction «‘ºˆ ≥ª∫Œø° ¡¯¿‘ >>> : ");
-			console.log("formFunction «‘ºˆ ≥ª∫Œø° ¡¯¿‘ >>> :");
+			alert("formFunction Ìï®Ïàò ÎÇ¥Î∂ÄÏóê ÏßÑÏûÖ >>> : ");
+			console.log("formFunction Ìï®Ïàò ÎÇ¥Î∂ÄÏóê ÏßÑÏûÖ >>> :");
 			
 			alert("mname >>> : " + document.getDataForm.mname.value);
 			alert("maddr >>> : " + document.getDataForm.maddr.value);
@@ -28,28 +28,28 @@
 <body>
 <!-- 
 	action : URL : Specifies where to send the form-data when a form is submitted
-	«ˆ¿Á ≈¨∂Û¿Ãæ∆Æ html¿« form ≈¬±◊ø° πŸ¿Œµ˘ µ» µ•¿Ã≈Õ∏¶ ∞°¡ˆ∞Ì ¿•º≠πˆ¿« ∆Ø¡§ ∆‰¿Ã¡ˆ url¿ª ¿˚¥¬ º”º∫∞™¿Ã¥Ÿ.
+	ÌòÑÏû¨ ÌÅ¥ÎùºÏù¥Ïñ∏Ìä∏ htmlÏùò form ÌÉúÍ∑∏Ïóê Î∞îÏù∏Îî© Îêú Îç∞Ïù¥ÌÑ∞Î•º Í∞ÄÏßÄÍ≥† ÏõπÏÑúÎ≤ÑÏùò ÌäπÏ†ï ÌéòÏù¥ÏßÄ urlÏùÑ Ï†ÅÎäî ÏÜçÏÑ±Í∞íÏù¥Îã§.
 	
 	method : get / post
 			Specifies the HTTP method to use when sending form-data
-	≈¨∂Û¿Ãæ∆Æ ∫Í∂ÛøÏ¿˙ø°º≠ ¿•º≠πˆ¿« ∆Ø¡§ ∆‰¿Ã¡ˆ∑Œ µ•¿Ã≈Õ∏¶ ¿¸º€«“ ∂ß µ•¿Ã≈Õ∏¶ ∫∏≥ª¥¬ πÊΩƒ
-	µ•¿Ã≈Õ : mname=1111&maddr=2222
-		get : http «¡∑Œ≈‰ƒ›¿« «Ï¥ıø° ≥÷æÓº≠ ∫∏≥ªΩ√ø¿ : ∫Í∂ÛøÏ¿˙ ∑Œƒ…¿Ãº«ø° øµø™ action url∞˙ µ•¿Ã≈Õ∞° ∏µŒ ∫∏¿Œ¥Ÿ.
+	ÌÅ¥ÎùºÏù¥Ïñ∏Ìä∏ Î∏åÎùºÏö∞Ï†ÄÏóêÏÑú ÏõπÏÑúÎ≤ÑÏùò ÌäπÏ†ï ÌéòÏù¥ÏßÄÎ°ú Îç∞Ïù¥ÌÑ∞Î•º Ï†ÑÏÜ°Ìï† Îïå Îç∞Ïù¥ÌÑ∞Î•º Î≥¥ÎÇ¥Îäî Î∞©Ïãù
+	Îç∞Ïù¥ÌÑ∞ : mname=1111&maddr=2222
+		get : http ÌîÑÎ°úÌÜ†ÏΩúÏùò Ìó§ÎçîÏóê ÎÑ£Ïñ¥ÏÑú Î≥¥ÎÇ¥ÏãúÏò§ : Î∏åÎùºÏö∞Ï†Ä Î°úÏºÄÏù¥ÏÖòÏóê ÏòÅÏó≠ action urlÍ≥º Îç∞Ïù¥ÌÑ∞Í∞Ä Î™®Îëê Î≥¥Ïù∏Îã§.
 			http://localhost:8088/testWeb/jsp/getData.jsp
-		post : http «¡∑Œ≈‰ƒ›¿« bodyø° ≥÷æÓº≠ ∫∏≥ªΩ√ø¿ : ∫Í∂ÛøÏ¿˙ ∑Œƒ…¿Ãº«ø° øµø™ action url∏∏ ∫∏¿Œ¥Ÿ.
+		post : http ÌîÑÎ°úÌÜ†ÏΩúÏùò bodyÏóê ÎÑ£Ïñ¥ÏÑú Î≥¥ÎÇ¥ÏãúÏò§ : Î∏åÎùºÏö∞Ï†Ä Î°úÏºÄÏù¥ÏÖòÏóê ÏòÅÏó≠ action urlÎßå Î≥¥Ïù∏Îã§.
 		
  -->
 	<form id="getDataForm" name="getDataForm"
 		  action="http://localhost:8088/testWeb/jsp/getDate.jsp"
 		  method="GET"
 		  enctype="application/x-www-from-urlencoded">
-		¿Ã∏ß : <input type="text" id="mname" name="mname" value="none"><br>
-		¡÷º“ : <input type="text" id="maddr" name="maddr" value="none"><br>
+		Ïù¥Î¶Ñ : <input type="text" id="mname" name="mname" value="none"><br>
+		Ï£ºÏÜå : <input type="text" id="maddr" name="maddr" value="none"><br>
 		<!-- 
-		<input type="submit" value="∫∏≥ª±‚"
+		<input type="submit" value="Î≥¥ÎÇ¥Í∏∞"
 		 -->
-		<input type="submit" value="∫∏≥ª±‚" style="Color:red" onclick="formFunction()">
-		<input type="reset" value="¥ŸΩ√" style="Color:blue">
+		<input type="submit" value="Î≥¥ÎÇ¥Í∏∞" style="Color:red" onclick="formFunction()">
+		<input type="reset" value="Îã§Ïãú" style="Color:blue">
 	</form>
 </body>
 </html>
