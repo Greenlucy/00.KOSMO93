@@ -3,23 +3,23 @@
 <head>
 	<meta charset="EUC-KR">
 	<title>getData Form Test</title>
-	<!-- ¿⁄πŸΩ∫≈©∏≥∆Æ ∫Ì∑∞ -->
+	<!-- ÏûêÎ∞îÏä§ÌÅ¨Î¶ΩÌä∏ Î∏îÎü≠ -->
 	<script type="text/javascript">
-		alert("¿⁄πŸΩ∫≈©∏≥∆Æ ∫Ì∑∞ Ω√¿€ >>> : ");
+		alert("ÏûêÎ∞îÏä§ÌÅ¨Î¶ΩÌä∏ Î∏îÎü≠ ÏãúÏûë >>> : ");
 		
 		function getData(f){
-			alert("getData «‘ºˆ ≥ª∫Œø° ¡¯¿‘ >>> : ");
-			console.log("getData «‘ºˆ ≥ª∫Œø° ¡¯¿‘ >>> : ");
+			alert("getData Ìï®Ïàò ÎÇ¥Î∂ÄÏóê ÏßÑÏûÖ >>> : ");
+			console.log("getData Ìï®Ïàò ÎÇ¥Î∂ÄÏóê ÏßÑÏûÖ >>> : ");
 			
 			alert("f >>> : " + f);			// f >>> : [object HTMLFormElement]
 			
 			var a = f.mname;
 			alert("a >>> : " + a);			// a >>> : [object HTMLInputElement]
-			alert("a.value >>> : " + a.value);		// a.value >>> : 456 (ªÁøÎ¿⁄∞° ¿‘∑¬«— ∞™)
+			alert("a.value >>> : " + a.value);		// a.value >>> : 456 (ÏÇ¨Ïö©ÏûêÍ∞Ä ÏûÖÎ†•Ìïú Í∞í)
 			
 			var b = f.maddr;
 			alert("b >>> : " + b);			// b >>> : [object HTMLInputElement]
-			alert("b.value >>> : " + b.value);		// b.value >>> : 4+54 (ªÁøÎ¿⁄∞° ¿‘∑¬«— ∞™)
+			alert("b.value >>> : " + b.value);		// b.value >>> : 4+54 (ÏÇ¨Ïö©ÏûêÍ∞Ä ÏûÖÎ†•Ìïú Í∞í)
 			
 			f.action = "/testWeb/jsp/getDate.jsp";
 			f.method = "GET";
@@ -33,13 +33,13 @@
 		  action="http://localhost:8088/testWeb/jsp/getDate.jsp"
 		  method="GET"
 		  enctype="application/x-www-from-urlencoded">
-		¿Ã∏ß : <input type="text" id="mname" name="mname"><br>
-		¡÷º“ : <input type="text" id="maddr" name="maddr"><br>
+		Ïù¥Î¶Ñ : <input type="text" id="mname" name="mname"><br>
+		Ï£ºÏÜå : <input type="text" id="maddr" name="maddr"><br>
 		<!-- 
-		<input type="submit" value="∫∏≥ª±‚"
+		<input type="submit" value="Î≥¥ÎÇ¥Í∏∞"
 		 -->
-		<input type="submit" value="∫∏≥ª±‚" style="Color:red" onclick="getData(this.form)">
-		<input type="reset" value="¥ŸΩ√" style="Color:blue">
+		<input type="submit" value="Î≥¥ÎÇ¥Í∏∞" style="Color:red" onclick="getData(this.form)">
+		<input type="reset" value="Îã§Ïãú" style="Color:blue">
 	</form>
 </body>
 </html>
