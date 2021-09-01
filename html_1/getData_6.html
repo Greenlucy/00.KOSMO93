@@ -3,13 +3,13 @@
 <head>
 	<meta charset="EUC-KR">
 	<title>getData Form Test</title>
-	<!-- ¿⁄πŸΩ∫≈©∏≥∆Æ ∫Ì∑∞ -->
+	<!-- ÏûêÎ∞îÏä§ÌÅ¨Î¶ΩÌä∏ Î∏îÎü≠ -->
 	<script type="text/javascript">
-		alert("¿⁄πŸΩ∫≈©∏≥∆Æ ∫Ì∑∞ Ω√¿€ >>> : ");
+		alert("ÏûêÎ∞îÏä§ÌÅ¨Î¶ΩÌä∏ Î∏îÎü≠ ÏãúÏûë >>> : ");
 		
 		function checkAction(){
-			alert("checkAction «‘ºˆ ∫Ì∑∞ Ω√¿€ >>> : ");
-			console.log("checkAction «‘ºˆ ∫Ì∑∞ Ω√¿€ >>> : ");
+			alert("checkAction Ìï®Ïàò Î∏îÎü≠ ÏãúÏûë >>> : ");
+			console.log("checkAction Ìï®Ïàò Î∏îÎü≠ ÏãúÏûë >>> : ");
 			
 			alert(window.document.getElementById("getDataForm_id"));		// [object HTMLFormElement]
 			alert(window.document.getDataForm_name);						// [object HTMLFormElement]
@@ -20,10 +20,10 @@
 			
 			var a = document.getElementById("mname");
 			alert("a >>> : " + a);											// a >>> : [object HTMLInputElement]
-			alert("a.value >>> : " + a.value);								// a.value >>> : 12354 (≥ª∞° ¿‘∑¬«— ∞™)
+			alert("a.value >>> : " + a.value);								// a.value >>> : 12354 (ÎÇ¥Í∞Ä ÏûÖÎ†•Ìïú Í∞í)
 			var b = document.getElementById("maddr");
 			alert("b >>> : " + b);											// b >>> : [object HTMLInputElement]
-			alert("b.value >>> : " + b.value);								// b.value >>> : 21431 (≥ª∞° ¿‘∑¬«— ∞™)
+			alert("b.value >>> : " + b.value);								// b.value >>> : 21431 (ÎÇ¥Í∞Ä ÏûÖÎ†•Ìïú Í∞í)
 		
 			var f = window.document.getElementById("getDataForm_id");
 			f.action = "/testWeb/jsp/getData.jsp";
@@ -42,13 +42,13 @@
 		  enctype="application/x-www-from-urlencoded" 
 		  -->
 		  
-		¿Ã∏ß : <input type="text" id="mname" name="mname"><br>
-		¡÷º“ : <input type="text" id="maddr" name="maddr"><br>
+		Ïù¥Î¶Ñ : <input type="text" id="mname" name="mname"><br>
+		Ï£ºÏÜå : <input type="text" id="maddr" name="maddr"><br>
 		<!-- 
-		<input type="submit" value="∫∏≥ª±‚"
+		<input type="submit" value="Î≥¥ÎÇ¥Í∏∞"
 		 -->
-		<input type="button" value="∫∏≥ª±‚" style="Color:red" onclick="checkAction()">
-		<input type="reset" value="¥ŸΩ√" style="Color:blue">
+		<input type="button" value="Î≥¥ÎÇ¥Í∏∞" style="Color:red" onclick="checkAction()">
+		<input type="reset" value="Îã§Ïãú" style="Color:blue">
 	</form>
 </body>
 </html>
