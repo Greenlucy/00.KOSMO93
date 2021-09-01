@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>getData Form Test</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		alert("자바스크립트 블럭 시작 >>> : ");
+		
+		$(document).ready(function(){
+			alert("제이쿼리 블럭 시작 >>> : ");
+			
+			$("#getDataTest").click(function(){
+				alert("getDataTest 클릭함수 블럭 시작 >>> : ");
+				
+				$("#getDataForm_id")
+				.attr({
+						"action":"/testWeb/jsp/getData_1.jsp",
+						"method":"GET",
+						"enctype":"application/x-www-form-urlencoded"
+				})
+				.submit();
+			});			
+		});
+	</script>
+</head>
+<body>
+	<form id="getDataForm_id" name="getDataForm_name">
+	<!-- 
+		hidden 타입은 화면에는 데이터가 보이지 않지만, 서버로 데이터가 넘어간다.
+	 -->
+	 히든 : <input type="hidden" id="isudtype" name="isudtype" value="I"><br>
+	 <!-- 
+	 	readonly : 클라이언트에서 서버로 데이터가 전송된다.
+	 	disabled : 클라이언트에서 서버로 데이터가 전송이 안 된다.
+	  -->
+	  회원번호 : <input type="text" id="mnum" name="mnum" value="M202109010001" readonly><br>
+	  이름 : <input type="text" id="mname" name="mname" value="이름"><br> 
+	  주소 : <input type="text" id="maddr" name="maddr" value="주소"><br>
+	  
+	  <input type="button" value="보내기" style="Color:red" id="getDataTest">
+	  <input type="reset" value="다시" style="Color:blue">
+	</form>
+</body>
+</html>

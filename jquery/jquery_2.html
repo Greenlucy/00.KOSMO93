@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>jQuery</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			alert("jqeury ready 함수 블럭 >>> : ");
+			
+			alert($("#h1tag_1"));
+			// 함수 체이닝 기법(도트 연산자 사용해서 함수 연결)
+			$("#h1tag_1").css('color', 'red');
+			$("#h1tag_lhj").css('color', 'yellow');
+			$("#h1tag_jyj").css('color', 'orange');
+			$("#h1tag_jyj").css('color', 'blue');		// 마지막 색으로 저장 됌
+			
+			$("#mchange").click(function(){
+				alert("mChange 버튼 클릭 >>> : ");
+				
+				// 자바스크립트 value == 제이쿼리 val()
+				$("#mid").val('hello jQuery')
+						 .css('color', 'red')
+						 .css('background-color', '#eee');
+				$("#mname").val('헬로우 제이쿼리').css('color', 'blue').css('background-color', '#eee');
+				
+				$("h1#h1tag_lhj").css('color', 'blue');
+				$("#h1tag"_jyj).css('color', orange);
+			})
+		})
+	</script>
+</head>
+<body>
+	<h1 id="h1tag_1">응용 SW활용 빅데이터구축 전문가 양성과정(3)[93기]</h1>
+	<h1 id="h1tag_lhj">반장 : 이희진</h1>
+	<h1 id="h1tag_jyj">부반장 : 정예지</h1>
+	<form id="formtagId" name="formTagName">
+		<input type="text" id="mid" name="mid"><br>
+		<input type="text" id="mname" name="mname"><br>
+		<input type="button" id="mChange" value="변경하기"><br>
+	</form>
+</body>
+</html>
