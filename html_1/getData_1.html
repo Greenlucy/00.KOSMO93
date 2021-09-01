@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>getData Form Test</title>
+</head>
+<body>
+<!-- 
+	action : URL : Specifies where to send the form-data when a form is submitted
+	현재 클라이언트 html의 form 태그에 바인딩 된 데이터를 가지고 웹서버의 특정 페이지 url을 적는 속성값이다.
+	
+	method : get / post
+			Specifies the HTTP method to use when sending form-data
+	클라이언트 브라우저에서 웹서버의 특정 페이지로 데이터를 전송할 때 데이터를 보내는 방식
+	데이터 : mname=1111&maddr=2222
+		get : http 프로토콜의 헤더에 넣어서 보내시오 : 브라우저 로케이션에 영역 action url과 데이터가 모두 보인다.
+			http://localhost:8088/testWeb/jsp/getData.jsp
+		post : http 프로토콜의 body에 넣어서 보내시오 : 브라우저 로케이션에 영역 action url만 보인다.
+			http://localhost:8088/testWeb/jsp/getDate.jsp
+	
+	enctype : (기본. 디폴트값 :) application/x-www-form-urlencoded 
+							 : 일반적으로 데이터를 보낼 때
+			  multipart/form-data
+			  text/plain
+			  Specifies how the form-data should be encoded
+			  when submitting it to the server (only for method="post")
+			  
+			  데이터 : manme=1111&maddr=2222 를 인코딩(숫자하고 문자를 제외한 2바이트 이상 사용하는 문자)하는 방식
+			  	application/x-www-form-urlencoded : default : 일반적으로 데이터를 보낼 때
+			  	데이터를 mname=1111&maddr=2222 형식으로 보낼 때 (데이터를 key=value&key=value)
+			  	이 형식을 : 퀴리 스트링 : Query String
+			  	mname=1A이a희진     23천재야
+ -->
+	<form id="getDateForm" name="getDataForm"
+		  action="http://192.168.219.109:8088/testWeb/jsp/getData.jsp"
+		  method="GET"
+		  enctype="application/x-www-from-urlencoded">
+		이름 : <input type="text" id="mname" name="mname"><br>
+		주소 : <input type="text" id="maddr" name="maddr"><br>
+		<input type="submit" value="보내기">
+		<input type="reset" value="다시">
+	</form>
+</body>
+</html>
