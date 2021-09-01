@@ -2,63 +2,63 @@
 <html>
 <head>
 	<meta charset="EUC-KR">
-	<title>ȸ������ �� 111</title>
+	<title>회원가입 폼 111</title>
 </head>
 <body>
-	<h3 align="center">ȸ�� ����</h3>
+	<h3 align="center">회원 가입</h3>
 	<hr>
 	<form action="#/testWeb/jsp/formtest.jsp" method="GET">
 		<table border="1" align="center">
 			<tr>
 				<td colspan="2" align="center">
-				KOSMO 93��
+				KOSMO 93기
 				<img src="/testWeb/img/ase.gif" width="25" height="25" alt="image">
 				</td>
 			</tr>
 			
 			<tr>
-				<td>ȸ����ȣ</td>
+				<td>회원번호</td>
 				<td><input type="text" name="mnum" id="mnum" readonly /></td>
 			</tr>
 			
 			<tr>
-				<td>�̸�</td>
+				<td>이름</td>
 				<td><input type="text" name="mname" id="mname" /></td>
 			</tr>
 			
 			<tr>
-				<td>���̵�</td>
+				<td>아이디</td>
 				<td>
-					<input type="text" name="mid" id="mid" placeholder="���̵�üũ" style="width:100px" />
-					<input type="button" name="midbtn" id="midbtn" value="���̵��ߺ�Ȯ��" />
+					<input type="text" name="mid" id="mid" placeholder="아이디체크" style="width:100px" />
+					<input type="button" name="midbtn" id="midbtn" value="아이디중복확인" />
 				</td>
 			</tr>
 			
 			<tr>
-				<td>�н�����</td>
+				<td>패스워드</td>
 				<td>
 					<input type="text" id="mpw" id="mpw" style="width:100px" /><br>
-					<input type="text" id="mpw_r" name="mpw_r" placeholder="��й�ȣȮ��" style="width:100px" />
-					<input type="button" value="��й�ȣȮ��" id="pwCheck" /><br>
+					<input type="text" id="mpw_r" name="mpw_r" placeholder="비밀번호확인" style="width:100px" />
+					<input type="button" value="비밀번호확인" id="pwCheck" /><br>
 				</td>
 			</tr>
 			
 			<tr>
-				<td>����</td>
+				<td>성별</td>
 				<td>
-					<input type="radio" name="mgender" id="mgender" value="F" checked />����
-					<input type="radio" name="mgender" id="mgender" value="M" />����
+					<input type="radio" name="mgender" id="mgender" value="F" checked />여자
+					<input type="radio" name="mgender" id="mgender" value="M" />남자
 				</td>
 			</tr>
 			
 			<tr>
-				<td>�������</td>
+				<td>생년월일</td>
 				<td>
-					<input type="text" name="mbirth" id="mbirth" placeholder="�� (4��)" maxlength="4" style="width:50px" />
+					<input type="text" name="mbirth" id="mbirth" placeholder="년 (4자)" maxlength="4" style="width:50px" />
 					<select name="mbirth1" id="mbirth1">
 						<option value="01">01</option>
 						<option value="02">02</option>
-						<option value="03">03</option>		// value �� ���൵ select �ڽ��� 03 ǥ�õǱ� ��
+						<option value="03">03</option>		// value 안 써줘도 select 박스에 03 표시되긴 함
 					</select>
 					<select name="mbirth2" id="mbirth2">
 						<option value="01">01</option>
@@ -69,7 +69,7 @@
 			</tr>
 			
 			<tr>
-				<td>�ڵ���</td>
+				<td>핸드폰</td>
 				<td>
 					<select name="mhp" id="mhp">
 						<option value="010">010</option>
@@ -83,7 +83,7 @@
 			</tr>
 			
 			<tr>
-				<td>��ȭ��ȣ</td>
+				<td>전화번호</td>
 				<td>
 					<select name="mtel" id="mtel">
 						<option value="02">02</option>
@@ -98,12 +98,12 @@
 			</tr>
 			
 			<tr>
-				<td>�̸���</td>
+				<td>이메일</td>
 				<td>
 					<input type="text" name="memail" id="memail" style="width:100px" />
-					@ <input type="text" name="meamil1" id="memail1" sytle="width:100px" placeholder="�����Է�" />
+					@ <input type="text" name="meamil1" id="memail1" sytle="width:100px" placeholder="직접입력" />
 					<select name="memail2" id="memail2">
-						<option value="1" selected>�����Է�</option>
+						<option value="1" selected>직접입력</option>
 						<option value="naver.com">naver.com</option>
 						<option value="gmail.com">gmail.com</option>
 						<option value="daum.net">daum.net</option>
@@ -112,38 +112,38 @@
 			</tr>
 			
 			<tr>
-				<td>�ּ�</td>
+				<td>주소</td>
 				<td>
-					<input type="text" name="mzonecode" id="mzonecode" placeholder="������ȣ" sytle="width:50px" />
-					<input type="button" name="zonecode" id="zonecode" value="������ȣ ã��" /><br>
-					<input type="text" name="mroadaddress" id="roadaddress" placeholder="���θ��ּ�" style="width:250px" /><br>
-					<input type="text" name="mroadaddressdetail" id="mroadaddressdetail" placeholder="���θ��ּ� ���ּ�" style="width:250px" /><br>
-					<input type="text" name="mgibunaddress" id="mgibunaddress" placeholder="�����ּ�" style="width:250px" />
+					<input type="text" name="mzonecode" id="mzonecode" placeholder="우편번호" sytle="width:50px" />
+					<input type="button" name="zonecode" id="zonecode" value="우편번호 찾기" /><br>
+					<input type="text" name="mroadaddress" id="roadaddress" placeholder="도로명주소" style="width:250px" /><br>
+					<input type="text" name="mroadaddressdetail" id="mroadaddressdetail" placeholder="도로명주소 상세주소" style="width:250px" /><br>
+					<input type="text" name="mgibunaddress" id="mgibunaddress" placeholder="지번주소" style="width:250px" />
 				</td>
 			</tr>
 			
 			<tr>
-				<td>���</td>
+				<td>취미</td>
 				<td>
-					<input type="checkbox" name="mhobby" value="mh1" />�˰�����
-					<input type="checkbox" name="mhobby" value="mh2" />�ڵ�
-					<input type="checkbox" name="mhobby" value="mh3" />�м�����<br>
-					<input type="checkbox" name="mhobby" value="mh4" />�����ͺ��̽�
-					<input type="checkbox" name="mhobby" value="mh5" />��ũ��Ʈ
+					<input type="checkbox" name="mhobby" value="mh1" />알고리즘
+					<input type="checkbox" name="mhobby" value="mh2" />코딩
+					<input type="checkbox" name="mhobby" value="mh3" />분석설계<br>
+					<input type="checkbox" name="mhobby" value="mh4" />데이터베이스
+					<input type="checkbox" name="mhobby" value="mh5" />스크립트
 					
 				</td>
 			</tr>
 			
 			<tr>
-				<td>�Ұ���</td>
+				<td>소개글</td>
 				<td>
-					<textarea name="minfo" id="minfo" rows="5" cols="50">�� �Ұ���
+					<textarea name="minfo" id="minfo" rows="5" cols="50">내 소개글
 					</textarea>
 				</td>
 			</tr>
 			
 			<tr>
-				<td>����</td>
+				<td>사진</td>
 				<td>
 					<input type="file" name="mphoto" /><br>
 				</td>
@@ -152,8 +152,8 @@
 			<tr>
 				<td colspapn="2">
 					<input type="hidden" name="isud_type" id="isud_type" value="I" />
-					<input type="submit" value="������">
-					<input type="reset" value="�ٽ�">
+					<input type="submit" value="보내기">
+					<input type="reset" value="다시">
 				</td>
 			</tr>
 			
