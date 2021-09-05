@@ -6,35 +6,35 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript">
 		
-		// jQuery������ id�� �տ� # �ʼ�! �ڹٽ�ũ��Ʈ�� �ʿ� x
+		// jQuery에서는 id명 앞에 # 필수! 자바스크립트는 필요 x
 		
 		$(document).ready(function(){
 			
-			// id�Ӽ��� "tPwCheck"�� ��ҿ� ���� "click"�̺�Ʈ ����
+			// id속성이 "tPwCheck"인 요소에 대한 "click"이벤트 정의
 			$("#tPwCheck").click(function(){
-				alert("tPwCheck ���� ���� >>> : ");
-				// ����� �Է°� ������
+				alert("tPwCheck 블럭 진입 >>> : ");
+				// 사용자 입력값 얻어오기
 				var tPwVal = $("#tPw").val();
 				var tPwRVal = $("#tPwR").val();
 				alert(tPwVal + " : " + tPwRVal);
 				
-				// �Է¿��� �˻�
+				// 입력여부 검사
 				if (!tPwVal){
-					alert("��й�ȣ�� �Է��ϼ���.");
+					alert("비밀번호를 입력하세요.");
 					$("#tPwVal").focus();
 					return false;
 				}
 				if (!tPwRVal){
-					alert("��й�ȣ Ȯ�ζ��� �Է��ϼ���.");
+					alert("비밀번호 확인란을 입력하세요.");
 					$("#tPwRVal").focus();
 					return false;
 				}
 				
 				if(tPwVal == tPwRVal){
-					alert("��й�ȣ Ȯ�εǾ����ϴ�.");
+					alert("비밀번호 확인되었습니다.");
 					$("#tEmail").focus();
 				}else{
-					alert("��й�ȣ�� �ٽ� Ȯ���ϼ���.");
+					alert("비밀번호를 다시 확인하세요.");
 					$("#tPw").val('');
 					$("#tPwR").val('');
 					$("#tPw").focus();
@@ -67,37 +67,37 @@
 	<form name="formTest" id="formTest" method="POST">
 		<table border="1">
 			<tr>
-				<td colspan="2" align="center">�������� �׽�Ʈ</td>
+				<td colspan="2" align="center">제이쿼리 테스트</td>
 			</tr>
 			<tr>
-				<td align="center">�̸�</td>
+				<td align="center">이름</td>
 				<td><input type="text" name="tName" id="tName" size="20"></td>
 			</tr>
 			<tr>
-				<td align="center">���̵�</td>
+				<td align="center">아이디</td>
 				<td><input type="text" name="tId" id="tId" size="20"></td>
 			</tr>
 			<tr>
-				<td align="center">��й�ȣ</td>
+				<td align="center">비밀번호</td>
 				<td><input type="password" name="tPw" id="tPw" size="20"></td>
 			</tr>
 			<tr>
-				<td align="center">��й�ȣȮ��</td>
+				<td align="center">비밀번호확인</td>
 				<td>
 					<input type="password" name="tPwR" id="tPwR" size="20">
-					<input type="button" id="tPwCheck" value="��й�ȣȮ��">
+					<input type="button" id="tPwCheck" value="비밀번호확인">
 				</td>
 			</tr>
 			<tr>
-				<td align="center">�̸���</td>
+				<td align="center">이메일</td>
 				<td><input type="text" name="tEmail" id="tEmail" size="20"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="�۾���" id="I_formTest">
-					<input type="button" value="�۸��" id="S_formTest">
-					<input type="button" value="�ۼ���" id="U_formTest">
-					<input type="reset" value="�ٽ�">
+					<input type="button" value="글쓰기" id="I_formTest">
+					<input type="button" value="글목록" id="S_formTest">
+					<input type="button" value="글수정" id="U_formTest">
+					<input type="reset" value="다시">
 				</td>
 			</tr>
 		</table>
