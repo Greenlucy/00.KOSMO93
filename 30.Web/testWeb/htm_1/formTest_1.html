@@ -2,22 +2,22 @@
 <html>
 <head>
 	<meta charset="EUC-KR">
-	<title>°Ô½ÃÆÇ</title>
-	<!-- Á¦ÀÌÄõ¸® CDN -->
+	<title>ê²Œì‹œíŒ</title>
+	<!-- ì œì´ì¿¼ë¦¬ CDN -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript">
-		alert("ÀÚ¹Ù½ºÅ©¸³Æ® ºí·° ½ÃÀÛ >>> : ");
+		alert("ìë°”ìŠ¤í¬ë¦½íŠ¸ ë¸”ëŸ­ ì‹œì‘ >>> : ");
 		
 		$(document).ready(function(){
-			alert("Á¦ÀÌÄõ¸® ºí·° ½ÃÀÛ >>> : ");
+			alert("ì œì´ì¿¼ë¦¬ ë¸”ëŸ­ ì‹œì‘ >>> : ");
 			
-			// ÆûÅÂ±× µ¥ÀÌÅÍ JSP º¸³»±â
+			// í¼íƒœê·¸ ë°ì´í„° JSP ë³´ë‚´ê¸°
 			$("#boardBtn").click(function(){
-				alert("boardBtn click() ÇÔ¼ö ÁøÀÔ >>> :");
-				console.log("boardBtn click() ÇÔ¼ö ÁøÀÔ >>> :");
+				alert("boardBtn click() í•¨ìˆ˜ ì§„ì… >>> :");
+				console.log("boardBtn click() í•¨ìˆ˜ ì§„ì… >>> :");
 				
 				// attr() vs prop() : html vs javascript
-				// attr : ¿ä¼Ò(elemet)ÀÇ ¼Ó¼º(attribute)À» °¡Á®¿À°Å³ª ¼Ó¼ºÀ» Ãß°¡ÇÔ
+				// attr : ìš”ì†Œ(elemet)ì˜ ì†ì„±(attribute)ì„ ê°€ì ¸ì˜¤ê±°ë‚˜ ì†ì„±ì„ ì¶”ê°€í•¨
 				$("#boardWrite")
 				.attr({
 						"action":"/testWeb/jsp/formTest_1.jsp",
@@ -34,55 +34,55 @@
 		<table border="1" align="center">
 			<tr>
 				<td colspan="2" align="center">
-					<font size="4" style="Color:blue;">°Ô½ÃÆÇ ±Û¾²±â</font>
+					<font size="4" style="Color:blue;">ê²Œì‹œíŒ ê¸€ì“°ê¸°</font>
 					<img src="/testWeb/img/ase.gif" width="25" height="25" alt="image">
 				</td>
 			</tr>
 			<tr>
-				<td align="center">±Û¹øÈ£</td>
+				<td align="center">ê¸€ë²ˆí˜¸</td>
 				<td>
 					<input type="text" name="bnum" id="bnum" size="20" alt="image">
 				</td>
 			</tr>
 			<tr>
-				<td align="center">Á¦¸ñ</td>
+				<td align="center">ì œëª©</td>
 				<td>
 					<input type="text" name="bsubject" id="bsubject" size="53">
 				</td>
 			</tr>
 			<tr>
-				<td align="center">ÀÌ¸§</td>
+				<td align="center">ì´ë¦„</td>
 				<td>
 					<input type="text" name="bwriter" id="bwriter" size="20">
 				</td>
 			</tr>
 			<tr>
-				<td align="center">ºñ¹Ğ¹øÈ£</td>
+				<td align="center">ë¹„ë°€ë²ˆí˜¸</td>
 				<td>
 					<input type="password" name="bpw" id="bpw" size="20">
 				</td>
 			</tr>
 			
 			<tr>
-				<td align="center">ÀÔ·ÂÀÏ</td>
+				<td align="center">ì…ë ¥ì¼</td>
 				<td>
 					<input type="text" name="insertdate" id="insertdate" size="20" disabled>
 				</td>
 			</tr>
 			<tr>
-				<td align="center">¼öÁ¤ÀÏ</td>
+				<td align="center">ìˆ˜ì •ì¼</td>
 				<td>
 					<input type="text" name="updatedate" id="updatedate" size="20" disabled>
 				</td>
 			</tr>
 			<tr>
-				<td align="center">³»¿ë</td>
+				<td align="center">ë‚´ìš©</td>
 				<td>
 					<textarea name="bmemo" id="bmemo" cols="50" rows="10"></textarea>
 				</td>
 			</tr>
 			<tr>
-				<td align="center">»çÁø</td>
+				<td align="center">ì‚¬ì§„</td>
 				<td>
 					<input type="file" name="bphoto" id="bphoto">
 				</td>
@@ -91,18 +91,18 @@
 				<td colspan="2" align="center">
 					<input type="hidden" name="ISUD_TYPE" id="ISUD_TYPE" value="I">
 					<!-- 
-						<input type="button" value="º¸³»±â"id="boardBtn">					 
+						<input type="button" value="ë³´ë‚´ê¸°"id="boardBtn">					 
 					 -->
 					 <button type="button" id="boardBtn">
 					 	<img src="/testWeb/img/ase.gif" width="25" height="25" alt="image">
-					 	º¸³»±â
+					 	ë³´ë‚´ê¸°
 					 </button>
 					 <!-- 
-					 	<input type="reset" value="´Ù½Ã">
+					 	<input type="reset" value="ë‹¤ì‹œ">
 					  -->
 					  <button type="reset">
 					  	<img src="/testWeb/img/b-baa.gif" width="25" height="25" alt="image">
-					  	´Ù½Ã
+					  	ë‹¤ì‹œ
 					  </button>
 				</td>
 			</tr>
