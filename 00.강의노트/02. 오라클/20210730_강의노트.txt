@@ -1,0 +1,161 @@
+2021-07-30
+-----------------------------
+
+자바 
+----
+비즈니스 로직을 만드는데 사용하는 것 
+---------------------------------
+coreJava 공부했다. 
+java.lang.* : 오브젝트, 클래스, 문자, 숫자, 시스템 
+java.util.* : 날짜, 데이터 처리하는 클래스(컬렉션 프레임워크)
+
+웹 프로그램 
+--------------------
+브라우저를 이용해서 프로그램을 하는 것 
+브라우저를 통해서 데이터를 주고 받는 것
+--------------------
+Servlet 프로그램
+jsp 프로그램 
+
+데이터베이스 프로그램 
+------------------
+데이터를 물리적으로 저장하고 수정하고 삭제하고 조회하는 것 
+데이터베이스 : 데이터를 물리적으로 저장하는 것 
+
+
+데이터베이스
+--------------------------------
+관계형 데이터베이스 
+	오라클, 인포믹스, 사이베이스, 포스트그레스, MS-SQL, 마리아디비, mySql ... 
+객체 데이터베이스 
+	몽고디비..
+
+
+오라클 데이터베이스 
+Oracle 8i
+Oracle 9i
+Oracle 10g
+Oracle 11g
+Oracle 12g
+..
+Oracle 19c
+
+
+오라클 서버 = 오라클 데이터베이스 + 오라클 인스턴스 
+
+전역데이터베이스 이름 : Global Database Name
+	
+	데이터베이스명.도메인명 : db_name.domain_name
+	orcldb.sale.us.com
+
+SID : 시스템 식별자 : System Identifier 
+	전역데이터베이스 이름에서 도메인명 생략한 것
+	orcldb
+
+전역데이터베이스 이름 : orclKOSMO00
+관리자비밀번호 : 1234
+
+tiger
+
+cmd 
+=======================================
+C:\Users\KOSMO>sqlplus scott/tiger
+
+scott 계정 연결 않될 때2021-07-30
+SQL> alter user scott identified by tiger;
+사용자가 변경되었습니다.
+SQL> alter user scott account unlock;
+사용자가 변경되었습니다.
+SQL>
+
+
+sys/1234 :  master accout						
+system/1234 : 운영계정 						
+scott/tiger						
+사용자 정의로 만드는 계정 : hbe00/1234		
+
+
+=======================================
+오라클 설치 
+c:\app 디렉토리에 설치가 된다. 
+C:\app\KOSMO\product\11.2.0\dbhome_1
+
+오라클하고 자바하고 연동하는 jdbc 드라이버를 넣어둔 디렉토리 
+C:\app\KOSMO\product\11.2.0\dbhome_1\jdbc\lib\ojdbc6.jar
+ojdbc6.jar : Oracle 11g 2 Release 와 자바프로그램을 연동하는  JDBC Driver
+
+오라클 서버와  오라클 클라이언트를 연결한 문서가 있는 곳 
+C:\app\KOSMO\product\11.2.0\dbhome_1\NETWORK\ADMIN
+listener.ora : 서버에 있는 파일 : 리스너 오라 파일 
+tnsnames.ora : 클라이언트에 있는 파일 : 티엔에스네임스 오라 
+
+
+sys : 슈퍼 어드미니스트레이터 계정 : 4738
+-----------------------------------
+C:\Users\KOSMO>sqlplus "/as sysdba"
+
+SQL*Plus: Release 11.2.0.1.0 Production on 금 7월 30 14:59:33 2021
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+
+다음에 접속됨:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> show user;
+USER은 "SYS"입니다
+SQL> SELECT COUNT(*) FROM TAB;
+
+  COUNT(*)
+----------
+      4738
+
+SQL>
+
+system : 운영 계정 : 176
+-----------------------
+C:\Users\KOSMO>sqlplus system/1234
+
+SQL*Plus: Release 11.2.0.1.0 Production on 금 7월 30 14:57:51 2021
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+
+다음에 접속됨:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> show user;
+USER은 "SYSTEM"입니다
+SQL> SELECT COUNT(*) FROM TAB;
+
+  COUNT(*)
+----------
+       176
+
+SQL>
+
+
+scott : 오라클에서 만들어준 연습용 계정 : 4
+------------------------------------
+C:\Users\KOSMO>sqlplus scott/tiger
+
+SQL*Plus: Release 11.2.0.1.0 Production on 금 7월 30 14:58:55 2021
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+
+다음에 접속됨:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> show user;
+USER은 "SCOTT"입니다
+SQL> SELECT COUNT(*) FROM TAB;
+
+  COUNT(*)
+----------
+         4
+
+SQL>

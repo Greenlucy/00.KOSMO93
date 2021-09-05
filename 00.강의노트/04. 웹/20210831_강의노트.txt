@@ -1,0 +1,316 @@
+2021-08-31
+--------------------------------
+
+HTML 을 브라우저에 로드 하면 제일 먼저 HTML DOM Tree가 만들어진다. 
+CSS 가 없으면 DOM Tree  가 보여진다. 
+
+HTML DOM Tree + CSS 렌더링 트리 = 브라우저에 보여진다(Display) : 렌더링 한다. 
+
+자바스크립트가 DOM Tree를 각각의 태그를 DOM 객체보고서 접근한다.|
+
+
+<태그이름 속성 style="" onclick="">
+	콘텐츠
+</태그이름>
+
+태그이름 : 태그이름
+속성 : id="태그앨리어스이름", name="태그앨리어스이름" 
+style="" : CSS을 적용 : inline CSS 
+onclick="" : 이벤트리스너 : javaScript : 이벤트발생을 연결하는 것
+콘텐츠 : innerHTML : XHTML의 형식 : 현재는 사용하지 않음 
+
+이벤트 
+------------------
+addEventListener : 스윙 addXXXListener
+removeEventListener : 등록한 이벤트 리스너 제거 
+
+appendChild() : 태그를 새로 만들 때 사용
+removeChild() : 자식태그 삭제 
+
+click() : <input type="button" onclick="">
+
+focus() : 커서를 포커싱
+
+setAttribute() : setter() 함수 : 값 초기화 함수 
+getAttribute() : getter() 함수 : 값 리턴 
+
+
+DOM Tree 에서 DOM 객체를 선택하는 방법
+---------------------------------------------
+javaScript에서 특정 html 요소를 선택하는 방법
+=============================================
+1. html tag 이름(name)
+2. id attribute(아이디 어트리뷰트) 
+3. class attribute(클래스 어트리뷰트)
+4. name attribute(네임 어튜리뷰트)
+5. CSS Selector(CSS 선택자)
+6. HTML Object Collection(html 객체집합)
+
+
+DOM 객체 구분을 id 로 하기 
+<p id="firstP">안녕하세요</p>
+
+document.getElemetnById("firstP");
+
+DOM 객체 구분을 name 로 하기 
+document.getElementsByTagName();
+
+
+innerHTML : 컨텐츠 내용 
+
+
+this : 자기자신을 가리키는 객체 
+
+
+자바스크립트 : javaScript
+========================================
+
+ECMAScript는 스크립인 언어를 만드는 지첨서 : 사양서 : Spectication
+
+JavaScript는 ECMAScript를 사양으로 만들어진 언어
+
+========================================
+JavaScrpt는 
+넷스케이프 브렌던 아이크가 처음 모카(Mocha) 개발
+
+1996년 3월 :  LiveScript : Netscape 가 JavaScript로 이름 변경
+			 Netscape 웹 브라우저에서 동적이 요소를 구현하기 위함 
+
+1996년 8월 : J스크립트 : 마이크로소프트 : 인터넷 익스플로러 3.0 출시
+
+1996년 11월 : 넷스케이프에서 표준화를 위해 자바스크립트 기술 규격을 Ecam 인터네셔널에 제출
+			 이 규격에 대한 작업을 ECMA-262 이름 시작함 
+1997년 6월 : ECMA-262  채택 
+
+1999년 12월 :	 ECMAScript 3 : 우리가 흔히 말하는 자바스크립트.
+			강력한 정규 표현식, 향상된 문자열 처리, 
+			새로운 제어문 , try/catch 예외 처리, 
+			엄격한 오류 정의, 수치형 출력의 포매팅 등.
+
+2004년  6월 :  ECMAScript 4 : 폐기
+
+2009년 12월 :  ECMAScript 5			
+			배열에 forEach, map, filter, reduce, some, every와 같은 메소드 지원
+			Object에 대한 getter / setter 지원
+			자바스크립트 strict 모드 지원 
+			JSON 지원 (과거에는 XML을 사용하다가, json이 뜨면서 지원하게 됨 )
+
+2015년 6월 : ECMAScript 2015 (ES2015)	 : ECMAScript Harmony : ES6 Harmony
+			let, const 키워드 추가
+			arrow 문법 지원
+			iterator / generator 추가
+			module import / export 추가
+			Promise 도입
+
+2017년 6월 :	ECMAScript 2017 (ES2017) : ES8
+			함수 표현식의 인자에서 trailing commas 허용, 
+			Object values/entries 메소드, 
+			async/await 등.
+
+
+
+Ecma 인터네셔널 : Ecma International
+(정보와 통신 시스템을 위한 국제적 표준화 기구 : 비영리)에서 스크립트 표준을 만듬, ECMA-262 규격을 따른다.
+European Computer Manufacturer's Association
+
+
+자바스크립트 엔진 : 인터프리터 
+구글 크롬(Google Chrome) : V8
+모질라 파이어폭스(Mozilla Firefox) : SpiderMonkey
+마이크로소프트 엣지(MS Edge) : Chakra
+
+브라우저 마다 호환성 문제 : Cross Browser Issues
+현재 최신판은 ES2020이다.
+
+
+자바 : 객체 지향 프로그래밍 
+자바스크립트 : 객체 베이스드 프로그래밍
+==============================================
+1. 객체를 사용하는 스크립트 언어 이다. 
+	
+	스크립트 언어의 큰 특징은 데이터 타입을 선언해서 사용하지 않는다.
+	내부 엔진(인터프리터)가 데이터 타입을 알아서 읽어준다. 
+	데이터 타입을 선언하지 않는다. 
+
+2. 자바스크립트를 읽고 실행해 주는 엔진은 브라우저에 내장되어 있다. : Cross Browser Issues
+
+3. ECMAScript3, ECMAScript5, ECMAScript6
+   3, 5 중심으로 공부를 하고 6에 대해서 공부를 해야 한다. 
+
+4. 데이터 타입, 변수, 함수, 생성자, 클래스 모두 존재한다. <-- 자바 문버과 거의 동일하다.
+
+5. 자바스크립트 코드는 HTML 문서의 
+		인라인 자바스크립트 : 태그 안에 속서으로 사용 
+		내부 자바스크립트 : HEAD 블럭 또는 BODY 블럭
+		외부 자바스크립트 : 독립파일로 확장자 *.js 로 만들어서 HTML 파일에서 *.js 를 연결해서 사용해도 된다. 
+
+6. 자바스크립트는 script 태그 안에서 인터프리트 방식으로 수행 된다. 
+
+
+자바스크립트의 객체
+==============================================
+호스트 객체
+	브라우저 객체 : BOM : Browser Object Model 
+				Window, Navigator, History, Location, Screen, Document etc.
+				사용할 때는 
+				window, navigator, history, location, screen, document 
+
+	DOM 객체 : DOM : Document Object Model : DOM Tree 
+					HTML 요소를 조작하는 객체
+	
+	기타 객체 :
+		XMLHttpRequest(통신 객체) (Ajax)
+	   ,HTML5의 각종 API etc.
+
+네이티브 객체
+	내장생성자 객체
+		Object, String, Number, Boolean, Array, Date
+		Function, RegExp(정규식), Error, Symbol 등
+	
+	기타 객체
+		JSON, Math 등
+
+사용자 정의 객체
+	자바스크립트 코드를 실행한 결과로 생성된 객체 
+
+=========================================================
+데이터 타입
+	원시타입
+		숫자 : 정수, 실수
+		문자열 : "abc", 'ab', a b : 쿼테이션을 사용 않하면 null 구분자로 인식한다. 
+		논리값 : true, false
+		undefined : 값이 없음
+					값을 아직 할당하지 않은 변수의 값
+					없는 객체의 프로퍼티를 읽으려고 시도했을 때의 값
+					없는 배열의 요소를 읽으려고 시도했을 때의 값
+					아무것도 반환하지 않는 함수가 반환하는 값
+					함수를 호출했을 때 전달받지 못한 인수의 값
+		null : 아무것도 없음 
+
+	####################################
+	객체타입
+		$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+		객체
+			객체 리터럴로 객체 생성하기 
+			var card = {suit:"하트", rank:"A"};
+			var card1 = {"suit":"하트", "rank":"A"};
+			
+			객체 리터럴 : {....}
+			변수 card
+			프로퍼티 이름 : suit, "suit"
+			프로퍼티 값 : "하트", "A"
+		$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+		배열
+			배열 리터럴로 생성
+			var evens = [2, 4 6, 8];
+			var evens = new Array(2, 4, 6, 8);
+			var empty = new Array();
+		$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+		함수
+			함수 선언문으로 정의하는 법
+				function square(x) { return x*x; }
+
+			함수 리터럴로 정의하는 법
+				var square = function(x) { return x*x; }
+
+			Function 생성자로 정의하는 방법
+				var square = new Function("x", "return x*x");
+
+			화살표 함수 표현식으로 정의하는 방법
+				var square = x => x*x;
+		$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+	####################################
+
+변수
+	var : 변수
+		
+		자바스크립트에서는 테이터 타입을 사용하지 않는다.
+		var 데이터 타입에 변수명을 선언하고 데이터 타입을 대입하면
+		자바스크립트 엔진이 알아서 데이터 타입을 맞추어서 생성해 준다. 
+		
+		var s = "abc"; 아 문자열 이구나 
+		
+		var i = 11; 아 숫자, 정수 구나 
+		
+		var f = {a:"a", b:"b"}; 리터럴 객체구나 
+		
+		var a = new Array[1, 2, 3]; 배열 객체구나 
+		
+		var fu = function(abc){ return abc;}: 함수 객체 구나 
+		
+		데이터 타입을 알고 싶으면 typeof() 함수를 사용하면 된다.
+
+	- let, const : ECMAScript 5, 6 에서 추가 된 것 
+	- 호이스팅, 클러저 개념을 공부해야 한다. 
+	
+	let : 지역변수
+	const : 상수
+=========================================================
+
+이벤트 처리방법
+	HTML 요소의 이벤트 처리기 속성에 설정하는 방법
+		<input type="button" onclick="changeColor();">
+	
+	DOM 요소 객체의 이벤트 처리기 프로퍼티에 설정하는 방법
+		vat btn = document.getElementById("button");
+		btn.onclick = changeColor();
+	
+	addEventListener 메서드를 사용하는 방법
+		vat btn = document.getElementById("button");
+		btn.addEventListener("click", changeColor, false);
+
+
+이벤트 종류
+==================
+마우스 이벤트 
+click (onclick) : 마우스 버튼 클릭하고 버튼에서 손을 뗌
+				 예) 요소.onclick = "이벤트 처리기";
+				 예) 요소.addEventListener("click", 이벤트 처리기 또는 콜백함수);
+
+dblclick (ondbclick)  : 마우스 버튼을 두 번 연속 더블 클릭 함
+
+mousedown (onmousedown) : 마우스 클릭의 앞 절반 (버튼을 누름)
+mouseup (onmouseup) : 마우스 클릭의 뒤 절반 (버튼을 뗌)
+mouseover (onmouseover) : 마우스 포인터가 요소 위에 올라감
+mouseout (onmouseout) : 마우스 포인터가 요소 밖으로 벗어남
+mousemove (onmousemove) : 마우스 포인터가 움직임
+						 - 마우스 커서가 해당 요소 내를 움직일 때
+						 - 또는, 커서의 위치 확인에 유용함
+
+contextMenu : 마우스 우측 클릭시, 컨텍스트 메뉴 보이기 직전에 발생
+마우스 휠 이벤트 등
+
+드래그 앤 드롭 이벤트
+dragstart
+drag
+dragend
+dragenter
+dragover
+dragleave
+drop
+
+키보드 이벤트 
+keydown (onkeydown) : 키를 누르는 순간
+keyup (onkeyup)   : 키를 눌렀다 떼는 순간
+keypress (onkeypress) : 키를 눌러 문자가 연결되었을 때 
+						 - 즉, 화면에 글자가 완성되는 경우 만
+						 - 한편, 누르고있는 동안 화면에 해당 키가 연이어 나타나듯이 해당 이벤트도 계속 발생됨
+
+
+폼 이벤트
+submit (onsubmit) : 폼 제출 버튼을 누름
+					- 제출/전송 버튼을 누름 또는 텍스트 필드에서 엔터키를 누름
+
+reset (onrest) : 폼을 초기화하기 위함
+
+change (onchange) : 폼 필드에서 변경이 일어남
+					- input 요소의 텍스트 변동, radio 버튼의 클릭 등
+
+focus (onfocus) : 웹브라우저가 특정 요소에 집중함
+				- 해당 요소를 클릭, 마우스 커서를 놓을때 등
+
+blur (onblur)  : focus의 반대
+				- 탭 누름, 필드 밖을 클릭할 때 등
+
+select (onselect) : 텍스트 필드 등의 텍스트를 선택했을 때

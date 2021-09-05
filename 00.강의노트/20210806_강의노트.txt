@@ -1,0 +1,82 @@
+2021-08-06
+-----------------------------------------
+
+java.sql.Statement : 자바에 있는 sql 쿼리문을 오라클에게 전달하고 오라클에서 실행한 결과를 받아오는 객체이다. 
+						sql 문을 매번 메모리에 올려서 사용한다(매번 인스턴스 한다.)
+	ResultSet executeQuery(String sql) throws SQLException
+		테이블에 있는데 데이터들이 파일로 리턴 됨
+	int executeUpdate(String sql) throws SQLException
+		테이블에 입력된 건수가 리턴 됨 
+
+java.sql.PreparedStatemnt : 자바에 있는 sql 쿼리문을 오라클에게 전달하고 오라클에서 실행한 결과를 받아오는 객체이다. 
+						sql 문을 한번 메모리에 올리면 재 사용한다(인스턴스를 한번 한다.)				
+	ResultSet executeQuery() throws SQLException
+		테이블에 있는데 데이터들이 파일로 리턴 됨
+	int executeUpdate() throws SQLException
+		테이블에 입력된 건수가 리턴 됨 
+
+Connection conn = DriverManager.getConnection(url, user, password);
+Statement stmt = conn.createStatement();
+ResultSet rsRs = stmt.executeQuery(String sql);
+
+Connection conn = DriverManager.getConnection(url, user, password);
+PreparedStatemnt pstmt = conn.prepareStatement(String sql);
+ResultEst rsRs = pstmt.executeQuery();
+
+오라클 
+SID : orclKOSMO00
+account : hbe00
+비밀번호 : hbe1234
+
+회원 테이블 : HBE_MEMBER
+회원 데이터는 : 10건 입력하기 
+
+클래스 설계
+---------------------------
+클래스 
+패키지
+
+a.b.c.ch9.hbemem
+	HbeMember
+		public ArrayList<HbeMemberVO> hmemSelectAll();
+		public ArrayList<HbeMemberVO> hmemSelect(HbeMemberVO hvo);
+		public boolean hmemInsert(HbeMemberVO hvo);
+		public boolean hmemUpdate(HbeMemberVO hvo);
+		public boolean hmemDelete(HbeMemberVO hvo);
+
+a.b.c.ch9.hbemem.sql
+	HbeMemberSqlMap
+		public static String getHbeMemberSelectAllQuery();
+		public static String getHbeMemberSelectQuery();
+		public static String getHbeMemberInsertQuery();
+		public static String getHbeMemberUpdateQuery();
+		public static String getHbeMemberDeleteQuery();
+
+a.b.c.ch9.hbemem.vo
+	HbeMemberVO
+		public static void printHbeMemberVO(HbeMemberVO hvo);
+		public static void printlnHbeMemberVO(HbeMemberVO hvo);
+
+a.b.c.common
+	HbeConnProperty 
+		public static Connection getConnection();
+		public static void conClose(Connection conn, PreparedStatement pstmt, ResultSet rsRs);
+		public static void conClose(Connection conn, PreparedStatement pstmt);
+	CodeUtil
+		public static String birth(String s);	
+		public static String gender(String s);
+		public static String tel(String s);
+		public static String hp(String s);
+		public static String hobby(String s);
+		public static String job(String s);
+
+
+
+=========================================
+a.b.c.ch9.hbemem.service
+	HbeMemberService
+	HbeMemberServiceImpl
+
+a.b.c.ch9.hbemem.dao
+	HbeMemberDAO
+	HbeMemberDAOImpl

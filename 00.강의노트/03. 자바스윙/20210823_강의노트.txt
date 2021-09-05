@@ -1,0 +1,124 @@
+2021-08-23
+-----------------------------------
+8/23 ~ 8/25 : 개인별 미니 프로젝트 : 팀단위로 한다. 
+자바 + Swing + Oracle : C/S 미니 프로젝트 
+1. 회원 ISUD
+2. 게시판 ISUD 
+
+테이블 설계
+클래스 설계 
+클래스 다이아그램
+화면 정의서 : 개발 완료 후 화면 캡처 
+
+소스코드 재사용 한다. 
+화면만 개발해서 한다. 
+구조가 조금 바꿔서 코드를 좀 더 해야 한다. 
+
+개발
+
+이클립스
+1. 프로젝트명 : javaLhj
+2. jdbc 드라이버 플러그인
+
+멤버
+com.kosmo.lhj.member
+	com.kosmo.lhj.member.scr
+	com.kosmo.lhj.member.service
+	com.kosmo.lhj.member.dao
+	com.kosmo.lhj.member.sql
+	com.kosmo.lhj.member.vo
+
+로그인
+com.kosmo.lhj.login
+	com.kosmo.lhj.member.scr
+	com.kosmo.lhj.member.service
+	com.kosmo.lhj.member.dao
+	com.kosmo.lhj.member.sql
+
+게시판
+com.kosmo.lhj.board
+	com.kosmo.lhj.board.scr
+	com.kosmo.lhj.board.service
+	com.kosmo.lhj.board.dao
+	com.kosmo.lhj.board.sql
+	com.kosmo.lhj.board.vo
+
+공통코드
+com.kosmo.common
+	SwjConnProperty
+
+
+오라클 데이터베이스
+sid : orclHBE00 : 본인 것으로 
+account : hbe00/hbe1234
+
+회원 테이블 : HBE_MEMBER
+게시판 테이블 : HBE_BOARD
+
+테이블 설계 
+-----------------------
+회원 데이터 만들어서 테이블에 입력하고 자바로 조회하기 
+
+회원 데이터 
+회원 테이블 이름 : ??
+
+회원번호 : 생성 규칙 : 회원이 만들까, 사이트에서 만들어 줄까 
+회원이름 : 한글, 영문 : 길이는 
+회원 아이디 : 영문, 한글, 길이, 규칙 ??
+회원 패스워드 : 영문, 한글, 길이, 규칙 ??
+회원 생년월일 : ?? 
+회원 성별 : 남자, 여자, 
+회원 전화번호 : 핸드번 번호, 유선 번호, 사내 번호 ??
+회원 이메일 : 길이 ??
+회원 주소 : 도로명 주소, 지번 주소, 영문 주소 ....
+회원 취미 : ?? 범위가 ?
+회원 사진 : ??
+회원 특기 : 키인, 선택 
+회원 직업 : ?? 
+
+----------------------------------------
+테이블 및 컬러명 만들 때 접두어 사용하는 방법 
+----------------------------------------
+회원테이블 : HBE_MEMBER : YSH_MEMBER : 본인이니셜_MEMBER
+
+회원번호 : HNUM : 날짜+순서 : YYYYMMDD0001 : 20바이트 : 기본키 : PK 
+
+회원이름 : HNAME : 한글이름 : 20바이트   
+
+회원아이디 : HID : 8자 : 20바이트
+
+회원패스워드 : HPW : 8자 : 암호화 : 200바이트 
+
+회원생년월일 : HBIRTH : 형식 : YYYY-MM-DD : 2021-08-05 : 10바이트 
+
+회원성별 : HGENDER : 여자, 남자 : 코드로 처리 한다 : F : 여자, M : 남자, 01 : 여자, 02 : 남자 
+                   입력값이 여자 이면 테이블에는  01 입력 
+				   입력값이 남자 이면 테이블에는  02 입력 
+				   2바이트 
+
+회원전화번호 : HTEL : XXX-XXXX-XXXX  : 3-4-4 : 16바이트 
+
+회원휴대폰번호 : HHP : XXX-XXXX-XXXX : 3-4-4 : 16바이트 
+
+회원이메일 : HEMAIL : XXX@도메인주소 : 200바이트 
+
+회원주소 : HADDR : 우편번호 + 도로명주소 + 상세주소 : 300바이트 
+	회원주소우편번호
+	회원주소도로명주소
+	회윈주소도로명주소상세주소
+
+회원취미 : HHOBBY : 게임, 음악감상, 운동, 독서, 영화, 명상 : 
+				  01 : 게임, 02 : 음악감상, 03 : 운동, 04 : 독서, 05 : 영화, 08 : 명상
+				  2바이트 	
+
+회원사진 : HPHOTO : 사진이 저장된 파일경로 : 200바이트 
+
+회원특기 : HSKILL : KEY-IN 하기 : 100바이트 
+
+회원직업 : HJOB : 회사원, 자영업, 학생, 주부, 무직, 시인, 
+                01 : 회사원, 02 : 자영업, 03 : 학생, 04 : 주부, 05 : 무직, 06 : 시인 
+				2바이트 
+
+삭제여부 : DELETEYN : 1바이트 : Y : 회윈 , N : 안회원
+입력일 : INSERTDATE : YYYY-MM-DD
+수정일 : UPDATEDATE : YYYY-MM-DD

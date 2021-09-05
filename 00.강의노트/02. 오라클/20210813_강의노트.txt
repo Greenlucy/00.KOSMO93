@@ -1,0 +1,69 @@
+2021-08-13
+----------------------------------
+
+COUNT(아규먼트) : ROW 수 : 건수 
+
+아규먼트 ?? 
+1. * : 아스타리스크, 별풍선, 미풍표시 : 기능 : 전체 : FULL SCAN : ROW * COLUMN(SIZE)  
+2. COLUMN  : NOT NULL COLUMN : NULL은 카운드가 않된다 
+
+EMP : 14 ROW * 8 COULMN : 112
+EMP : 14 ROW * 1 COULMN : EMPNO : PK : NOT NULL + UNIQUE : 12
+
+
+조인 : JOIN : 관계형 데이터베이스 : 정규화 : 정형화(계산이 된다) 
+원래는 한 개의 테이블로 구성이 가능한 테이블을 
+어떤 목적을 가지고 여러개의 데이블로 나누어서
+1. 관계 키를 가지고 나누는 것
+2. 관계 키를 가지지 않고 나누는 것 
+데이터를 적재하는 것 
+
+이러한 여러개로 나누어진 테이블에서 
+데이터를 조회 할 때 사용하는 기법 
+
+조인 종류
+inner join :  equi join, equal join
+이너조인은 각 테이블에서 동일한 컬럼을 매칭해서 조회 하지만 매칭이 되지않으면 데이터를 조회할수 없습니다
+1. 각 데이블에서 동일한 컬럼을 매칭해서 조회하는 것 입니다. 
+
+outer join
+여러테이블에서 모든 데이터를 다 출력한다
+1. 각 데이블에서 동일한 컬럼을 매칭해서 조회할 때 데이터가 없는 컬럼을 조회할 때 사용하는 기법.
+
+not inner join : not equi join, not equal join : 구간 검색
+self join 
+cross join
+
+
+rownum, rowid
+
+서브쿼리 : 조인 효과가 있다. 
+SELECT 절
+	1. 컬럼을 순차적으로 나열 하는 것, INDEX 배열
+	2. 스칼라 서브쿼리 (SELECT * FROM DUAL) 앨리어스 
+FROM 절 
+	1. 테이블을 순차적으로 나열 하는 것, EMP A, DEPT B
+	2. 인라인 뷰 서브쿼리 (SELECT * FROM DUAL) 앨리어스 
+WHERE 절 
+	1. 조건 바인딩
+	2. 서브쿼리 (SELECT * FROM DUAL)
+
+
+서브쿼리 종류
+1. 단일 행
+2. 다중 행
+3. 다중 컬럼
+4. 인라인 뷰
+5. 스칼라 서브쿼리 
+
+
+
+
+
+
+
+
+
+
+
+

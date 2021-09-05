@@ -1,0 +1,80 @@
+2021-06-29
+----------------------
+키워드(예약어)
+
+
+
+2021-07-05
+----------------------
+멤버변수 
+클래스 내부(함수 밖)에 선언하는 멤버변수는 선언 만 해서 사용한다.
+클래스를 인스턴스 하는 과정에서 생성자로 초기화 하기 때문이다.
+
+
+2021-07-07
+----------------------
+클래스 자원을 메모리에 올리는 방법
+1. static 키워드
+2. new 연산자 
+
+
+
+2021-07-13
+----------------------
+클래스 자원을 메모리에 올리는 방법
+1. static 키워드
+2. new 연산자 
+3. 상속 : inheritance 
+	extedns 키워드 : 단일 클래스 상속
+	implements 키워드 : 다중 인터페이스 상속 
+
+
+2021-07-23
+----------------------
+자바의 자원, 클래스 
+1. static 키워드
+	클래스이름
+2. new 연산자
+	참조변수
+3. 상속: inheritance 
+	extedns 키워드 : 단일 클래스 상속
+	implements 키워드 : 다중 인터페이스 상속 
+4. 추상클래스 getInstance()
+	참조변수
+	Calendar cd = Calendar.getInstance();
+5. Class.forName().newInstance()
+	참조변수 
+
+
+2021-08-12
+----------------------
+--스칼라(Scala) 서브쿼리
+-- 한개의 로우만 반환한다.
+-- 메인 쿼리에서 추출되는 데이터 건 수 만큼 수행되기 때문에 조인으로 수행 될 때보다 수행회수가 적을 수 있다.
+-- 일치하는 값이 없는 경우 NULL을 반환한다.
+-- 코드성 테이블에서 코드값을 조회할 때, 
+-- 불필요한 조인을 하지 않기 위해 많이 사용한다.
+
+-- 직업이 'MANAGER'인 사원의 사원명, 부서명을 조회
+SELECT A.ENAME,
+       (SELECT B.DNAME FROM DEPT B WHERE B.DEPTNO = A.DEPTNO) DNAME
+FROM   EMP A
+WHERE  A.JOB = 'MANAGER';
+
+SELECT A.ENAME,
+       B.DNAME
+FROM   EMP A, DEPT B
+WHERE  A.DEPTNO = B.DEPTNO
+AND    A.JOB = 'MANAGER';
+
+SELECT  A.DEPTNO, 
+        A.DNAME,
+        (SELECT MAX(SAL) FROM EMP WHERE DEPTNO = A.DEPTNO) SAL
+FROM   DEPT A
+
+SELECT A.DEPTNO, A.DNAME, MAX(B.SAL)
+FROM   DEPT A, EMP B
+WHERE  A.DEPTNO = B.DEPTNO(+)
+GROUP BY A.DEPTNO, A.DNAME
+ORDER BY A.DEPTNO
+

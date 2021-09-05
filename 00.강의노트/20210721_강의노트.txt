@@ -1,0 +1,61 @@
+2021-07-21
+---------------------------------
+
+참조변수 사용에 대한 것을 
+
+1. 사용자정의 참조변수 
+	사용자정의클래스 참조변수 = new 사용자정의클래스();
+	참조변수 : 주소값 : 주소값.필드 , 주소값.함수()
+
+2. String 클래스 : 문자 
+	String 참조변수 = 리터럴; // new String(리터럴)
+	String 참조변수 = new String(리터럴);
+
+	java.lang.String.equals()
+	== 이것은 사용하지 않는다.
+
+3. Integer 클래스 : 숫자
+	Integer 참조변수 = new Integer(리터럴);
+
+	문자숫자 -> 숫자 
+	Integer.parseInt();
+
+4. Date 클래스 : 날짜 
+	Date 참조변수 = new Date();
+
+	1 년 = 365 * 24 * 60 * 60 
+	이포크시간 : 1900
+	윤년
+
+5. Calendar 클래스 : 날짜 
+	Calendar cd = Calendar.getInstance();
+
+	상수로 날짜 가져오는 것 
+
+	TimeZone 클래스 : 도시 시간 : 628
+	
+6. ArrayList 클래스 
+	ArrayList aList = new ArrayList(); // []
+	ArrayList<E> aList = new ArrayList<E>(); // []
+
+	데이터를 담는 통 
+	배열
+	아무거나 담는다.
+	사이즈 걱정 않해도된다. 
+
+	제네릭 연산자 : <> , T, E, V, K 
+
+	제네릭 : 데이터를 한정한다. : 데이터 타입이 동일해야 한다. 
+	제네릭 연산자 : <> E
+
+7. HashMap 클래스 
+	HashMap hp = new HashMap(); // {}
+	HashMap<K, V> hp = new HashMap<K, V>(); // {}
+
+	데이터를 담는 통 
+	배열이 아니다. 
+	아무거나 담는다.
+	사이즈 걱정 않해도된다. 
+
+	제네릭 : 데이터를 한정한다. : 데이터 타입이 동일해야 한다. 
+	제네릭 연산자 : <> V, K 

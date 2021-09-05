@@ -1,0 +1,82 @@
+2021-07-16
+------------------------
+
+rt.jar : library : API : reference 사용하기 
+
+java.lang.*;
+	java.lang.Object
+	java.lang.String
+	java.lang.Integer
+	java.lnag.Math
+	java.lang.System
+	java.lang.Class
+	Wrapper : 래퍼 클래스 
+	java.lang.Exception
+
+java.util.*;
+	java.util.ArrayList
+	java.util.HashMap
+	java.util.Date
+	java.util.Calander
+
+java.io.*
+
+java.awt.*
+javax.swing.*
+
+java.sql.*
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+2021-07-16(금) 
+스터디 주제 : 참조변수 사용법 공부하기 
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+###################################################
+자바에서 Data 를 구분하는 자료형 
+--------------------------------------
+
+기초자료형 : primitive type : 변수 = 데이터 : int i = 1;
+	숫자
+		정수 byte short int long
+		실수 float double
+	문자 
+		문자 char 
+		문자열 : 참조자료형 
+	논리 
+		booelan : true, false
+
+참조자료형 : reference type : 클래스 = 변수 + 함수 : 참조변수 --> 변수, 함수
+			클래스 참조변수 = new 클래스();
+	클래스 
+	Array
+	인터페이스 
+
+
+변수 
+	멤버변수
+		상수
+		클래스변수
+		멤버변수
+		전역변수 
+	지역변수
+
+########################
+변수를 식별하는 방법
+------------------------
+1. 지역변수, 멤버변수 : 변수의 유효범위 
+2. 기초자료형, 참조자료형 구분 
+3. 변수유형 
+	상수
+	클래스변수
+	멤버변수
+	전역변수 ....
+	지역변수
+###################################################
+
+참조변수
+
+사용자정의 클래스를 참조변수로 사용할 때 
+0. 참조변수는 어떻게 만드는가 
+	클래스 참조변수 = new 클래스();
+1. 참조변수로 자원을 사용할 수 있다. 
+2. 참조변수를 함수의 매개변수 및 아규먼트로 사용해도 된다. 

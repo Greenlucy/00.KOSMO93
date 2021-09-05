@@ -1,0 +1,204 @@
+2021-06-29
+-----------------------------------------
+
+ÄÄÇ»ÅÍ ºÐ·ù : ¿î¿µÃ¼Á¦(Operate System)
+UNIX : ¼­¹ö¿ë : IBM UNIX, HP UNIX, Solais UNIX ..... 
+Window : ¼­¹ö¿ë, °³ÀÎ¿ë
+linux : ¼­¹ö¿ë, °³ÀÎ¿ë : ·¹µåÇò °è¿­, µ¥ÀÌ¾È °è¿­, ¼ö¼¼ °è¿­
+Mac : ¼­¹ö¿ë, °³ÀÎ¿ë
+
+µ¥½ºÅ© Å¾
+·¦Å¾
+Å×ºí¸´
+ÇÚµåÆù
+
+¿©·¯ºÐ Áö±Ý »ç¿ëÇÏ´Â O/S °¡ ¸ó°¡¿ä ?
+Window 10 64bit 
+
+Object : °´Ã¼ ´Â ¸ó°¡¿ä ?
+Çö½Ç ¼¼°è¿¡¼­ ÀÏ¾î³ª´Â À¯Çü, ¹«ÇüÀÇ »ç°Ç »ç¹°À»
+ÄÄÇ»ÅÍ·Î ¿Å°Ü¼­ Çü»óÈ­ÇÒ ¶§ 
+»ç¿ëÇÏ´Â ¼ÒÇÁÆ®¿þ¾î °øÇÐ ¿ë¾îÀÌ´Ù.
+
+µ¥ÀÌÅ¸ : Data
+¹®ÀÚ : ¹®ÀÚ¿­(¹®ÀÚÀÇ ¹è¿­), ¹®ÀÚ(ÀÚÀ½, ¸ðÀ½À¸·Î ÇÕ¼ºµÈ ÇÑ±ÛÀÚ)
+¼ýÀÚ : Á¤¼ö, ½Ç¼ö
+¹ÙÀÌ³Ê¸® µ¥ÀÌÅÍ 
+
+
+- ÀÚ¹Ù·Î °³¹ßÇÏ±â 
+1. jdk : °³¹ß¿¡ ÇÊ¿äÇÑ ¶óÀÌºê·¯¸®¿Í ÇÃ·§Æû
+		 Java Development Kit + Java Runtime Environment
+		 ÄÄÆÄÀÏ·¯ : »ç¶÷ÀÌ ¾Ë¼ö ÀÖ´Â ¾ð¾î·Î ¸¸µé¸é ÀÌ°ÍÀ» ÄÄÇ»ÅÍ°¡ ¾Ë ¼ö ÀÖ°Ô ¹ø¿ªÇÏ´Â °Í 
+		 javac.exe : ÀÚ¹Ù ÄÄÆÄÀÏ·¯ : ÇÏÀÌ ·¹º§ ·©±ÍÁöÀÎ ÀÚ¹Ù ¾ð¾î¸¦ 
+		                          ÀÚ¹Ù¹öÃ¶¸Ó½ÅÀÌ ¾Ë¾Æº¼¼ö ÀÖµµ·Ï ±â°è¾î·Î ¹ø¿ªÇÏ´Â °Í 
+		 java.exe : ÇÁ·Î±×·¥À» ½ÇÇàÇÏ´Â ¿ªÈ° ÇÏ´Â ¿£Áø
+				  : javac ÄÄÆÄÀÏ·¯·Î ¹ø¿ªÇÑ ±â°è¾î¸¦ 
+				    ÀÚ¹Ù¹öÃ¶¸Ó½ÅÀÌ ÄÄÇ»ÅÍ¿¡ ÀÖ´Â CPU ¿Í Åë½ÅÇØ¼­ 
+					ÇØ´ç ÇÁ·Î±×·¥À» ½ÇÇàÇÏ°Ô ÇÏ´Â ¿£Áø
+					
+					ÀÚ¹ÙÇÁ·Î±×·¥¼Ò½º <-> ÀÚ¹Ù¹öÃ¶¸Ó½Å <-> CPU
+
+2. jre : ÀÚ¹Ù ÇÁ·Î±×·¥À» ½ÇÇàÇÏ´Â È¯°æ 
+		 Java Runtime Environment
+		 java.exe
+
+3. È¯°æº¯¼ö ¼¼ÆÃÇÏ±â 
+È¯°æº¯¼ö ¼¼ÆÃ
+--------------------
+À©µµ¿ì + R > sysdm.cpl
+
+½Ã½ºÅÛ º¯¼ö
+»õ·Î ¸¸µé±â 
+JAVA_HOME : º¯¼ö¸í 
+C:\Program Files\Java\jdk1.8.0_291 : º¯¼ö °ª
+
+Path
+%JAVA_HOME%\bin
+%JAVA_HOME% : º¯¼ö¸íÀ» È£ÃâÇß´Ù. 
+
+4. ½ÇÇà ÇØº¸±â
+ÄÜ¼Ö Ã¢¿¡¼­ .(dot ¿¬»êÀÚ) ´Â µð·ºÅä¸®(Æú´õ) Ç¥½ÃÇÑ´Ù. 
+cd : Ã¼ÀÎÁö µð·ºÅä¸® : µð·ºÅä¸®¸¦ º¯°æÇÏ¼¼¿ä 
+
+C:\Users\KOSMO>cd .. : ÇöÀç µð·ºÅä¸®¿¡¼­ »óÀ§ µð·ºÅä¸®·Î º¯°æÇÏ¼¼¿ä 
+
+C:\Users>cd . : ÇöÀç µð·ºÅä¸®
+
+C:\Users>
+
+Æú´õ ÀÌµ¿ 
+cd .
+cd ..
+cd 
+cd ../..
+
+cd 0*3
+cd 0*3\1*m
+
+c:>d:
+C:\00.KOSMO93\10.JExam>dir
+C:\00.KOSMO93\10.JExam>dir /w
+C:\00.KOSMO93\10.JExam>dir H*.java
+
+############################
+C:\00.KOSMO93\10.JExam>type Hello.java
+class Hello {
+        public static void main(String[] args) {
+                System.out.println("Hello Java !!!");
+        }
+}
+C:\00.KOSMO93\10.JExam>
+
+############################
+############################
+ÀÏ¹Ý ÄÄÆÄÀÏ ¹× ½ÇÇà
+############################
+C:\00.KOSMO93\10.JExam>javac Hello.java
+
+C:\00.KOSMO93\10.JExam>dir
+ C µå¶óÀÌºêÀÇ º¼·ý¿¡´Â ÀÌ¸§ÀÌ ¾ø½À´Ï´Ù.
+ º¼·ý ÀÏ·Ã ¹øÈ£: A461-CAA8
+
+ C:\00.KOSMO93\10.JExam µð·ºÅÍ¸®
+
+2021-06-29  ¿ÀÈÄ 03:48    <DIR>          .
+2021-06-29  ¿ÀÈÄ 03:48    <DIR>          ..
+2021-06-29  ¿ÀÈÄ 03:49               418 Hello.class
+2021-06-28  ¿ÀÈÄ 05:24               105 Hello.jav
+2021-06-29  ¿ÀÈÄ 03:02               104 Hello.java
+               3°³ ÆÄÀÏ                 627 ¹ÙÀÌÆ®
+               2°³ µð·ºÅÍ¸®  192,947,998,720 ¹ÙÀÌÆ® ³²À½
+
+C:\00.KOSMO93\10.JExam>
+
+############################
+C:\00.KOSMO93\10.JExam>type Hello.class
+Êþº¾4
+      
+<init>()VCodeLineNumberTablemain([Ljava/lang/String;)V
+SourceFile
+Hello.javaHello Java !!!
+C:\00.KOSMO93\10.JExam>
+
+############################
+C:\00.KOSMO93\10.JExam>java Hello.class
+¿À·ù: ±âº» Å¬·¡½º Hello.classÀ»(¸¦) Ã£°Å³ª ·ÎµåÇÒ ¼ö ¾ø½À´Ï´Ù.
+
+C:\00.KOSMO93\10.JExam>
+
+############################
+C:\00.KOSMO93\10.JExam>java Hello
+Hello Java !!!
+
+C:\00.KOSMO93\10.JExam>
+
+
+############################
+############################
+ÆÐÅ°Áö ÄÄÆÄÀÏ ¹× ½ÇÇà
+############################
+
+############################
+C:\00.KOSMO93\10.JExam>type HelloWorld.java
+package com.a.b.c;
+
+public class HelloWorld {
+        public static void main(String[] args){
+                System.out.println("Java HelloWorld !!");
+                System.out.println("ÀÚ¹Ù ÆÐÅ°Áö ÄÄÆÄÀÏ");
+                System.out.println("javac -d . HelloWorld.java");
+                System.out.println("-d : µð·ºÅä¸®¸¦ ¸¸µå¼¼¿ä ¿É¼Ç");
+                System.out.println(". : ÇöÀçµð·ºÅä¸® ¿É¼Ç");
+                System.out.println("java com.a.b.c.HelloWorld");
+        }
+}
+
+############################
+C:\00.KOSMO93\10.JExam>javac -d . HelloWorld.java
+
+C:\00.KOSMO93\10.JExam>
+
+############################
+C:\00.KOSMO93\10.JExam>type com.a.b.c.HelloWorld
+ÁöÁ¤µÈ ÆÄÀÏÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.
+
+C:\00.KOSMO93\10.JExam>cd com/a/b/c
+
+C:\00.KOSMO93\10.JExam\com\a\b\c>type HelloWorld
+ÁöÁ¤µÈ ÆÄÀÏÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.
+
+C:\00.KOSMO93\10.JExam\com\a\b\c>type HelloWorld.class
+Êþº¾4'
+      
+
+C:\00.KOSMO93\10.JExam\com\a\b\c>
+
+############################
+C:\00.KOSMO93\10.JExam\com\a\b\c>cd ..
+
+C:\00.KOSMO93\10.JExam\com\a\b>cd ..
+
+C:\00.KOSMO93\10.JExam\com\a>cd ..
+
+C:\00.KOSMO93\10.JExam\com>cd ..
+
+C:\00.KOSMO93\10.JExam>dir HelloWorld.java
+ C µå¶óÀÌºêÀÇ º¼·ý¿¡´Â ÀÌ¸§ÀÌ ¾ø½À´Ï´Ù.
+ º¼·ý ÀÏ·Ã ¹øÈ£: A461-CAA8
+
+ C:\00.KOSMO93\10.JExam µð·ºÅÍ¸®
+
+2021-06-29  ¿ÀÈÄ 04:59               930 HelloWorld.java
+               1°³ ÆÄÀÏ                 930 ¹ÙÀÌÆ®
+               0°³ µð·ºÅÍ¸®  194,987,409,408 ¹ÙÀÌÆ® ³²À½
+
+C:\00.KOSMO93\10.JExam>java com.a.b.c.HelloWorld
+Java HelloWorld !!
+ÀÚ¹Ù ÆÐÅ°Áö ÄÄÆÄÀÏ
+javac -d . HelloWorld.java
+-d : µð·ºÅä¸®¸¦ ¸¸µå¼¼¿ä ¿É¼Ç
+. : ÇöÀçµð·ºÅä¸® ¿É¼Ç
+java com.a.b.c.HelloWorld
+
+C:\00.KOSMO93\10.JExam>

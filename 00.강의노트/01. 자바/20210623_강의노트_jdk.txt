@@ -1,0 +1,46 @@
+2021-06-28
+--------------------------------
+
+1. 작업 폴더 
+c:\00.KOSMO93
+c:\00.KOSMO93\00.강의노트
+c:\00.KOSMO93\90.download
+c:\00.KOSMO93\10.JExam
+C:\00.KOSMO93\90.download\editor
+
+c:\OO.KOSMO93
+c:\00KOSMO93
+
+2. 자바 
+자바 개발도구 
+- jdk : jdk 1.8 : Java SE 8
+		oracle.com / oracle.co.kr 
+		Java SE(Standard Edition)
+
+		https://www.oracle.com/java/technologies/javase-downloads.html#JDK16
+		Oracle JDK -> JDK Download
+		C:\00.KOSMO93\90.download\java\jdk-8u291-windows-x64.exe
+
+- 편집기 : 에디트플러스 
+- 실행도구 : 콘솔:console(win + R : cmd, 명령 프롬프트, MSDOS창)
+- API
+
+3. jdk : Oracle JDK, Open JDK
+: Java Development Kit : 자바 개발 도구 
+: Sun Micro.(무료) --> Oracle Vender  에서 인수(언제가 사용화)
+: 30개 반 오라클 벤더가 모여서 openJDK <-- 돈을 제일 많이 지원하는 벤더가 오라클 
+
+4. 한국 아이티 시장은 
+금융기관 : 은행, 증권, 보험, 제3금융권 : jdk 1.6 
+공공기관 : 2000여개 정부 직간접 공공기관 : jdk 1.7
+대기업 : 년 매출액 500억 이상 : jdk 1.7
+이커머스 : 쿠팡, 11번가 .... : jdk 1.6 ~ 최신버전
+
+
+
+
+
+
+
+
+

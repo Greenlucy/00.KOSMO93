@@ -1,0 +1,101 @@
+2021-08-10
+------------------------------
+
+UML : Unified Modeling Language 
+클래스 다이어그램 
+
+
+접근제한자 
++ : public 
+- : private 
+# : protected 
+  : package
+
+public String title;
++title:String
+private String name; 
+-name:String
+
++setTitle(String)
++getTitle():String
+
+게시판 만들기 
+
+데이터베이스 설계 : 테이블정의서, 테이블
+------------------------------
+데이터베이스 SID : orclKOSMO00
+계정 : hbe00/hbe1234
+게시판 테이블 : HBE_BOARD
+항목 
+1. 글번호 : B0001 : 20바이트 : BNUM : PRIMARY KEY 
+2. 글제목 : 한글 : 50바이트 : BSUBJECT  : NOT NULL
+3. 글쓴 사람 : 한글 : 50바이트 : BWRITER : NOT NULL 
+4. 글 내용 : 한글 : 2000바이트 : BCONTENTS
+5. 글 비밀번호 : 영어 : 20바이트 : BPW 
+
+5. 삭제여부 : 1바이트 : DELETEYN: NOT NULL 
+6. 생성일 : date : INSERTDATE
+7. 수정일 : date : UPDATEDATE
+
+클래스 설계 
+----------------------------
+a.b.c.board
+
+a.b.c.board.scr
+	HbeBoardScr
+		public void hboardSelectAll();
+		public void hboardSelect();
+		public void hboardInsert();
+		public void hboardUpdate();
+		public void hboardDelete();
+a.b.c.board.service
+	HbeBoardService
+		public ArrayList<HbeBoardVO> hboardSelectAll();
+		public ArrayList<HbeBoardVO> hboardSelect(HbeBoardVO hvo);
+		public int hboardInsert(HbeBoardVO hvo);
+		public int hboardUpdate(HbeBoardVO hvo);
+		public int hboardDelete(HbeBoardVO hvo);
+	HbeBoardServiceImpl
+
+a.b.c.board.dao
+	HbeBoardDAO
+		public ArrayList<HbeBoardVO> hboardSelectAll();
+		public ArrayList<HbeBoardVO> hboardSelect(HbeBoardVO hvo);
+		public int hboardInsert(HbeBoardVO hvo);
+		public int hboardUpdate(HbeBoardVO hvo);
+		public int hboardDelete(HbeBoardVO hvo);
+	HbeBoardDAOImpl
+
+a.b.c.board.sql
+	HbeBoardSqlMap
+		public static String getHboardChabunQueryMap();
+		public static String getHboardSelectAllQueryMap();
+		public static String getHboardSelectQueryMap();
+		public static String getHboardInsertQueryMap();
+		public static String getHboardUpdateFQueryMap();
+		public static String getHboardDeleteQueryMap();
+
+a.b.c.board.vo
+	HbeBoardVO
+		private String bnum;
+		private String bsubject;
+		private String bwriter;
+		private String bcontents;
+		private String bpw;
+		private String deleteyn;
+		private String insertdate;
+		private String updatedate;
+
+
+
+a.b.c.common
+	HbeConnPropery 
+		public Connection getConnection();
+		public void conClose(Connection, PreparedStatemet, ResultSet);
+		public void conClose(Connection, PreparedStatemet);
+	HebBoardChabun
+		public String gubunNum();
+	CodeUtil
+		numPad();
+	DataUtil
+		yyyyMMdd();

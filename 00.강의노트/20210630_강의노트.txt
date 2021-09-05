@@ -1,0 +1,121 @@
+2021-06-30
+-----------------------------------------
+
+jdk : 라이브러리 가 있다. 
+C:\Program Files\Java\jdk1.8.0_291\jre\lib\rt.jar : 62,802kb
+
+API : Application Programming Interface 
+https://docs.oracle.com/javase/8/docs/api/index.html
+
+
+자바 화일의 구조 
+xxxx.java
+컴파일 해야 한다. : 컴파일 명령어 : javac.exe
+xxxx.class : 기계어 코드 : 바이트 코드
+바이트 코드 실행 : 실행 명령어 : java.exe
+
+-------------------------------
+package : 클래스 파일 묶음 
+	패키지명 + 클래스이름 : 클래스 전체 이름 : NameSpace
+
+	C:\00.KOSMO93\10.JExam\ch1>javap a.b.c.JavaHBE
+	Compiled from "JavaHBE.java"
+	public class a.b.c.JavaHBE {
+	  public a.b.c.JavaHBE();
+	  public static void main(java.lang.String[]);
+	}
+
+	C:\00.KOSMO93\10.JExam\ch1>javap HelloTest
+	Compiled from "HelloTest.java"
+	class HelloTest {
+	  HelloTest();
+	  public static void main(java.lang.String[]);
+	}
+
+C:\00.KOSMO93\10.JExam\ch1>
+
+
+#############################
+class  
+{} : 블럭 
+변수
+함수
+
+자바에서는 최소 단위는 클래스 단위이다. 
+클래스에는 변수가 있을 수도 있고 없을 수도 있다.
+        함수가 있을 수도 있고 없을 수도 있다. 
+클래스 블럭안에서는 클래스가 존재 할 수 있다. 
+class = [변수] + [함수] + [클래스]
+요기서 [] 의 의미는 : 있어도 되고 없어도 된다는 의미
+
+*.java 자바 소스 안에서는 
+클래스가 여러개 있어도 무방하다. 
+*.java = [class] + [class] .....
+
+자바 패키지에는 
+*.java 화일이 여러개 있을 수 있다. 
+자바 패키지에는 같은 성격의 클래스를 모아 둔다. 
+
+
+패키지 > *.java > *.class > 함수 > 변수
+
+
+-----------------------------
+자바 클래스에 main() 함수가 존재하는 클래스를 
+우리는 콘솔 어플리케이션이라 부른다. 
+
+콘솔 어플리케이션에서는 
+main() 함수가 시작점이다. 
+
+main() 함수는 항상 다음과 같이 구성한다.(MUST)
+클래스 블럭 안에서 
+public static void main(String[] args){
+
+}
+public static void main(String args[]){
+
+}
+public static void main(String[] a){
+
+}
+public static void main(String[] v){
+
+}
+왜 이러냐고 물어보지 마세요
+이렇게 구성하지 않으면 프로그램 시작하지 않습니다. 
+
+*.java 화일에 클래스가 여러개 존재 하여도 
+main() 함수는 항시 한 개만 존재해야 한다. 
+-----------------------------
+
+
+#############################
+
+--------------------------------------
+컴파일 : 컴파일러 
+: 프로그래밍 언어에서 사람이 이해하는 언어(프로그램 언어)를 
+  컴퓨터가 알수 있는 언어(기계어) 있게 번역하는 것 
+
+javac 컴파일러 
+1.	자바 소스(키워드, 기호, 라이브러리)를 
+	자바버철머신이 알수 있게 기계어(바이트 코드)로 번역하는 것 
+2.	javac 컴파일 과정에서는 
+	자바 소스 구성원들의 규칙을 잘 지켰는가 검사하는 것 
+3. 패키지 컴파일 
+	javac -d . Xxxx.java
+4. 일반 컴파일
+	javac Xxxxx.java
+
+실행
+: 기계어를 컴퓨터(CPU)와 통신해서 결과를 만드는 것 
+
+java 실행 엔진
+1.	컴파일된 기계어(바이트 코드, class code)를 자바 버철머신이 
+	컴퓨터 CPU와 통신해서 결과를 만드는 것 
+
+자바를 실행 하려면(결과를 만들려면)
+1. 자바 소스 코드 작성
+2. 확장자를 .java 
+3. 자바 소스 코드를 바이트 코드로 컴파일
+4. 바이트 코드를 가지고 자바 버철머신이 컴퓨터 CPU와 통신
+5. 해당 결과를 만든다. 

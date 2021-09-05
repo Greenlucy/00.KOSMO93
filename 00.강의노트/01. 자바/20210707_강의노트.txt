@@ -1,0 +1,58 @@
+2021-07-07
+-------------------------------
+
+인코딩 : 전 세계의 언어를 컴퓨터(응용프로그램)를 통해서 통신할 때 : 어떻게 할 꺼냐 
+
+https://d2.naver.com/helloworld/19187
+https://d2.naver.com/helloworld/76650
+
+ASCII , UNICODE : 코드 체계 
+ASCII : American Standard Code for Informagion Interchange
+7bit, 영어문자, 숫자, 특수문자, 기호 등 128개 문자 
+
+UNICODE 
+전 세계의 모든 문자를 컴퓨터에서 일관 되게 표현할 수 있도록 
+고안된 코드 조합이다.
+유니코드는 인코딩이 아니라 2byte 숫자로 1:1 매핑 시키는 방식 
+
+	ISO-8859-1 : Latin 1 : 서유럽 언어
+	ISO-8859-2 : Latin 2 : 동유럽 언어
+
+	ANSI : American National Standard Institute
+	8bit, 256개 문자 표현
+	ASCII 확장판 : 7bit(ASCII) + 1bit (다른 언어문자 표현 : CodePage)
+
+	EUC-KR : Extended Unix Code-Korea , KSC5601 ... 
+	2,350자의 한글만 사용할 수 있다. 
+	한글 지원을 위해 유닉스 계열에서 나온 완성형 코드 조합 : 
+	2bytes 의 완성형 코드
+	완성형 코드란 완성된 문자 하나하나마다 코드 번호를 부여한 것 
+
+	CP949 : Code Page 949 : MS949 (MS가 만들었다고 해서)
+	윈도우즈 계열에서 나온 확장 완성형 코드 조합
+	일본어 : CP932, 중국어 간체 : CP936
+		단 : 자바에서는 CP949 와 MS949 를 다르게 취급
+		CP949 : sun.nio.cs.ext.IBM829(IBM에서 지정한 코드페이지)
+		MS949 : sun.nio.cs.ext.MS949(MS가 제정한 확장 완성형)
+		자바에서는 CP949 와 EUC-KR 같고 확장 완성형을 사용하기 위해서는 MS949로 지정해야 한다.
+
+	UTF-8 : Universal Coded Character Set + Transformation Format - 8bit
+	유니코드를 위한 가변 길이 문자 인코딩(멀티 바이트) 방식
+	ANSI 단점을 보완하기 위해서 나옴 
+	멀티 바이트(1 ~ 4바이트)로 최대 1,112,064 까지 가능 
+
+	UTF-16
+	16비트 기반으로 저장 
+
+	UTF-32
+	16비트 기반으로 저장 
+
+영문 MS Windows 는 CP1252
+한글 MS Windows 는 MS949
+
+리눅스는 LANG 환경변수에 따라 다르지만
+ko, ko_KR,ko_KR.eucKR : EUC-KR
+ko_KR.UTF-8 : UTF-8
+
+CentOS 경우 /etc/sysconfig/i18n 
+에서 시스템 기본 인코딩을 설정할 수 있다.

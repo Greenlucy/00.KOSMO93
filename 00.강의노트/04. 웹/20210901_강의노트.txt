@@ -1,0 +1,144 @@
+2021-09-01
+-------------------------------------
+
+웹 어플리케이션 
+
+웹 : www : World Wide Web 
+
+웹 : Web Application : 브라우저에서 구동되는(돌아가는) 프로그램 : 웹 프로그램 : 웹 어플리케이션 
+앱 : App Application : 핸드폰에서 구동되는 프로그램 
+
+웹 서비스 : Web Browser 로 서비스 하는 것 : 서비스를 제공하고, 서비스를 받는 것 
+
+여러분들은
+이전에 웹 서비스를 제공 받던 사람에서 웹 서비스를 제공하는 일을 하는 사람으로 바뀌는 중 
+
+
+웹 서비스를 개발 하려면 
+도구 
+웹 브라우저 <--> 웹서버 <--> WAS <--> 데이터베이스 
+
+우리는 이것을 
+웹 브라우저(ie, Edge, Chrome) <- HTML -> 웹서버(탐캣 코요테) <- JSP -> WAS(탐캣 카탈리나) <- JDBC -> 오라클 11g 2 Release
+
+JDK
+TOMCAT
+ORACLE
+
+IDE :  이클립스 네온 : 다이나믹 빌드 프레임워크 : JDK 플러그인(자동), 탐캣 플러그인(수동)
+
+
+
+웹 브라우저(ie, Edge, Chrome) <- HTML -> 웹서버(탐캣 코요테) 
+클라언트 <----> 웹서버 
+
+HTML : Hypertext Markup Language 
+	tag : element : 요소 : 노드(node)
+	
+	<시작태그 속성 style 이벤트리스너>내용(innerHTML)</끝태그>
+	
+	HTML5.0 : tab 약 104개 
+	HTML4.01 : tag 약 82개
+
+
+	DOM Tree 
+	<html>
+		<head>
+		</head>
+		<body>
+		</body>
+	</html>
+
+	돔트리에서 tag를 찾을 때 : html 태그 내에서 찾을 때 : 하나의 html 파일에서 
+	id : specify
+	name : specifies
+	단 : form 태그 안에서 사용하는 name 속성은 : 해당 엘리먼드 데이터를 참조한다. 
+
+	<form></form> : 클라언트(웹브라우저)에서 웹서버에게 데이터를 전송하는 html 태그 중에서 유일한 방법이다. 
+
+	form 태그 속성
+		id : 
+		name : 
+		
+		action : url : 폼태그에서 데이터를 전달하고자 하는 특정 웹서버의 특정 파일의 위치
+		
+		method : 데이터를 전송할 때 데이터를 담는 위치를 지정하는 것 
+			GET : HTTP 프로토콜의 요청 HEADER 에 데이터(key=value&key=value)를 위치한다.
+			POST : HTTP 프로토콜의 요청 BODY 에 데이터(key=value&key=value)를 위치한다.
+		
+		enctype : 
+			application/x-www-form-urlencoded : key=value&key=value : 쿼리스트링 : Query String
+				: GET 방식 / POST 방식 둘다 사용 가능 
+			multipart/form-data : 파일(이미지) 업로드 할 때 사용 
+				: POST 방식에서만 사용 가능 
+
+Web Browser : 크롬 : 자동 업데이트 : 늘 최신버전 유지 한다. 
+	HTML 엔진 : DOM Tree 
+	CSS 엔진 : Render Tree 			
+	javaScrpt 엔진 : 크롬 V8 : 
+		
+		브라우저에 화면이 보여지는 것(Display)
+			자바스크립트의 이벤트를 받아서 
+				DOM Tree + Render Tree  => 브라우저에 렌더링 하는 과정 
+
+			html 
+				head 부분 보여지고
+				body 부분 보여진다. 
+			
+			parsing 을 한다. 
+				html --> html 엔진
+				css --> css 엔진
+				javaScript --> javaScript 엔진 
+
+	자바스크립트가 웹 브라우저를 
+		봄 : BOM : Browser of Model 
+					Window, Navigator, Location, History, Screen
+
+		돔 : DOM : Document of Model --> DOM Tree
+					document 
+						<html></html>
+		Window : 
+
+웹서버 : Tomcat Coytte(아파치 httpd 웹서버)
+
+
+한글 인코딩 : 탐갯 기준으로 설명 
+====================
+웹브라우저에서 웹서버로 데이터 전송할 때 한글 인코딩을 해야 한다.
+
+인코딩 방식은 두가지로 만 한다. 
+1. EUC-KR
+2. UTF-8
+
+인코딩 기준은 
+form 태그의 method 어튜리뷰트의 값이 GET 하고 POST 일 때 다르게 해야 한다. 
+
+form 태그 method="GET" 
+======================
+이클립스 - Project Explorer - Servsers - Tomcat v8.5 Server at localhost-config
+- server.xml
+단 : 두개 중 하나만 사용하기 
+
+인코딩을 EUC-KR
+<Connector connectionTimeout="20000" 
+			port="8088" 
+			protocol="HTTP/1.1" 
+			redirectPort="8443" 
+			URIEncoding="EUC-KR"/>
+
+인코딩을 UTF-8
+<Connector connectionTimeout="20000" 
+			port="8088" 
+			protocol="HTTP/1.1" 
+			redirectPort="8443" 
+			URIEncoding="UTF-8"/>
+
+단 : server.xml 에서 파일 내용을 수정하면 tomcat 를 리스타트 해야 한다. MUST 
+이클립스 하단 Servers 탭에서 
+Tomcat v8.5 Server at localhost [] 링크를 우클릭 해서 서버 리스타트 하기 
+
+form 태그 method="POST" 
+======================
+jsp 페이지 에서 
+jps 페이지 맨 위에 쪽에
+<% request.setCharacterEncoding("EUC-KR"); %>

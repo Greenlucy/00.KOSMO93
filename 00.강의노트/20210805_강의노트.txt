@@ -1,0 +1,151 @@
+2021-08-05
+-----------------------------------
+
+java.sql.Connection : 자바 프로그램하고 오라클하고 연결 해주는 객체 
+	Statement createStatement() throws SQLException
+	PreparedStatement prepareStatement(String sql) throws SQLException
+
+java.sql.Statement : 자바에 있는 sql 쿼리문을 오라클에게 전달하고 오라클에서 실행한 결과를 받아오는 객체이다. 
+						sql 문을 매번 메모리에 올려서 사용한다(매번 인스턴스 한다.)
+	ResultSet executeQuery(String sql) throws SQLException
+		테이블에 있는데 데이터들이 파일로 리턴 됨
+	int executeUpdate(String sql) throws SQLException
+		테이블에 입력된 건수가 리턴 됨 
+
+java.sql.PreparedStatemnt : 자바에 있는 sql 쿼리문을 오라클에게 전달하고 오라클에서 실행한 결과를 받아오는 객체이다. 
+						sql 문을 한번 메모리에 올리면 재 사용한다(인스턴스를 한번 한다.)				
+	ResultSet executeQuery() throws SQLException
+		테이블에 있는데 데이터들이 파일로 리턴 됨
+	int executeUpdate() throws SQLException
+		테이블에 입력된 건수가 리턴 됨 
+
+Statement vs PreparedStatemnt
+스테이트먼트 vs 프리페어드스테이트먼트 
+결론 : 현대 자바코드는 프리페어드스테이트먼트 사용한다. 
+
+스테이트먼트 : 쿼리를 요청할 때 마다 똑같은 쿼리를 다시 보낸다. 
+프리페어드스테이트먼트 : 쿼리를 요청하며 메모리에 올려놓고 재사용한다. 
+
+Connection conn = DriverManager.getConnection(url, user, password);
+Statement stmt = conn.createStatement();
+ResultSet rsRs = stmt.executeQuery(String sql);
+
+Connection conn = DriverManager.getConnection(url, user, password);
+PreparedStatemnt pstmt = conn.prepareStatement(String sql);
+ResultEst rsRs = pstmt.executeQuery();
+
+
+#######################
+회원가입 프로그램 만들어 주세요
+데이터베이스 : 오라클 
+언어 : 자바, 콘솔 어플리케이션 
+회원가입 항목은 : ................
+
+
+테이블 설계 
+-----------------------
+회원 데이터 만들어서 테이블에 입력하고 자바로 조회하기 
+
+회원 데이터 
+회원 테이블 이름 : ??
+
+회원번호 : 생성 규칙 : 회원이 만들까, 사이트에서 만들어 줄까 
+회원이름 : 한글, 영문 : 길이는 
+회원 아이디 : 영문, 한글, 길이, 규칙 ??
+회원 패스워드 : 영문, 한글, 길이, 규칙 ??
+회원 생년월일 : ?? 
+회원 성별 : 남자, 여자, 
+회원 전화번호 : 핸드번 번호, 유선 번호, 사내 번호 ??
+회원 이메일 : 길이 ??
+회원 주소 : 도로명 주소, 지번 주소, 영문 주소 ....
+회원 취미 : ?? 범위가 ?
+회원 사진 : ??
+회원 특기 : 키인, 선택 
+회원 직업 : ?? 
+
+----------------------------------------
+테이블 및 컬러명 만들 때 접두어 사용하는 방법 
+----------------------------------------
+회원테이블 : HBE_MEMBER : YSH_MEMBER : 본인이니셜_MEMBER
+
+회원번호 : HNUM : 날짜+순서 : YYYYMMDD0001 : 20바이트 : 기본키 : PK 
+
+회원이름 : HNAME : 한글이름 : 20바이트   
+
+회원아이디 : HID : 8자 : 20바이트
+
+회원패스워드 : HPW : 8자 : 암호화 : 200바이트 
+
+회원생년월일 : HBIRTH : 형식 : YYYY-MM-DD : 2021-08-05 : 10바이트 
+
+회원성별 : HGENDER : 여자, 남자 : 코드로 처리 한다 : F : 여자, M : 남자, 01 : 여자, 02 : 남자 
+                   입력값이 여자 이면 테이블에는  01 입력 
+				   입력값이 남자 이면 테이블에는  02 입력 
+				   2바이트 
+
+회원전화번호 : HTEL : XXX-XXXX-XXXX  : 3-4-4 : 16바이트 
+
+회원휴대폰번호 : HHP : XXX-XXXX-XXXX : 3-4-4 : 16바이트 
+
+회원이메일 : HEMAIL : XXX@도메인주소 : 200바이트 
+
+회원주소 : HADDR : 우편번호 + 도로명주소 + 상세주소 : 300바이트 
+	회원주소우편번호
+	회원주소도로명주소
+	회윈주소도로명주소상세주소
+
+회원취미 : HHOBBY : 게임, 음악감상, 운동, 독서, 영화, 명상 : 
+				  01 : 게임, 02 : 음악감상, 03 : 운동, 04 : 독서, 05 : 영화, 08 : 명상
+				  2바이트 	
+
+회원사진 : HPHOTO : 사진이 저장된 파일경로 : 200바이트 
+
+회원특기 : HSKILL : KEY-IN 하기 : 100바이트 
+
+회원직업 : HJOB : 회사원, 자영업, 학생, 주부, 무직, 시인, 
+                01 : 회사원, 02 : 자영업, 03 : 학생, 04 : 주부, 05 : 무직, 06 : 시인 
+				2바이트 
+
+삭제여부 : DELETEYN : 1바이트 : Y : 회윈 , N : 안회원
+입력일 : INSERTDATE : YYYY-MM-DD
+수정일 : UPDATEDATE : YYYY-MM-DD
+
+
+오라클 
+SID : orclKOSMO00
+account : hbe00
+비밀번호 : hbe1234
+
+회원 테이블 : HBE_MEMBER
+회원 데이터는 : 10건 입력하기 
+
+클래스 설계
+---------------------------
+클래스 
+패키지
+
+a.b.c.ch9.hbemem
+	HbeMember
+		public ArrayList<HbeMemberVO> hmemSelectAll();
+		public ArrayList<HbeMemberVO> hmemSelect(HbeMemberVO hvo);
+
+a.b.c.ch9.hbemem.sql
+	HbeMemberSqlMap
+		public static String getHbeMemberSelectAllQuery();
+		public static String getHbeMemberSelectQuery();
+
+a.b.c.ch9.hbemem.vo
+	HbeMemberVO
+
+a.b.c.common
+	HbeConnProperty 
+	CodeUtil
+
+=========================================
+a.b.c.ch9.hbemem.service
+	HbeMemberService
+	HbeMemberServiceImpl
+
+a.b.c.ch9.hbemem.dao
+	HbeMemberDAO
+	HbeMemberDAOImpl

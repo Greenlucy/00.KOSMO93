@@ -1,0 +1,106 @@
+2021-07-19
+-------------------------------------------
+
+
+
+IDE : 통합 개발 환경 : Integrated Development Environment 
+자바개발도구 : javac, java, 편집기, 콘솔, api 
+
+이클립스 : 도네이트 버전 
+인텔리제이, 비주얼스튜디오, 파이참 : 사용버전
+
+
+이클립스 
+https://www.eclipse.org/
+-------------------------
+2001년 IBM VisualAge용 소프트웨어 개발 툴로 만들어졌으나 
+개발 도중 관련 소스 등을 모조리 공개하는 자유 소프트웨어가 되었고 
+이것이 '이클립스' 란 이름으로 세상에 선보임
+
+초창기(Hellos 까지)
+	Helios(2005년)
+	
+2006년 부터 목성의 위성 또는 관련된 인물의 이름을 임의로 채용 
+	Callisto(2006년)
+	Europa(2007년)
+	Ganymade(2008년)
+	Galileo(2009년)
+	
+	알파벳 네이밍 1기(천문학 네이밍, Mars 까지)
+	Helios(2010년)
+	Indigo(2011년)
+	Juno(2012년)
+	Kepler(2013년)
+	Luna(2014년)
+	Mars(2015년)
+	
+알파벳 네이밍 2기(원자론 네이밍, Neon 부터 Photon 까지)
+	Neon(2016년)
+	Oxygen(2017년)
+	Photon(2018년)
+
+연도-월 버저닝
+	Eclipse 2018-09(4.9) ~ Eclipse 2019-12(4.14)
+	Eclipse 2020-03(4.15)
+	Eclipse 2020-06(4.16)  <-- install 버전 사용하기 
+	----------------------------
+	jdk 11 이상 필요 :: https://wiki.eclipse.org/Eclipse/Installation
+	----------------------------
+	Eclipse 2020-09(4.17)
+	Eclipse 2020-12(4.18)
+	Eclipse 2021-03(4.19)
+	Eclipse 2021-06(4.20)
+
+####################
+다운로드 파일 
+1. Installer Downloads 버전 : 설치 버전 <-- 우리는 설치 버전 사용하기 
+2. Package Downloads and Updates 버전 : 파일 카피 버전 
+
+1. 자바 
+Eclipse IDE for Java Developers : only 자바 만 하는 것 
+
+2. 자바 + 웹
+Eclipse IDE for Enterprise Java and Web Developers : 자바 + 웹(jsp, Servlet)
+
+
+이클립스 
+이클립스 실행 프로그램 
+이클리스에서 개발한 소스가 있는 곳 : Work Space 
+
+이클립스 설치 및 프로젝트 생성하는 위치 
+C:\00.KOSMO93\10.JExam\el_java : 이클립스 설치폴더 :
+C:\00.KOSMO93\10.JExam\el_java_work : 이클립스 자바프로젝트 및 소스 
+
+
+
+#################################################
+
+java.lang.Object
+	public boolean equals(Object obj)
+	public String toString()
+
+
+java.lang.Integer
+	public static final int MAX_VALUE
+	public static final int MIN_VALUE
+	public static String toBinaryString(int i)
+	public static String toOctalString(int i)
+	public static String toHexString(int i)
+
+
+java.lang.String
+	public char charAt(int index)
+	public boolean equals(Object anObject)
+	public int length()
+	public String toUpperCase()
+
+
+java.lang.System
+	public static final PrintStream out
+	public static final InputStream in
+
+
+java.io.PrintStream
+	public void print(String s)
+	public void println()
+	public void println(String x)

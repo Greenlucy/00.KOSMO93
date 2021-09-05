@@ -1,0 +1,30 @@
+2021-08-17
+-----------------------------------
+
+오라클 
+
+1. 관계형 데이터베스 
+2. 데이터 타입
+3. 데이터 무결성 제약조건 
+4. DUAL 테이블, DUMP 함수 
+5. TO_DATE, TO_CHAR
+6. NVL, DECODE, CASE WHEN ~
+7. COUNT, MAX, MIN, SUM, AVG GROUP BY ~ HAVING
+8. 조인 : INNSER JOIN, OUTER JOIN
+9. 서브쿼리 : 스칼라 서브쿼리, 인라인 뷰 서브쿼리, 서브쿼리 
+10. VIEW, SEQUENCE, INDEX 
+11. DML, DDL, TCL, DCL ?? Oracle_기초_v0.4.pptx 13쪽
+12. TABLE, ROW, COLUMN, PIMARY, FIELD, NULL
+
+
+Swing 패키지 : 
+java.awt.*;
+javax.swing.*;
+
+콘솔 : MS-DOS 창 
+GUI : Graphical User Interface 
+
+컴포넌트 : GUI 도구들 : 버튼, 스크롤바 ...
+
+awt : Abstract Windows Toolkit : 윈도우에 있는 컴포넌트를 빌려다 쓴다. : 13개 컴포넌트 
+Swing : 윈도우에 있는 컴포넌트를 빌려다 쓴다 : 36개 컴포넌트 

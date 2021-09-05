@@ -1,0 +1,28 @@
+
+name attribute
+해당 엘리먼트의 데이터를 담는 통 역할
+form 태그에서 해당 엘리먼트를 서버로 넘기는 변수명 역할 (데이터와 서버의 연결고리)
+클라이언트와 서버의 데이터를 전송하는 역할
+
+readonly
+읽기만 가능, 서버로 데이터 전송 가능
+
+코드
+데이터를 어떻게 던지고 넘어가는지 확인하면서
+이벤트를 보라고 연습하는거
+
+web.xml
+환경설정 파일 역할
+html은 markuptext language : tag가 정해져있음
+xml은 extensible markup languate : tag 사용자 정의 가능
+
+xmlns : xml name space
+welcome-file-list : 모든 WAS에 다 있음. 
+	서버 켜져 있는 상태에서, 웹 브라우저에서 파일주소를 파일명 제외하고 입력해서 들어가면
+	맨 처음 도메인에서 보여주는 페이지
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>

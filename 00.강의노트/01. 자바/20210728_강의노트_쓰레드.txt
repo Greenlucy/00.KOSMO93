@@ -1,0 +1,102 @@
+2021-07-28
+--------------------------------
+
+java.io.*
+java.nio.* : New Input Output , jdk 1.4 부터 
+
+java.net.* : 자바로 네트워크 프로그램을 지원하는 패키지 
+
+InetAddress
+URL
+ServerSocket
+Socket
+
+nslookup : 엔에스룩업
+-------------------------
+C:\Users\KOSMO>nslookup www.googlec.com
+서버:    cns3.bora.net
+Address:  203.248.252.2
+
+권한 없는 응답:
+이름:    www.googlec.com
+Addresses:  2a05:d014:9da:8c10:306e:3e07:a16f:a552
+          52.58.78.16
+
+
+C:\Users\KOSMO>nslookup www.naver.com
+서버:    cns3.bora.net
+Address:  203.248.252.2
+
+권한 없는 응답:
+이름:    www.naver.com.nheos.com
+Addresses:  223.130.195.95
+          125.209.222.141
+Aliases:  www.naver.com
+
+
+C:\Users\KOSMO>nslookup www.daum.net
+서버:    cns3.bora.net
+Address:  203.248.252.2
+
+권한 없는 응답:
+이름:    www.g.daum.net
+Addresses:  203.133.167.16
+          203.133.167.81
+Aliases:  www.daum.net
+
+
+C:\Users\KOSMO>nslookup www.youtube.com
+서버:    cns3.bora.net
+Address:  203.248.252.2
+
+권한 없는 응답:
+이름:    youtube-ui.l.google.com
+Addresses:  2404:6800:4005:813::200e
+          2404:6800:4005:814::200e
+          2404:6800:4005:812::200e
+          2404:6800:4005:815::200e
+          142.250.66.46
+          142.250.204.78
+          142.250.204.110
+          142.250.204.46
+          142.250.66.78
+          142.250.207.78
+          172.217.31.238
+          172.217.161.174
+          142.250.199.78
+          172.217.174.206
+          216.58.220.206
+          216.58.200.78
+          172.217.24.78
+          142.250.66.110
+          142.250.66.142
+          142.250.204.142
+Aliases:  www.youtube.com
+
+
+C:\Users\KOSMO>
+
+
+http 프로토콜 url 을 요청할 때 방법이 있는데 
+post 방식  : http://도메인:포트/경로/파일명.확장자
+get 방식 : http://도메인:포트/경로/파일명.확장자?key=value&key=value : url 에 꼬리표가 있는 것 : ?key=value&key=value
+
+
+쓰레드 
+--------------------------------------
+java.lang.Thread
+java.lang.Runnable
+
+public interface Runnable {    
+    public abstract void run();
+}
+
+
+public class Thread implements Runnable {
+	@Override
+    public void run() {
+        if (target != null) {
+            target.run();
+        }
+    }
+}

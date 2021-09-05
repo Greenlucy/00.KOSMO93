@@ -1,0 +1,241 @@
+2021-08-27
+-------------------------------------
+
+java :  생활코딩
+		https://opentutorials.org/course/3930
+	coreJava
+		java.lang.*
+		java.util.*
+	JDBC	
+		java.sql.*
+	Swing
+	javax.swing.*
+	
+	1. jdk 버전 : java -version : java version "1.8.0_291"
+	2. javac, java(JVM)
+	3. pacakage compile : javac -d . *.java, compile : java *.java
+	4. runtime :  package : java package.classname : NameSpace 
+	              not package :  java classname 
+	5. key word, identifier, built in class, API
+	6. variable, method(function)
+	7. constructor 
+	8. new, static, implements, Class.forname(), ClassName.getInstance()
+	9. SuperClass superclassVariable = new SubClass();
+	10. Overriding, Overloading
+
+oracle : http://www.gurubee.net/
+		 http://www.gurubee.net/oracle/sql
+	join, outer join
+	subQuery 
+		Scala SubQuery
+		inline view SubQuery
+		SubQuery
+
+-------------------------------------------------------
+
+Web : 웹 : 거미줄 : 월드와이드웹 : 사전적 의미 : World Wide Web : 3W
+	: 브라우저에서 구동되는 프로그램
+	: 브라우저 : 웹 브라우저, 브라우저 
+
+	이전 : 서버가 매우 중요했다. 
+	현재 또는 미래 : 클라이어트가 매우 중요해.
+
+App : 앱 : 핸드폰에서 구동되는 프로그램 
+
+
+Web
+=====
+
+웹 개발, 프로그램 : 인터넷, 인트라넷 (무선, 유선) 을 통해서 웹브라우저로 서비스를 받는 것, 웹서버로 서비스를 제공하는 것 : 웹 서비스 
+웹 서비스 : HTML + JAVA, HTML + PHP, HTML + .NET .....
+
+이전에는 웹 서비스 를 제공 받아서 사용하는 것  --> 웹 서비스를 제공하는 기술을 배우는 것
+
+일반적인 것
+웹브라우저 <--- HTML ---> 웹서버 <--- JAVA, PHP, .NET etc.... ---> WAS <--- JDBC ---> 데이터베이스 
+
+우리가 할 것 
+웹브라우저(ie, Edge, 크롬) <--- HTML ---> 웹서버(탐캣 코요테(규모가 조금 작은 httpd)) <--- JAVA ---> WAS(탐캣 카탈리나) <--- JDBC(ojdbc6.jar) ---> Oracle 11g 2 Release 
+
+웹브라우저
+범용 5대 브라우저
+	인터넷익스플로러 : ie --> Edge
+	오페라
+	사파리
+	파이어폭스
+	크롬
+
+웹서버
+	httpd(아파치) : Apache Foundation
+	IIS : 마이크로 소프트 : .NET
+	nginx : NGINX (발음 : 엔지 엑스)
+	WebToBe : 웹투비
+
+WAS : Web Application Server
+		아파치 탐캣 : 공공에서 많이 사용한다. 
+		제이보스(JBOSS) : 공공 프로젝트에서 많이 사용한다. 
+		제우스(Jeus) : 금융권 많이 사용한다.
+		웹스피어 : IBM : 공공, 금융 ... 
+		웹로직 .... 
+
+
+
+HTML : HTML + CSS + javaScript
+Swing : HTML : JTable, JTextFiled ... 
+		CSS : Color.red, Font, EtchedBorder ...
+		javaScript : 이벤트 : ActionListener ..... 
+	
+
+#########################################################
+우리가 사용할 도구 : 개발환경 세팅하기 
+
+1. 웹 브라우저 :   ie -> Edge 
+			    크롬 : 92 버전 : 크롬은 최신버전 다운로드 정책
+	클라이언트(웹브라우저) 하고 웹서버(탐캣 코요테(규모가 작은 아파치httpd 웹서버)) 하고 html을 주고 받으면서 
+	웹서버에서 제공한 html을 브라우저에 렌더링하는 것이다. 
+
+	html을 브라우저로 보는 것은 
+	*.html 화일을 브라우저 프로그램(ie, Edge, Chrome)이 렌더링(Rendering))해서 브라우저에 display 한다. 
+	브라우저(응용프로그램 : html 읽는 엔진, css 읽는 엔진, javaScript를 읽은 엔진이 포함되어 있다.)에 display : html tag + css 
+	웹브라우저에서 html을 보내주면(웹 브라우저가 있는 컴퓨터로 다운로드 되면), 물리적으로 보내준 파일을 읽어서 브라우저에 렌더링 한다. 
+	웹브라우저하고 웹서버는 실제로 html 파일을 주고 받는다. 
+
+2. 아파치-탐캣 서버  : apache-tomcat : 웹서버(코요테) + 탐캣와쓰서버(카탈리나)
+	
+	웹서버(코요테) : HTML, CSS, javaScript, Ajax, JSON, xml ... etc. : Client Side Script 
+				 jsp, jstl .. etc. : Server Side Script 
+			     
+				 웹서버에 있는 클라이언트사이드 스크립트의 내용(html)을  서버사이드 스크립트(jsp)가 받아서
+				 와쓰서버(카탈리나)에 전달하면 
+				
+				 와쓰서버(카탈리나)에서 작업을 해서(?) 결과를 만들어서 
+				 서버사이드 스크립트(jsp)에 전달하면 
+				 
+				 서버사이드 스크립트(jsp)는 클라이언트사이드 스크립트(html)에게 전달하고 
+				 전달 받은 클라이언트사이드 스크립트(html)를 
+				 웹서버는 클라이언트 컴퓨터에 클라이언트사이드 스크립트(html 다운로드)를 전달하고 
+				 전달된 클라이언트사이드 스크립트(html)를 
+				 클라이언드(웹브라우저)가 읽어서 렌더링해서 보여준다.
+	
+	와쓰서버(카탈리나) : 서버사이트 스크립트(jsp, Servlet)에 전달된 내용을 읽어서 
+					servlet(서블릿) 또는 coreJava를 이용해서 
+					비즈니스 로직을 만들거나 또는 데이터베이스를 연동해서 결과를 만들어서 
+					서버사이드 스크립트에게 전달한다. 
+
+3. 오라클 11g 2 Release
+
+4. 이클립스 : 네온 
+
+도구 설치 
+--------------------------
+아파치 탐캣 다운로드 
+https://apache.org/
+http://tomcat.apache.org/
+https://tomcat.apache.org/download-80.cgi
+
+
+Configuration
+	Server Shutdown Port : 5000 : 탐캣 내부에서 사용하는 포트 번호 : 탐캣 죽이는 역활
+	HTTP/1.1 Connector Port : 8088 : 웹 브라우저에서 웹서버에 접속할 포트번호 
+	                               : 웹 브라우저에서 아파치-탐캣 웹서버를 연결하는 포트번호
+								   : 웹 브라우저에서 코요테에 연결하는 포트번호 
+
+	User Name : admin : WAS 를 관리하는 계정 아이디 
+	Password : 1234 : WAS 를 관리하는 계정의 비빌번호
+
+네온 이클립스 다운로드 
+https://www.eclipse.org/
+https://www.eclipse.org/downloads/
+https://www.eclipse.org/downloads/packages/
+https://www.eclipse.org/downloads/packages/release
+https://www.eclipse.org/downloads/packages/release/neon
+https://www.eclipse.org/downloads/packages/release/neon/3
+https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/3/eclipse-jee-neon-3-win32-x86_64.zip
+
+네온 설치 
+1. 이클립스를 설치(인스톨, 카피 버전)할 때 자동으로 jdk를 플러그 인  
+Window - Preferance - 
+Java - Installed JREs 에서 jdk 또는 jre 연결 된 것 확인할 것 
+
+2. 수동 : 탐캣서버 플러그 인 
+Window - Preferance - 
+Server - Runtime Environments
+Server Runtime Environments 창에서 Add... 버튼 클릭하기 
+New Server Runtime Environments 창에서 Apache Tomcat v8.5 선택하고 Next > 버튼 클릭
+Tomcat Server 창에서 Tomcat installation directory: 입력창 옆에 있는 Browse... 버튼 클릭
+C:\Program Files\Apache Software Foundation\Tomcat 8.5 :: Tomcat 8.5 디렉토리 선택하고 Finish 버튼 클릭 
+Server Runtime Environments 창에서 OK 버튼 클릭 
+
+이클립스 네온 하단 창에서 Servers 탭 찾아서 탭 클릭하면
+No servers are available. Click this lint to create a new server.. 링크 를 클릭 
+Difine a New Server 창에서 
+Select the server type: Tomcat v8.5 Server 선택 확인하고 Next > 버튼 클릭 
+Add and Remove 창에서 Finish 버튼 클릭 
+
+이클립스 네온 Project Explorer 에서  Servers 폴더 생김 
+
+수동으로 이클립스에 탐캣서버 플러그인 완료 !! 
+
+
+3. 작업 디렉토리 만들기 
+	빌드 프레임웍 : 다이나믹 웹 프로젝트, 메이븐, 그레이들 
+
+이클립스 - 네온 
+File - New - Other 클릭
+Select a wizard 창에서 Wizards: 검색창에서 Dyanmic 키워드로 검색하면
+Web - Dynamic Web Project  를 선택하고 Next > 버튼 클릭 
+Dynamic Web Project 창에서 
+Project name: 필드에서 testWeb 키인 하고 Next > 버튼 클릭 
+Java 창에서 Finish 버튼 클릭
+이클립스 네온 Project Explorer 에서  testWeb 폴더가 생김 
+
+
+testWeb : 작업디렉토리 : 프로젝트이름 : 컨텍스트(Context) : 도메인(Domain) : Web Application
+	Deployment Descriptor:testWeb
+	JAX-WS Web Services
+	Java Resources
+		src
+			자바소스 두기 
+		Libraires
+	JavaScript Resources
+	build
+	WebContent
+		웹서버 영역 : WebContent ~~ WEB-INF :  Client Side Script : HTML, CSS, javaScript
+											Server Side Script : jsp
+		META-INF
+		WEB-INF : 아래쪽이 카탈리나 컨테이너가 관리하는 폴더 : 서버 : 외부에서 히트 하면 않된다. 
+			lib 
+#########################################################
+
+HTML : HTML + CSS + javaScript
+
+HTML : Hyper Text Markup Language 
+
+Markup : 옵셋 인쇄 : 태그 
+Hyper : 링크 
+
+HTML : 시작태그, 끝태그 
+HTML4.01 : 태그 80개 조금 넘게 있다. 
+HTML5 : 태그 80개에서 몇개 빼고 20개 더 붙여서 : 100개 조금 넘는다. 
+
+우리가 공부할 것은 
+기본 태그 : 30 ~ 40개 정도 공부한다. 
+
+<html>
+< : 여는 꺽쇠 : 시작태그
+html : Markup  : 태그 이름 : html 문서를 지칭하는 마크업, 태그 이다. 
+> : 닫는 꺽쇠 : 끝태그 
+
+
+<시작태그 어트리뷰트>내용:컨텐츠</끝태그>
+
+https://www.w3schools.com/
+
+
+현재 본인이 사용하는 컴터(데탑, 랩탑(노트북))에 는 
+아파치 탐캣 서버가 한대 만 설치 되는데 
+관리하는 파일은 컴퓨터에서 설치한 conf 와 이클립스에 플로그인 한 Server 2두대가 있다.
+항상 1대만 사용해야 한다. 
+1. 설치한 아파치 탐캣 : C:\Program Files\Apache Software Foundation\Tomcat 8.5\bin : 확인 
+2. 이클립스에 플러그인 한 탐캣 : /Servers/Tomcat v8.5 Server at localhost-config
+

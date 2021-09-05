@@ -1,0 +1,53 @@
+2021-07-23
+-----------------------------------
+
+자바 언어로 프로그램 할 수 있는 것들
+
+C/S : 클라이언트/서버 
+콘솔 어플리케이션 
+Swing (GUI) 어플리케이션 
+
+웹 : 클라이언트/서버 : 웹브라우저 
+jsp
+Servlet
+스프링프레임워크 
+
+앱 : 클라이언트/서버 : 웹브라우저, C/S
+안드로이드
+
+콘솔 어플리케이션
+main() 시작해서 main() 끝나 
+
+프로그램은 제한적인 기능을 수행하게 하는 것이다. 
+
+예외처리 
+Exception
+에러 
+Error
+
+자바의 자원, 클래스 
+1. static
+	클래스이름
+2. new
+	참조변수
+3. 상속
+	extends, implements
+4. 추상클래스 getInstance()
+	참조변수
+	Calendar cd = Calendar.getInstance();
+5. Class.forName().newInstance()
+	참조변수 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

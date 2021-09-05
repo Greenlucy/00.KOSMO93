@@ -1,0 +1,75 @@
+2021-07-29
+-----------------------------
+
+파일을 처리할 때
+
+byte 로 처리할 때, 한글인 경우에는 인코딩 같이 해주어야한다. 
+	FileInputStream
+	FileOutputStream
+
+byte 로 처리하는데 버퍼를 사용할 때 : 상대적으로 속도가 빠르다. 
+한글인 경우에는 인코딩 같이 해주어야한다
+	BufferedInputStream
+	BufferedOutputStream
+
+문자로 처리할 때 
+	FileReader
+	FileWriter
+
+문자로 로 처리하는데 버퍼를 사용할 때 : 상대적으로 속도가 빠르다. 
+	BufferedReader
+
+byte -> char 변환한는 io 보조스트림 클래스 
+	InputStream
+	InputStreamReader byte 	
+	BufferedReader
+
+char -> byte 변환한는 io 보조스트림 클래스
+	OutputStream
+	OutputStreamWriter char 
+	BufferedWriter
+
+
+Thread 
+-------------------------------------------------
+구현체 : 실현하다 : implemenation 
+추상클래스, 인터페이스 클래스에 있는 
+추상함수를 상속해서 
+추상함수에 {} 블럭을 추가해서 블럭안에다
+내용을 만든 것 
+
+public interface Runnable {
+	public void run();
+}
+
+public class Thread implements Runnable{
+
+	@Override
+	public void run(){
+		System.out.println("런함수 실행 >>> : ");	
+	}
+}
+
+
+동기 vs 비동기 
+------------------
+
+동기 : 한 번 연결하여 데이터를 요청하면 데이터를 다 전송할 때 까지 연결을 끊지 않는다. 
+비동기 : 데이터를 요청하면 데이터를 전송할 때만 연결한다. 
+
+자바 스레드에서 
+동기 : synchronized
+
+
+
+
+
+
+
+
+
+
+
+
+
+

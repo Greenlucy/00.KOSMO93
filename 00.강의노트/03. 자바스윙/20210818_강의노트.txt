@@ -1,0 +1,106 @@
+2021-08-18
+------------------------------------------
+
+Swing 패키지 : 
+java.awt.*; C/S 화면 그리는 패키지
+javax.swing.*; awt 향상된 버전 
+
+Swing FX : GUI 환경 
+
+콘솔 : MS-DOS 창 
+GUI : Graphical User Interface 
+
+컴포넌트 : GUI 도구들 : 버튼, 스크롤바 ...
+
+awt : Abstract Windows Toolkit : 윈도우에 있는 컴포넌트를 빌려다 쓴다. : 13개 컴포넌트 
+Swing : 윈도우에 있는 컴포넌트를 빌려다 쓴다 : 36개 컴포넌트
+
+
+컴포넌트 : GUI 도구들 : 레이블, 버튼, 텍스트 필드, 스크롤바 ... : 모두 윈도우에 있는 도구들이다.
+
+##########################################
+SwingMember 만들기 
+
+테이블 정의서
+-------------------
+회원번호 SWNUM : VARCHAR2 : 20 : PK : YYYYMMDD0001 
+회원이름 SWNAME : VARCHAR2 : 20 : NOT NULL
+회원아이디 SWID : VARCHAR2 : 20
+회워패스워드 SWPW : VARCHAR2 : 20 : NOT NULL
+
+삭제여부 DELETEYN : VARCHAR2 : 1 : NOT NULL : Y : N
+등록일  INSERTDATE : DATE : YYYY-MM-DD
+수정일  UPDATEDATE : DATE : YYYY-MM-DD
+
+DROP TABLE SWING_MEMBER;
+CREATE TABLE SWING_MEMBER(
+     SWNUM  VARCHAR2(20)PRIMARY KEY 
+    ,SWNAME VARCHAR2(20) NOT NULL
+    ,SWID   VARCHAR2(20)
+    ,SWPW   VARCHAR2(20) NOT NULL   
+    ,DELETEYN VARCHAR2(1) NOT NULL
+    ,INSERTDATE DATE
+    ,UPDATEDATE DATE
+);  
+
+-- SYS_C0011097
+SELECT  TABLE_NAME, INDEX_NAME, COLUMN_NAME
+FROM    USER_IND_COLUMNS
+WHERE   TABLE_NAME IN ('SWING_MEMBER');
+
+SELECT  /*+ INDEX_DESC(SYS_C0011097)*/											
+        NVL(MAX(SUBSTR(A.SWNUM, -4)), 0) + 1 COMMNO	
+FROM    SWING_MEMBER A;	
+
+
+클래스 설계 
+-------------------
+a.b.c.swing.member.scr
+	SwingMember
+
+a.b.c.swing.member.service
+	SwingMemberService
+		public ArrayList<SwingMemberVO> smSelectAll();
+		public ArrayList<SwingMemberVO> smSelect(SwingMemberVO svo);
+		public boolean smInsert(SwingMemberVO svo);
+		public boolean smUpdate(SwingMemberVO svo);
+		public boolean smDelete(SwingMemberVO svo);
+	SwingMemberServiceImpl
+
+a.b.c.swing.member.dao
+	SwingMemberDAO
+		public ArrayList<SwingMemberVO> smSelectAll();
+		public ArrayList<SwingMemberVO> smSelect(SwingMemberVO svo);
+		public boolean smInsert(SwingMemberVO svo);
+		public boolean smUpdate(SwingMemberVO svo);
+		public boolean smDelete(SwingMemberVO svo);	
+	SwingMemberDAOImpl	
+
+a.b.c.swing.member.sql
+	SwingMemberSqlMap
+		public static String getSmSelectAllQuery(); 		
+		public static String getSmSelectQuery();		
+		public static String getSmInsertQuery(); 		
+		public static String getSmUpdateQuery(); 		
+		public static String getSmDeleteQuery(); 
+
+
+a.b.c.swing.member.vo
+	SwingMemberVO
+		private String swnum;
+		private String swname;
+		private String swid;
+		private String swpw;	
+		private String deleteyn;
+		private String insertdate;
+		private String updatedate;
+
+a.b.c.common
+	HbeConnProperty
+	SwingMemberChabun
+
+
+클래스 다이어그램 
+-------------------
+
+##########################################
