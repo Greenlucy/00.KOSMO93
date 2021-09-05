@@ -7,14 +7,14 @@
 	<title>getData JSP</title>
 </head>
 <body>
-<% request.setCharacterEncoding("EUC-KR"); %>		// ¸Ç À§¿¡ ÀÌ°Å ¾²°í ½ÃÀÛÇÏ±â
+<% request.setCharacterEncoding("EUC-KR"); %>		// ë§¨ ìœ„ì— ì´ê±° ì“°ê³  ì‹œì‘í•˜ê¸°
 <%
 	String isudtype = request.getParameter("isudtype");
 	String mnum = request.getParameter("mnum");
 	String mname = request.getParameter("mname");
 	String maddr = request.getParameter("maddr");
 	
-	out.println("getData_1.jsp ¿¡ ÁøÀÔ >>> : <br>");
+	out.println("getData_1.jsp ì— ì§„ì… >>> : <br>");
 	out.println("isudtype >>> : " + isudtype + "<br>");
 	out.println("mnum >>> : " + mnum + "<br>");
 	out.println("mname >>> : " + mname + "<br>");
