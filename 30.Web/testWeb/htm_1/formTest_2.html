@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>Login</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#mid").attr('placeholder', '아이디 >>> : ');
+			$("#mpw").attr('placeholder', '비밀번호 >>> : ');
+			
+			/* 로그인 버튼을 누르면 btn 함수 실행 > id="loginForm"요소의 속성(데이터)을 
+				action(url)에 저장된 위치로 > POST방식을 이용해서 보냄 */
+			$("#btn").click(function(){
+				console.log("btn >>> : ");
+				
+				// .attr() : 요소(element)의 속성(attribute)의 값을 가져오거나 속성을 추가함
+				$("#loginForm").attr({
+					// action : url : 폼태그에서 데이터를 전달하고자 하는 특정 웹서버의 특정 파일의 위치
+					'action':"/testWeb/jsp/formTest_2.jsp",
+					// method : 데이터를 전송할 때 데이터를 담는 위치를 지정하는 것
+					// POST : HTTP 프로토콜의 요청 BODY에 데이터(key=value&key=value)를 위치한다.
+					'method':'POST',
+					// 쿼리스트링 : GET/POST 방식 둘 다 사용 가능
+					'enctype':'application/x-www-form-urlencoded'
+				}).submit();
+			});
+		})
+	</script>
+</head>
+<body>
+	<h1 align="center">Login Test</h1>
+	<hr>
+	<form name="loginForm" id="loginForm">
+	<!-- form 태그 안의 name 속성 : 해당 엘리먼트를 참조함 --> 
+		<table border="1" align="center">
+			<tr>
+				<td><input type="text" name="mid" id="mid" style="width:200px;"></td>
+			</tr>
+			<tr>
+				<td><input type="text" name="mpw" id="mpw" style="width:200px;"></td>
+			</tr>
+			<tr>
+				<td>
+					<input type="hidden" name="login_type" id="login_type" value="LOGIN">
+					<button type="button" id="btn" style="width:270px; background-color: yellow;">로그인</button>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					<a href="/testWeb/jsp/findId.jsp"><font size="2">아이디찾기</font></a> |
+					<a href="/testWeb/jsp/findPw.jsp"><font size="2">비밀번호찾기</font></a>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
