@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>х╦©Ь╟║ют JSP</title>
+<title>ц┬б╦б©ц╦б╟б║ц─ц■ JSP</title>
 </head>
 <body>
 <% request.setCharacterEncoding("EUC-KR"); %>
-	<h3>х╦©Ь╟║ют jsp</h3>
+	<h3>ц┬б╦б©ц╦б╟б║ц─ц■ jsp</h3>
 	<hr>
 
 	<%
