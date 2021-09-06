@@ -1,0 +1,260 @@
+2021-09-06
+--------------------------------------
+
+웹 애플리케이션 
+
+웹 : 웹 브라우저에서 구동되는 프로그램 : 웹 서비스 
+앱 : 폰에서 구동되는 프로그램 
+
+웹 서비스를 제공하는 프로그램 
+웹 서비스를 제공받는 브라우저 
+
+웹 서비스 : 웹 브라우저로 웹 애플리케이션 프로그램의 결과를 받는 것
+
+확장 CGI : Common Gateway Interface 
+웹 브라우저 <- HTML -> 웹서버 <- JSP, Servlet, PHP, .NET ... etc. -> WAS <- JDBC, ODBC ... etc. -> 데이터베이스 
+
+웹 브라우저(크롬, ie, Edge) <- html -> 웹서버(탐캣 코요테) <- jsp, Servlet -> 와쓰(탐캣 카탈리나) <- JDBC-> 오라클 11g 2릴리즈  
+
+
+Client Side Script : html, css, javaScript : 정적인 페이지
+Server Side Script : jsp : 동적인 페이지 
+
+
+jsp : Java Server Page 
+===================================
+웹 브라우저에서 페이지를 이동 시키는 기술 
+
+웹 브라우저에서 시작 태그의 표시를 보고 스크립트를 구분한다. 
+
+<%@ : jsp 표시 
+<html> : html 
+<script> : 자바스크립트 
+<style> : css
+<?xml : xml 
+
+
+jsp 파일 실행과정 : 자스퍼가(jasper.jar) 한다.
+###################################################
+1. testJsp.jsp 파일을 이클립스에서 만든다.
+
+2. testJsp.jsp 파일을 이클립스에 실행한다.
+	C:\Program Files\Apache Software Foundation\Tomcat 8.5\lib
+	jsp-api.jar
+	servlet-api.jar
+	jasper.jar
+
+3. jasper.jar 엔진이
+	testJsp.jsp 파일은 문법검사해서 testJsp_jsp.java 서블릿 파일로 변환한다. 
+	단 : 변환 하는 속도가 엄청 느리다. 30 라인 소스를 159 리인으로 변경한다. 
+
+4. jasper.jar 엔진이
+	testJsp_jsp.java 서블릿 소스가 잘 변경되면 
+	testJsp_jsp.java 서블릿 소스를 testJsp_jsp.class 서블릿 클래스 화일로 컴파일 한다.
+
+5. testJsp_jsp.class 를 실행 해서 결과를 클라이언트에게 전달하다. 
+	전달하는 것 들은 
+		:	클라이언트 사이드 스크립트 html, css, javaScript, jQuery, xml, JSON ... etc. 
+			서버 사이드 스크립트 jsp 파일 실행 결과물
+
+단 : 6번은 tomcat 을 이클립스에 플러근 하고 
+    빌드 프레임워크를 다이나믹 웹 프로젝트를 사용했을 경우에만 해당이된다. 
+6. 자스퍼가 jsp 파일을 변환한 서블릿 소스파일, 클래스 파일을 아래 위치에 저장한다.
+	C:\00.KOSMO93\30.Web\el_web_neon _work\.metadata\.plugins\
+	org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\testKosmo\
+	org\apache\jsp\cgiTest\
+		testJsp_jsp.java
+		testJsp_jsp.class
+
+--------------------------------
+C:\Program Files\Apache Software Foundation\Tomcat 8.5\lib
+	jsp-api.jar
+	servlet-api.jar
+C:\Program Files\Java\jdk1.8.0_291\jre\lib\ext
+	jsp-api.jar
+	servlet-api.jar 복사하기 
+--------------------------------
+###################################################
+
+==========================================
+*.jsp -> *_jsp.java 서블릿 소스로 변환한다. 
+--> 변환된 *_jsp.java 서블릿 소스는 *_jsp.class 로 컴파일 된다.
+*_jsp.class 파일이 실행 되어서 결과를 클라이언트에게 전달한다.
+==========================================
+
+WebContent -> cgiTest -> New -> Jsp File 에서 testJsp.jsp 생성 
+HTML 코드에 내용 추가 
+JSP 코드블럭에 내용 추가 
+XML 코드 추가 
+실행을 시킴
+
+testJsp.jsp ---> testJsp_jsp.java 변경된다. 
+testJsp_jsp.java ---> testJsp_jsp.class 컴파일 된다. 
+testJsp_jsp.class 클래스 파일이 실행된다.
+
+C:\00.KOSMO93\30.Web\el_web_neon _work\
+.metadata\
+.plugins\
+org.eclipse.wst.server.core\ <-- 항상 요기를 찾아야 한다. 
+tmp0\ <-- tmp1, tmp2  가 생기기도 한다. 잘 확인하고 사용해야 한다. 
+work\
+Catalina\localhost\
+testKosmo\
+org\apache\jsp\cgiTest <-- 컨텍스트
+
+
+
+JSP 구소 요소(엘리먼트)
+--------------------------
+
+A. 스크립트적인 요소 (프로그래밍 기능이 있는 요소)
+	: Server Side Script
+	: jsp 태그 들 
+--------------------------
+1. 스크립틀릿 요소 : Scriptlet
+	<% 자바코드 %> : 제일 많이 사용
+
+2. 지시자 : Directive : 현재 페이지에서 역활 지시 : MIME, import, jstl ... 
+	<%@ page contentType="text/html; charset=EUC-KR" %>
+	<%@ page import="java.util.ArrayList" %>
+	<%@ include file="xxx.jsp" %>
+	<%@ taglib prefix="c" url="http://java.sun.coim/jsp/jstl/core" %>
+
+3. 표현식 : Expression : 값을 출력 : 표현식 태그 내부에서는 문자종결기호 ; 는 사용금지이다. 
+	<%= 변수명 %>  : out.println();
+	<%= 수식 %>
+	<%= 함수 호출 %>
+
+4. 선언문 : Declaration : 함수 정의 --> 클래스로 만들어서 사용한다. 
+	<%! public void 함수이름(매개변수){ 코드 구현} %>
+
+B. UI 요소 (화면 구성 요소) 
+	: Client Side Script 
+	: 웹 브라우저에 있는 엔지 들 
+	: html 엔진
+	: css 인터프리터
+	: javaScript 엔지
+	: jQuery 엔진
+--------------------------
+html
+css
+javaScript, jQuery ... 등
+
+
+
+오전 
+------------------------------
+jsp : Java Server Page : 페이지 이동 기술 
+jsp : Server Side Script 
+jsp : 서블릿 파일 -> 서블릿 클래스 -> 실행
+jsp : jsp-api.jar, servlet-api.jar, jasper.jar
+jsp : <% %>, <%= %>, 
+      <%@ page import,  <%@ page inclue, <%@ page contentType="text/html, charset="EUC-KR" %>
+	  <%@ include file="*.jsp" 
+	  <%-- --%>
+
+
+스크립트 언어 : Script Language
+----------------------------
+	: 컴파일이 필요 없이 해석기(인터프리터)에 의해 즉시 실행 될 수 있는 프로그램 언어
+
+
+CGI : Common Gateway Interface
+----------------------------
+	: 응용프로그램 과 웹 서버 사이의 정보를 주고 받는 방식이나 규약을 정해 놓은 것 
+
+
+정적 페이지 vs 동적 페이지
+----------------------------
+
+정적 페이지
+--------------
+	누가, 언제 요구하더라도 항상 같은 내용을 표시하는 웹 페이지를 말한다. 
+	정적 페이지들은 해당 웹 서비스의 제공자가 사전에 준비하여 서버측에 배치한 것으로,
+	동일한 URL페이지 요청에 대해서는 항상 동일한 내용의 페이지를 반환한다.
+	(주로, HTML, 자바스크립트, CSS, 이미지만으로 이루어진 페이지)
+
+
+동적 페이지 
+--------------
+	동일한 URL의 요청이라도 누가, 언제, 어떻게 요구했는지에 따라 각각 다른 내용이 반환
+	되는 페이지를 말한다. 예를 들어 현재 시각을 보여주는 페이지나 온라인 쇼핑 사이트에서
+	사용자마다 다른 카트 내용을 보여주는 페이지 등이 있다.
+
+-	정적, 동적이란 용어는 사용자가 페이지를 요청하는 시점에 페이지의 내용이 유지되는가 
+	또는 변경되는가를 구분해 주는 용어이다.
+-	동적 페이지에는 프로그래밍 코드가 포함되어 있어서 페이지 요청 시점에 HTML 문장을 만들어내는 것이다
+
+
+웹 서버 와 웹 어플리케이션 서버(WAS, 와쓰)
+----------------------------
+	웹 서버와 웹 어플리케이션 서버가 분리됨에 따라, 서로의 역할도 구분하여 사용하는 것이 좋다. 
+	왜냐하면 정적 페이지를 처리하는 경우에 비해서 동적 페이지를 처리할 때 수 배에서 수십 배 메모리를
+	사용하기 때문이다. 
+
+	정적 페이지 처리에 특화된 웹 서버는 정적 페이지만 처리하고, 
+	웹 어플리케이션 서버는 동적 페이지만 처리하도록 역할을 분담하는 것이 	
+	웹 어플리케이션 서버에서 정적 페이지와 동적 페이지를 모두
+	처리하는 것보다 훨씬 더 많은 요청을 처리할 수 있다
+
+
+서블릿 : Servlet : Server + Applet
+--------------------------------------
+1. 서블릿은 자바로 되어 있다. 
+
+2. 라이브러리 
+	C:\Program Files\Apache Software Foundation\Tomcat 8.5\lib\servlet-api.jar
+	https://apache.org/
+	http://tomcat.apache.org/
+	http://tomcat.apache.org/tomcat-8.5-doc/index.html
+	http://tomcat.apache.org/tomcat-8.5-doc/servletapi/index.html <-- 서블릿 API
+
+3. javax.servlet.http <-- HTTP 프로토콜을 이용한 통신 
+
+4. Servlet 소스 생성 
+	src -> a.b.c.cgitest 패키지 생성 -> 패키지에서 우클릭 
+	-> New -> Servlet -> Create Servlet 마법사 
+	-> Class Name : HelloServlet -> Next
+	-> Create Servlet 마법사 -> 하단에 URL msappings -> Add 버튼 클릭
+	-> /HelloSerlvet 을 마우스 클릭하고 -> Edit 버튼 클릭 
+	-> URL Msappings : Pattern : /HelloSerlvet --> /hello 변경 후 
+	-> Ok 버튼 클릭 -> Next 클릭 
+	-> Which method stubs would you like to create ? 
+	-> Inherted abstract methods, doPost, doGet 체크박스만 체크 하기 
+	-> Finsh 버튼 클릭 
+
+	testKosmo
+		Deployment Descriptor: testKosmo
+			Servlet Mappings 
+				/hello -> HelloServlet
+			Servlets
+				HelloServlet
+
+5. Serlvet 클래스 요청하기 
+	서블릿은 웹 애플리케이션 서버에 동작하는 클래스이가 때문에
+	웹 브라우저에서 클라이언트가 
+	해당 서블릿 클래스를 직접 요청할 수 가 없다. <-- 웹 어플리케이션 서버 보안 때문에 
+	서블릿을 요청 할 때는 
+	웹 어플리케이션 서버에 허락을 받아야 한다. 
+
+	1. WebServlet("/hello") : 웹서블릿 어노테이션 이라고 부른다. 
+		웹 서블릿 어노테인션 인터페이스 매개변수로 가상 경로를 작성하면
+		웹 어플리케이션 서버에서 해당 서블릿 클래스를 구동 시켜준다. 
+
+		http://localhost:8088/testKosmo/hello
+
+	2. Context/WEB-INF/web.xml 서블릿 매핑
+		<servlet>
+			<servlet-name>HelloServlet</servlet-name>
+			<servlet-class>a.b.c.cgites.HelloServlet</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>HelloServlet</servlet-name>
+			<url-mapping>/abcd</url-mapping>
+		</servlet-mapping>
+
+		http://localhost:8088/testKosmo/abcd
+
+	공부할 때는 
+		웹 서블릿 어노테이션 인터페이스 를 사용한다. 
+		import javax.servlet.annotation.WebServlet;
