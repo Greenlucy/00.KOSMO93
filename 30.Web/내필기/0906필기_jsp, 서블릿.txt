@@ -1,0 +1,131 @@
+0906월_수업노트
+
+<< 서버사이드스크립트와 클라이언트사이드스크립트 이해했으면 좋겠다.  >>
+
+jsp 파일실행과정 : 자스퍼(jasper.jar)가 한다.  ::: 자스퍼는 탐캣 소속
+################################################################
+*.jsp > *_jsp.java 서블릿 소스로 변환 > 변환된 *_jsp.java 서블릿 소스는 *_jsp.class로 컴파일 된다.
+*_jsp.class파일이 실행되어서 결과를 클라이언트에게 전달한다.
+
+1. testJsp.jsp 파일을 이클립스에서 만든다.
+2. testJsp.jsp 파일을 이클립스에 실행한다.
+	C:\Program Files\Apache Software Foundation/Tomcat 8.5/lib
+	jsp-api.jar
+	servlet-api.jar
+	jasper.jar
+
+3. jasper.jar 엔진이
+   testJsp.jsp 파일은 문법 검사해서 testJsp_jsp.java 서블릿 파일로 변환한다.
+   단 : 변환하는 속도가 엄청 느리다. 30 라인 소스를 159 라인으로 변경한다.
+
+(4번은 동일한 규칙)
+4. jasper.jar 엔진이
+   testJsp_jsp.java 서블릿 소스가 잘 변경되면
+   testJsp_jsp.java 서블릿 소스를 testJsp_jsp.class 서블릿 클래스 파일로 컴파일한다.
+
+5. testJsp_jsp.class 를 실행해서 결과를 클라이언트에게 전달한다.
+    전달하는 것들은
+	: 클라이언트 사이드 스크립트 html, css, javaScript,  jQuery, xml, JSON, ... etc.
+	서버 사이드 스크립트 jsp 파일 실행 결과물
+
+	단 : 6번은 tomcat을 이클립스에 플러그인하고 
+	빌드 프레임워크를 다이나믹 웹 프로젝트를 사용했을 경우에만 해당이 된다.
+
+6. 자스퍼가 jsp 파일을 변환한 서블릿 소스파일, 클래스 파일을 아래 위치에 저장한다.
+(이클립스에서 탐캣서버가 제대로 연동이 되고, 컴파일이 실행되었을 때만 tmp0\work\ 위치에 Catalina파일과 하위 파일이 제대로 생성된다.)
+	C:\00.KOSMO93\30.Web\el_web_neon_work\.metadata\.plugins\
+	org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\testKosmo\
+	org\apache\jsp\cgiTest\
+		testJsp_jsp.java
+		testJsp_jsp.class
+############################
+C:\ProgramFiles\Apache Software Foundation\Tomcat 8.5\lib
+	jsp-api.jar
+	servlet-api.jar 		2파일 복사하기
+C;\Program Files\Java\jdk1.8.0_291\jre\lib\ext
+	jsp-api.jar
+	servlet-api.jar		2파일 붙여넣기
+
+<< 이해해야하는 부분 축약 : 
+	webserver의 jsp가 was서버로 넘어와서 servlet으로 변환되고 클래스파일로 컴파일되어서
+	결과만 서버로 넘겨짐  >>
+
+#################################################################
+
+JSP 구성 요소(엘리먼트) : JSP의 태그를 알아야 함
+	A와 B가 공존하는 거를 알아야 함
+
+A. 스크립트적인 요소 (프로그래밍 기능이 있는 요소)
+
+1. 스크립틀릿 요소 : Scriptlet
+	<% 자바코드 %> : 제일 많이 사용
+
+2. 지시자 : Directive : 현재 페이지에서 역할 지시 : MIME, import, jstl ...
+	<% page contentType="text/html; charset=EUC-KR" %>
+	<% page import="
+
+
+################################################################
+< 파일 기본 세팅을 html 4.01에서 html5.0으로 변경하는 방법 >
+window - Preferences - web - JSP Files - Editor - Templates
+- new JSP File(html) - Edit
+- 아래와 같은 형태로 수정하기 - 
+	<!DOCTYPE html>
+	<meta charset="${encoding}">
+
+인코딩 : css, javascript, jsp .. 다 따로 해줘야 함
+
+https://ko.wikipedia.org/wiki/MIME
+꼭 읽어봐
+
+
+상대경로 쓰지 말고 꼭 text 경로 써주기
+예) /testKosmo/cgiTest/testJsp_3.jsp
+
+
+CGI : Common Gateway Interface : 응용프로그램과 웹 서버 사이의 정보를 주고받는 방식이나 규약을 정해 놓은 것
+MVC 개념도 정리하기
+
+jsp 파일에는 css, javascript, jquery, java 다 혼용해서 쓸 수 있는데, 
+나만 안 틀리면 엔진들이 알아서 파싱해서 가져감
+
+해석기 : 인터프리터
+
+
+http://tomcat.apache.org/tomcat-8.5-doc/servletapi/index.html
+북마크 하기
+
+window -  >>> clean 주기적으로 계속 해주기
+WebContent 파일은 dynamic web project 파일만 쓰는 가상경로니까 안 써도 됌
+
+서블릿 파일의 
+@WebServlet("/aaaa") 변경하면 url 마지막 주소가 달라짐
+ : Servlet 클래스 요청하기 (webcontent에 있기 때문에 직접 경로를 요청하면 안 되고 가상경로를 이용해야 한다.)
+	서블릿은 웹 어플리케이션 서버에 동작하는 클래스이기 때문에
+	웹 브라우저에서 클라이언트가
+	해당 서블릿 클래스를 직접 요청할 수가 없다. <-- 웹 어플리케이션 서버 보안 때문에
+	서블릿을 요청할 때는
+	웹 어플리케이션 서버에 허락을 받아야 한다.
+
+	1. WebServlet("/hello") : 웹서블릿 어노테이션이라고 부른다.
+		웹 서블릿 어노테이션 인터페이스 매개변수로 가상 경로를 작성하면
+		웹 어플리케이션 서버에서 해당 서블릿 클래스를 구동시켜준다.
+
+		http://localhost:8088/testKosmo/hello
+	
+	>> 앞으로 공부할 때 요 방법만 사용할 예정
+
+웹 컨테이너 : 카탈리나
+################################################################
+책 JSP
+p496 : 서블릿 설명 (10장 남짓)
+서블릿을 사장된 기술로 봐서 별로 설명이 없음
+근데 강사님은 jsp보다 서블릿을 더 중점적으로 가르침
+
+################################################################
+이런 2가지 구조가 있다고 소개한 것. 앞으로 더 공부할 거야.
+jsp, 서블릿이 있고, form 태그에서 바로 갈 수 있다. 는 것만 오늘은 알면 됌
+
+1. jsp파일은 서블릿을 변환해서 클래스 파일로 바껴서 실행한다.
+2. 서블릿은 웹 애플리케이션 서버이기 때문에 서블릿 경로인 웹 서블릿 어노테이션 인터페이스의 매개변수를 찾아간다.  
+3. 서블릿에서 request, response (요청, 응답)의 개념을 알아야 한다. (오늘 아직 안 함)
