@@ -1,0 +1,33 @@
+2021-09-10
+--------------------------------
+
+3-tier
+
+웹브라우저 <--> 웹서버 <--> 웹어플리케이션서버 <--> 데이터베이스
+
+
+html <--> controller <--> service <--> dao <--> queryMap 	
+			|
+jsp <-------| 
+
+
+#####################################################
+웹 어플리케이션 기술에서 제일 중요한 것은 
+페이지 이동하면서 데이터의 흐름을 확인 할 수 있는 것 
+
+@WebServlet("/board")
+서블릿을 찾아가는 
+WebServlet 어노테이션 인터페이스에 기술하는 앨리어스 이름은 
+해당 컨텍스트에서 유니크 해야 한다. 
+상기 예제에서 "/board" 와 똑같은 문자열이 해당 컨텍스트에서 있으면 않된다. 
+
+페이지 이동시 데이터를 넘기는 방법
+1. form 태그 
+	request.getParameter("form태그의 name속성");
+
+2. ?key=value
+	request.getParameter("form태그의 name속성");
+
+3.  reqeust.setAttribute(java.lang.String, java.lang.Object);
+	reqeust.getAttribute(java.lang.String);
+#####################################################

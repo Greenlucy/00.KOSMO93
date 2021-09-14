@@ -1,0 +1,106 @@
+2021-09-07
+---------------------------
+
+request, response 
+-------------------
+
+웹 브라우저 <- HTTP 프로토콜 -> 웹서버
+
+HTTP 프로토콜 : HTTP 통신 규약 : Hyper Text Trnafer Protocol 
+웹 브라우저와 웹 서버가 HTML로 작성된 웹 페이지, 동영상, 음성 파일 등을 
+주고 받기 위한 프로토콜(통신 규약)이다. : RFC2613 
+HTTP 프로토콜
+
+##########################################
+HTTP 프로토콜 속성
+커넥션리스 : Connectionless 
+	:	웹브라우저에서 웹서버에 요청을 하고 
+		웹서버에서 웹브라우저에 응답을 하면 
+		바로 커넥션을 끊어버린다. 
+		웹 브라우저에서 응답을 받으면 꼭 새로고침(Refresh)을 해야 한다. 
+##########################################
+
+
+HTTP 프로토콜 기본 PORT 는 80번 PORT 이다. 
+현재는 4자리로 변경해서 사용한다. --> 8088
+
+PORT : 6만 5천여개 있다. 
+웹 노운 포트 : 0 ~ 1023 : 정해진 포트 : 
+
+HTTP 프로토콜
+	REQUEST 프로토콜 : 요청한다. : 클라이언트 --> 서버로 요청 : 웹브라우저 --> 웹서버로 요청 
+	RESPONSE 프로토콜 : 응답한다 : 서버 --> 클라이언트에 응답 : 웹서버 --> 웹브라우저로 응답 
+
+	웹 어플리케션을 만드는 모든 스크립트들은
+	HTTP 프로토콜의 REQUEST, RESPONSE 를 
+	해당 하는 스크립트 규칙으로 리퀘스트, 리스판스를 사용한다. 
+
+	jsp 
+		REQUEST --> request 내장형 오브젝트 
+		RESPONSE --> response 내장형 오브젝트 
+	Servlet
+		REQUEST --> javax.servlet.http.HttpServletRequest 인터페이스  
+		RESPONSE --> javax.servlet.http.HttpServletResponse 인터페이스  
+
+	request 내장형 오브젝트
+		javax.servlet.http.HttpServletRequest 인터페이스 
+			javax.servlet.http.HttpServletRequestWrapper 클래스
+
+	response 내장형 오브젝트
+		javax.servlet.http.HttpServletResponse 인터페이스  
+			javax.servlet.http.HttpServletResponseWrapper 클래스 
+
+	
+
+요청 : REQUEST
+-------------------------
+	요청 행
+	요청 헤더 : HEADER ?key-value&key=value : 쿼리스트링 : QueryString : GET 방식
+	공백 행
+	메시지 본문 : BODY ?key-value&key=value : 쿼리스트링 : QueryString : POST 방식 
+
+	GET 
+	 :	웹 서버에 페이지를 요청한다. 
+		요청할 때 필요한 데이터는 URL에 덧붙여 보내며
+		텍스트 데이터만 전송가능, 파일업로드를 할 수 없다.
+		요청행에 데이터가 넘어간다 (Query String)
+		HTTP1.0 : 데이터의 크기가 512 byte 를 넘으면 않된다. 
+		HTTP1.1 : 테이터의 크기가 아주 크다 (2기가) ~~ 
+		RESTfull Web Service : OPEN API 
+
+	POST 
+	 :	서버의 데이터를 갱신하거나 보내는 데이터의 양이 많을 때
+		메시지 본문에 담아서 보내며
+		텍스트 데이터와 바이너리 데이터를 모두 보낼 수 있다. 
+		파일업로드를 할 수 있다. 
+
+응답 : RESPONSE
+-------------------------
+	응답 행
+	응답 헤더 : HEADER : 상태코드 : 200, 300, 400, 500번 
+	공백 행
+	메시지 본문 : BODY
+
+	상태코드 
+	200 : 요청 성공
+	400 : 클라이언트 오류 : 요청할 때 오류
+		401 : unauthorized : 인증이 되지 않음 
+		403 : Forbidden : 엑세스가 허용되지 않음 
+		404 : Not Found : 요청한 리소스를 차지 못함
+		408 : Request Timeout : 요청 시간을 초과함 
+	500 : 서버 오류 : Internal Server Error : 서버 내부에서 오류가 발생 
+		503 : Service Unavailable : 서비스를 일시적으로 사용할 수 없음
+
+HTTP 프로토콜 메소드
+-------------------------
+	GET : 요청 헤더에 메시지 데이터를 보내는 것 : ?key-value&key=value : 쿼리스트링 : QueryString
+	POST : 요처 바디에 메시지 데이터를 보내는 것 : ?key-value&key=value : 쿼리스트링 : QueryString
+
+
+GET, POST 를 받을 때 
+-------------------------	
+	jsp : 디폴트 GET 방식이다. 
+	Servlet :	GET 방식 --> doGet(HttpServletRequest request, 
+								  HttpServletResponse response) 함수로 받는다.
+				POST 방깃 --> doPost(	HttpServletRequest request, 
+									HttpServletResponse response) 함수로 받는다. 

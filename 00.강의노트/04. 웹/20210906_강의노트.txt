@@ -4,7 +4,7 @@
 웹 애플리케이션 
 
 웹 : 웹 브라우저에서 구동되는 프로그램 : 웹 서비스 
-앱 : 폰에서 구동되는 프로그램 
+앱 : 폰에서 구동되는 프로그램 : 앱, 웹앱, 네이티브앱, 하이브리드앱
 
 웹 서비스를 제공하는 프로그램 
 웹 서비스를 제공받는 브라우저 
@@ -12,26 +12,34 @@
 웹 서비스 : 웹 브라우저로 웹 애플리케이션 프로그램의 결과를 받는 것
 
 확장 CGI : Common Gateway Interface 
+
+클라이언트 <-> 웹서버 에서 응용프로그램을 더 한 것 
 웹 브라우저 <- HTML -> 웹서버 <- JSP, Servlet, PHP, .NET ... etc. -> WAS <- JDBC, ODBC ... etc. -> 데이터베이스 
 
 웹 브라우저(크롬, ie, Edge) <- html -> 웹서버(탐캣 코요테) <- jsp, Servlet -> 와쓰(탐캣 카탈리나) <- JDBC-> 오라클 11g 2릴리즈  
 
 
-Client Side Script : html, css, javaScript : 정적인 페이지
-Server Side Script : jsp : 동적인 페이지 
+Client Side Script : html, css, javaScript : 정적인 페이지 : 웹서버 위치하면서 클라이언트 브라우저서 실행되는 프로그램 
+Server Side Script : jsp : 동적인 페이지 : 웹 어플리케이션 서버에 위치하면서 클라이언트에게는 프로그램의 실행 결과를 전달하는 프로그램 
 
 
 jsp : Java Server Page 
 ===================================
-웹 브라우저에서 페이지를 이동 시키는 기술 
+웹 브라우저에서 페이지를 이동 시키는 기술 : document : 자바 스윙 JPanel
 
+
+jsp에는 서버사이드 스크립트 와 클라이언트사이드 스크립트 
 웹 브라우저에서 시작 태그의 표시를 보고 스크립트를 구분한다. 
 
-<%@ : jsp 표시 
-<html> : html 
-<script> : 자바스크립트 
-<style> : css
-<?xml : xml 
+<%@ : jsp 표시 : jsp-api.jar, servlet-api.jar 
+
+<html> : html : html 인터프리터 
+
+<script> : 자바스크립트 : javaScript 인터프리터
+
+<style> : css : css 인터프리터 
+
+<?xml : xml : 엑스엠엘 파서(Parser) 
 
 
 jsp 파일 실행과정 : 자스퍼가(jasper.jar) 한다.
@@ -57,7 +65,7 @@ jsp 파일 실행과정 : 자스퍼가(jasper.jar) 한다.
 		:	클라이언트 사이드 스크립트 html, css, javaScript, jQuery, xml, JSON ... etc. 
 			서버 사이드 스크립트 jsp 파일 실행 결과물
 
-단 : 6번은 tomcat 을 이클립스에 플러근 하고 
+단 : 6번은 tomcat 을 이클립스에 플러그인 하고 
     빌드 프레임워크를 다이나믹 웹 프로젝트를 사용했을 경우에만 해당이된다. 
 6. 자스퍼가 jsp 파일을 변환한 서블릿 소스파일, 클래스 파일을 아래 위치에 저장한다.
 	C:\00.KOSMO93\30.Web\el_web_neon _work\.metadata\.plugins\
@@ -104,7 +112,7 @@ org\apache\jsp\cgiTest <-- 컨텍스트
 
 
 
-JSP 구소 요소(엘리먼트)
+JSP 구성 요소(엘리먼트)
 --------------------------
 
 A. 스크립트적인 요소 (프로그래밍 기능이 있는 요소)
@@ -130,10 +138,10 @@ A. 스크립트적인 요소 (프로그래밍 기능이 있는 요소)
 
 B. UI 요소 (화면 구성 요소) 
 	: Client Side Script 
-	: 웹 브라우저에 있는 엔지 들 
+	: 웹 브라우저에 있는 엔진 들 
 	: html 엔진
 	: css 인터프리터
-	: javaScript 엔지
+	: javaScript 엔진
 	: jQuery 엔진
 --------------------------
 html
@@ -237,7 +245,7 @@ CGI : Common Gateway Interface
 	서블릿을 요청 할 때는 
 	웹 어플리케이션 서버에 허락을 받아야 한다. 
 
-	1. WebServlet("/hello") : 웹서블릿 어노테이션 이라고 부른다. 
+	1. WebServlet("/hello") : 웹 서블릿 어노테이션 이라고 부른다. 
 		웹 서블릿 어노테인션 인터페이스 매개변수로 가상 경로를 작성하면
 		웹 어플리케이션 서버에서 해당 서블릿 클래스를 구동 시켜준다. 
 
@@ -258,3 +266,8 @@ CGI : Common Gateway Interface
 	공부할 때는 
 		웹 서블릿 어노테이션 인터페이스 를 사용한다. 
 		import javax.servlet.annotation.WebServlet;
+
+
+1. jsp -> Servlet
+2. WebServlet("/abc")
+3. request, response
