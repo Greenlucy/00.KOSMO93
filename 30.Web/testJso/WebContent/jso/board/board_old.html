@@ -11,26 +11,19 @@
 		$(document).ready(function(){
 			alert("제이쿼리 블럭 시작 >>> : ");
 			
-			// [0] 버튼 클릭하면, 작동
 			// 폼태그 데이터 JSP 보내기
 			$("#boardBtn").click(function(){
 				alert("boardBtn click() 함수 진입 >>> :");
 				console.log("boardBtn click() 함수 진입 >>> :");
-				// [0-1] type=hidden, id="ISUD_TYPE"인 input 태그 안에서 value 받아옴
-				var v1 = $("#ISUD_TYPE").val();
-				alert("v1 >>> : " + v1);
+				
 				// attr() vs prop() : html vs javascript
 				// attr : 요소(elemet)의 속성(attribute)을 가져오거나 속성을 추가함
-				// 파일 업로드이므로 method : "POST", "enctype":"multipart/form-data"
-				// [0-3] form태그 데이터에 대해, 파일 업로드 type으로 POST 방식으로 데이터를 actoin 경로로 
 				$("#boardWrite")
 				.attr({
-						// http://localhost:8088/testJso/board?ISUD_TYPE=I
-						"action":"/testJso/board?ISUD_TYPE="+v1,
-						"method":"POST",
-						"enctype":"multipart/form-data"
+						"action":"/testWeb/jsp/formTest_1.jsp",
+						"method":"GET",
+						"enctype":"application/x-www-form-urlencoded"
 					})
-				// [0-4] 전송
 				.submit();
 			});
 		});
@@ -97,19 +90,18 @@
 			<tr>
 				<td colspan="2" align="center">
 					<input type="hidden" name="ISUD_TYPE" id="ISUD_TYPE" value="I">
-					<input type="hidden" name="bnum" value="I">
 					<!-- 
 						<input type="button" value="보내기"id="boardBtn">					 
 					 -->
 					 <button type="button" id="boardBtn">
-					 	<img src="/testJso/img/img_mando/ase.gif" width="25" height="25" alt="image">
+					 	<img src="/testWeb/img/ase.gif" width="25" height="25" alt="image">
 					 	보내기
 					 </button>
 					 <!-- 
 					 	<input type="reset" value="다시">
 					  -->
 					  <button type="reset">
-					  	<img src="/testJso/img/img_mando/b-baa.gif" width="25" height="25" alt="image">
+					  	<img src="/testWeb/img/b-baa.gif" width="25" height="25" alt="image">
 					  	다시
 					  </button>
 				</td>

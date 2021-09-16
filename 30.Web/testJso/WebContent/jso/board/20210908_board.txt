@@ -1,0 +1,110 @@
+Model 2  + Web MVC 패턴
+===============================
+
+0. datasource : 데이터소스
+
+
+1. 게시판
+
+요구사항
+BNUM		: 글번호	: BD0001	: BD 접두어 + XXXX 숫자 4개
+BSUBJECT		: 글제목	: 길이 100
+BWRITER		: 글쓴사람	: 길이 50
+BPW		: 글 쓸 때 사용한 패스워드 : 8자리
+BMEMO		: 글내용	: 2000자
+BPHOTO		: 이미지	: 이미지 파일 : (저장 시)파일이름만 : 사이즈 10메가
+
+DELETEYN		: 삭제여부	: Y : N
+INSERTDATE	: 등록일	: YYYY-MM-DD
+UPDATEADATE	: 수정일	: YYYY-MM-DD
+
+
+테이블 설계
+테이블 이름 : MVC_BOARD
+
+테이블 생성
+CREATE TABLE MVC_BOARD(
+	BNUM VARCHAR2(20) PRIMARY KEY
+	BSUBJECT VARCHAR2(100)
+	BWRITER VARCHAR2(50) NOT NULL
+	BPW VARCHAR2(8) NOT NULL
+	BMEMO VARCHAR2(2000)
+	BPHOTO VARCHAR2(100)
+
+	DELETEYN VARCHAR2(1) NOT NULL
+	INSERTDATE DATE
+	UPDATEDATE DATE NOT NULL
+);
+
+인덱스 확인
+SELECT A.INDEX_NAME, A.COLUMN_NAME, A.TABLE_NAME
+FROM ALL_IND_COLUMNS A
+WHERE a.table_name IN('MVC_BOARD');
+
+채번확인
+SELECT	/*+ INDEX_DESC(A SYS_C0011181) */
+	NVL(MAX(A.BNUM), 0) + 1 MAXNUM
+FROM MVC_BOARD A;
+
+
+클래스 설계
+a.b.c.com.common
+	ConnProperty
+	DateFormatUtil
+	CommonUtils
+	GetChabun
+	GetBoardMaxNum
+
+a.b.c.com.jso.board
+a.b.c.com.jso.board.controller
+	BoardController
+a.b.c.com.jso.board.service
+	BoardService
+		public ArrayList<BoardVO> boardSelectAll()
+		public ArrayList<BoardVO> boardSelect(BoardVO bvo)
+		public boolean boardInsert(BoardVO bvo)
+		public boolean boardDelete(BoardVO bvo)
+		public boolean boardUpdate(BoardVO bvo)
+	BoardServiceImpl
+
+a.b.c.com.jso.board.dao
+	BoardDAO
+	BoardDAOImpl
+
+a.b.c.com.jso.board.sql
+	BoardSqlMap
+		public static String getBoardSelectAllQuery(){ return null; }
+		public static String getBoardSelectQuery(){ return null; }
+		public static String getBoardInsertQuery(){ return null; }
+		public static  String getBoardUpdateQuery(){ return null; }
+		public static String getBoardDeleteQuery(){ return null; }
+
+a.b.c.com.jso.board.vo
+	BoardVO
+		private String bnum;
+		private String bsubject;
+		private String bwriter;
+		private String bpw;
+		private String bmemo;
+		private String bphoto;
+		private String deleteyn;
+		private String insertdate;
+		private String updatedate;
+		
+		public BoardVO()
+		public 
+
+view : jsp
+testJso/WebContent/kosmo/board/
+board.html
+boardSelectAll.jsp
+boardSelect.jsp
+boardInsert.jsp
+boardUpdate.jsp
+boardDelete.jsp
+
+
+a.b.c.com.jso.book
+a.b.c.com.kosmo.login
+a.b.c.com.kosmo.mem
+a.b.c.com.kosmo.notice

@@ -1,0 +1,136 @@
+Model 2 + Web MVC 패턴
+==================================
+
+0. datasource : 데이터소스
+Oracle 11g 2 Release
+jdbc : ojdbc6.jar : Context/WebContent/WEB-INF/lib/ojdbc6.jar
+sid : orclKOSMO00
+account : jso00/jso1234
+
+1. 책
+
+요구사항
+-------------------------------------------------------------------
+도서번호	: BNUM	: VARCHAR2(20)	PRIMARY KEY
+도서명	: BTITLE	: VARCHAR2(100)
+저자	: BAUTH	: VARCHAR2(50)
+isbn	: ISBN	: VARCHAR2(20)	NOT NULL
+출판사	: BCOMP	: VARCHAR2(100)
+단가	: BPRICE	: NUMBER
+수량	: BQTY	: NUMBER	: 수량(Quantity)
+책표지	: BCOVER	: VARCHAR2(100)
+
+삭제여부	: DELETEYN 	: VARCHAR2(20)	NOT NULL
+등록일	: INSERTDATE	: DATE
+수정일	: UPDATEDATE	: DATE
+---------------------------------------------------------------------
+
+TEST_BOOK 테이블 생성
+----------------------------------
+CREATE TABLE TEST_BOOK (
+	BNUM VARCHAR2(20) PRIMARY KEY
+	,BTITLE VARCHAR2(100)
+	,BAUTH VARCHAR2(50)
+	,ISBN VARCHAR2(20) NOT NULL
+	,BCOMP	VARCHAR2(100)
+	,BPRICE	NUMBER
+	,BQTY	NUMBER
+	,BCOVER VARCHAR2(100)
+	,DELETEYN VARCHAR2(20) NOT NULL
+	,INSERTDATE DATE
+	,UPDATEDATE DATE
+);
+
+인덱스 확인
+------------------
+-- SYS_C0011458
+SELECT A.INDEX_NAME, A.COLUMN_NAME, A.TABLE_NAME
+FROM ALL_IND_COLUMNS A
+WHERE a.table_name IN ('TEST_BOOK');
+
+채번 확인
+-------------------
+SELECT /*+ A SYS_C0011458 */
+NVL(MAX(SUBSTR(A.BNUM, -4)) ,0) + 1 MAXNUM
+FROM TEST_BOOK A;
+
+클래스 설계
+---------------------
+a.b.c.com.jso.book.controller
+	BookController
+		private static final long serialVersionUID
+		protected void doGet(HttpServletRequest request, HttpServletResponse response){}
+		protected void doPost(HttpServletRequest request, HttpServletResponse response){}
+a.b.c.com.jso.book.service
+	BookService
+		public ArrayList<BookVO> bookSelectAll();
+		public ArrayList<BookVO> bookSelect(BookVO bvo);
+		public int bookInsert(BookVO bvo);
+		public int bookUpdate(BookVO bvo);
+		public int bookDelete(BookVO bvo);
+	BookServiceImpl
+a.b.c.com.jso.book.dao
+	BookDAO
+		public ArrayList<BookVO> bookSelectAll();
+		public ArrayList<BookVO> bookSelect(BookVO bvo);
+		public int bookInsert(BookVO bvo);
+		public int bookUpdate(BookVO bvo);
+		public int bookDelete(BookVO bvo);
+	BookDAOImpl
+a.b.c.com.jso.book.sql
+	BookSqlMap (abstract)
+		public static String getSelectAllQuery() { return null; }
+		public static String getSelectQuery(BookVO bvo) { return null; }
+		public static String getInsertQuery(BookVO bvo) { return null; }
+		public static String getUpdateQuery(BookVO bvo) { return null; } 
+		public static String getDeleteQuery(BookVO bvo) { return null; }
+a.b.c.com.jso.book.vo
+	BookVO
+		private String bnum
+		private String btitle
+		private String bauth
+		private String isbn
+		private String bcomp
+		private String bprice
+		private String bqty
+		private String bcover
+		private String deleteyn
+		private String insertdate
+		private String updatedate
+
+		public BookVO() {}
+		public BookVO(String bnum, String btitle, ...) {}
+a.b.c.com.common
+	Connproperty
+	DateFormatUtil
+	GetBookMaxNum (abstract)
+		public static String getMaxNum(){}
+		public static void main(String[] args) {}
+	GetChabun (abstract)
+		public static final String BIZ_GUBUN_BK
+		public static String numPad(String t, String c){}
+		public static String getBookChabun(String type) {}
+		....
+		public static void main(String[] args) {}
+	FileUploadUtil
+		public static final String ENCODE_TYPE
+		public static final int SIZE_LIMIT
+		private MultipartRequest m
+		
+		public FileUploadUtil() {}
+		public boolean fileUpload(HttpServletRequest hReq, String filePaths){}
+		public boolean fileUpload(HttpServletRequest hReq, String filePaths, int size_limit, String encode_type){}
+		public String getParameter(String s){}
+		public String[] getParameterValues(String s){}
+		public String getFileNaem(String f){}
+		public ArrayList<String> getFileNames(){}
+
+화면 
+----------------------
+/testJso/jso/book
+book.html
+bookSelectAll.jsp
+bookSelect.jsp
+bookInsert.jsp
+bookUpdate.jsp
+bookDelete.jsp
