@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import a.b.c.com.jso.sql.BoardSqlMap;
+import a.b.c.com.jso.board.sql.BoardSqlMap;
 
 public abstract class GetBoardMaxNum {
 	

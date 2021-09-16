@@ -1,6 +1,6 @@
 package a.b.c.com.common;
 
-import a.b.c.com.jso.sql.BoardSqlMap;
+import a.b.c.com.jso.board.sql.BoardSqlMap;
 
 public abstract class GetChabun {
 
@@ -19,9 +19,6 @@ public abstract class GetChabun {
 	}
 	
 	// 회원 번호
-	public static String getMemChabun(String type){
-		return BIZ_GUBUN_M.concat(numPad(type, GetBoardMaxNum.getMaxNum()));
-	}
 	
 	// 게시판 글 번호
 	public static String getBoardChabun(String type){
@@ -33,10 +30,15 @@ public abstract class GetChabun {
 	// 공지사항 번호
 	
 	// 책 번호
+	public static String getBookChabun(String type){
+		return BIZ_GUBUN_BK.concat(numPad(type, GetBookMaxNum.getMaxNum()));
+	}
 	
 	// main()
 	public static void main(String[] args){
-		System.out.println("getMemChabun >>> : " + GetChabun.getMemChabun("n"));
+		
 		System.out.println("getBoardChabun >>> : " + GetChabun.getBoardChabun("n"));
+		
+		System.out.println("getBookChabun >>> : " + GetChabun.getBookChabun("d"));
 	}
 }
