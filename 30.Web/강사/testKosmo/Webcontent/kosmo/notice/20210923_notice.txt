@@ -1,0 +1,123 @@
+공지사항 :: Model 2 + Web MVC 패턴 
+===============================================
+
+0. datasource : 데이터 소스 : 데이터베이스 연결정보 
+------------------------------
+데이터 베이스 : 오라클 11g 2 릴리즈 :  Oracle 11g 2 Release
+jdbc 드라이버 : ojdbc6.jar : Context/WebContent/WEB-INF/lib/ojdbc6.jar 카피
+sid : orclKOSMO00
+account : hbe00/heb1234
+url : jdbc:oracle:thin:@localhost:1521:orclKOSMO00
+jdbc 드라이버 네임스페이스 : oracle:jdbc:dirver:OracleDriver
+
+sqlplus / as sysdba 또는 sqlplus "/as sysdba"
+select name, db_unique_name from v$database;
+
+1. 요구사항 
+관리자 만 사용
+공지사항의 종류에 따라 보는 사람들이 다를 수 있다. 
+공지사항은 열람 기간 
+
+NNUM : 글번호 : N + YYYYMMDD + 0001 : 20 
+NSUBJECT : 제목 : 한글, 영문 : 50 
+NMEMO : 내용 : 2000
+NPHOTO : 사진 : 100
+
+삭제여부 : DELETEYN : 1
+입력일  : INSERTDATE : DATE : YYYY-MM-DD
+수정일  : UPDATEDATE : DATE : YYYY-MM-DD
+
+2. 테이블 설계 
+공지사항 테이블 : MVC_NOTICE
+CREATE TABLE MVC_NOTICE(
+	 NNUM VARCHAR2(20) PRIMARY KEY 
+	,NSUBJECT VARCHAR2(50) 
+	,NMEMO VARCHAR2(2000) 
+	,NPHOTO VARCHAR2(100)
+	,DELETEYN VARCHAR2(1) NOT NULL
+	,INSERTDATE DATE
+	,UPDATEDATE DATE
+);
+
+-- 인데스
+-- SYS_C0011201
+SELECT A.INDEX_NAME, A.COLUMN_NAME, A.TABLE_NAME
+FROM ALL_IND_COLUMNS A
+WHERE a.table_name IN ('MVC_NOTICE');
+
+-- 채번 확인 
+SELECT  /*+ INDEX_DESC(A SYS_C0011201) */
+        NVL(MAX(A.NNUM), 0) + 1 MAXNUM 
+FROM MVC_NOTICE A;
+
+3. 클래스 설계 
+
+a.b.c.com.kosmo.notice
+a.b.c.com.kosmo.notice.controller
+	NoticeController
+a.b.c.com.kosmo.notice.service
+	NoticeService
+		public ArrayList<NoticeVO> noticeSelectAll();
+		public ArrayList<NoticeVO> noticeSelect(NoticeVO nvo);
+		public int noticeInsert(NoticeVO nvo);
+		public int noticeUpdate(NoticeVO nvo);
+		public int noticeDelete(NoticeVO nvo);		
+	NoticeServiceImpl
+	
+a.b.c.com.kosmo.notice.dao
+	NoticeDAO
+		public ArrayList<NoticeVO> noticeSelectAll();
+		public ArrayList<NoticeVO> noticeSelect(NoticeVO nvo);
+		public int noticeInsert(NoticeVO nvo);
+		public int noticeUpdate(NoticeVO nvo);
+		public int noticeDelete(NoticeVO nvo);		
+	NoticeDAOImpl
+	
+a.b.c.com.kosmo.notice.sql
+	NoticeSqlMap
+		public static String getNoticeSelectAllQuery(){}
+		public static String getNoticeSelectQuery();
+		public static String getNoticeInsertQuery();
+		public static String getNoticeUpdateQuery();
+		public static String detNoticeDelete();		
+	
+a.b.c.com.kosmo.notice.vo 
+	NoticeVO 
+		private String nnum;
+		private String nsubject;
+		private String nmemo;
+		private String nphoto;
+		private String deleteyn;
+		private String insertdate;
+		private String updatedate;
+		
+
+a.b.c.com.common
+	GetNoticeMaxNum
+		public static String getMaxNum();
+
+
+view : jsp 
+notice.html
+noticeSelectAll.jsp
+noticeSelect.jsp
+noticeInsert.jsp
+noticeUpdate.jsp
+noticeDelete.jsp		
+
+
+1. VO 
+2. DAO - Service
+3. Controller 
+4. html 
+
+
+
+
+
+
+
+
+
+
+

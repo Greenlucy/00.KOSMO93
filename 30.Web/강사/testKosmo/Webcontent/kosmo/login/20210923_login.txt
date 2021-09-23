@@ -1,0 +1,70 @@
+로그인  :: Model 2 + Web MVC 패턴  
+=======================================
+
+0. datasource : 데이터 소스
+-------------------------
+데이터베이스 : 오라클 11g 2 릴리즈
+jdbc : ojdbc6.jar : Context/WebContent/WEB-INF/lib/ojdbc6.jar copy 하기 
+sid : orclKOSMO00
+acccount : hbe00/hbe1234 
+url : jdbc:oracle:thin:@localhost:1521:orclKOSMO00
+jdbc driver : oracle.jdbc.dirver.OracleDriver
+
+cmd 창에서
+sqlplus /as sysdba, sqlplus "/as sysdba"
+SELECT NAME, DB_UNIQUE_NAME FROM V$DATABASE; 
+
+2. 요구사항 
+로그인 하기 
+MID
+MPW
+
+카운트 
+0 : 로그인 실패 
+1 : 로그인 성공
+1 이상 : 로그인 실패 
+
+############################
+세션 트래킹 
+------------------------
+중복인 로그인 허용
+싱글 사인 온 
+
+하나의 브라우저에서 하나의 서버에서 로그인 
+다중 브라우저 서버가 여러대에서 로그인 처리 
+############################
+
+로그인 쿼리 
+SELECT COUNT(A.MNUM) NCNT 
+FROM MVC_MEMBER A 
+WHERE A.DELETEYN = 'Y'
+AND   A.MID = ?
+AND   A.MPW = ?
+
+
+3. 클래스 설계 
+a.b.c.kosmo.login
+
+a.b.c.kosmo.login.controler
+	LoginController
+a.b.c.kosmo.login.service
+	LoginService
+		public int loginCheckCnt(MemberVO mvo);
+	LoginServiceImpl
+a.b.c.kosmo.login.dao
+	LoginDAO
+		public int loginCheckCnt(MemberVO mvo);
+	LoginDAOImpl
+a.b.c.kosmo.login.sql
+	LoginSqlMap
+		public static String getLoginCheckCntQuery(){}
+
+a.b.c.kosmo.login.vo
+
+view : jsp
+testKomso/WebContent/kosmo/login/
+login.html
+login.jsp
+logout.jsp
+
+

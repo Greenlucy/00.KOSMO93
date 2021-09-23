@@ -1,0 +1,141 @@
+2021-09-04
+-----------------------------------------
+
+북 :: Model 2 + Web MVC 패턴  
+=======================================
+
+
+datasource
+---------------------------------
+Oracle 11g 2 Release
+jdbc : ojdbc6.jar : Context/WebContent/WEB-INF/lib/ojdbc6.jar 
+sid : orclKOSMO00
+account : hbe00/hbe1234
+
+오라클 SID : Service Name 확인하기 
+---------------------------------
+DB_UNIQUE_NAME 이름 사용하기 
+
+콘솔에서 
+sqlplus / as sysdba 또는 sqlplus "/as sysdba"
+
+SQL> SELECT NAME, DB_UNIQUE_NAME FROM V$DATABASE;
+
+NAME               DB_UNIQUE_NAME
+------------------ ------------------------------------------------------------
+ORCLHBE0           orclHBE00
+
+SQL> SELECT INSTANCE FROM V$THREAD;
+
+INSTANCE
+--------------------------------------------------------------------------------
+orclhbe00
+
+
+컬럼 정보 
+---------------------------------
+도서번호 : BNUM : VARCHAR2(20) PRIMARY KEY
+도서명 : BTITLE : VARCHAR2(100)
+저자 : BAUTH : VARCHAR2(50)
+ISBN : isbn : VARCHAR2(20) NOT NULL
+출판사 : BCOMP : VARCHAR2(100)
+단가 : BCOVER : VARCHAR2(100)
+수량 : BQTY : NUMBER : 수량(Quantity)
+가격 : BPRICE : NUMBER
+책표지 : BCOVER : VARCHAR2(100)
+
+삭제여부 : DELETEYN : VARCHAR2(20) NOT NULL
+입력일 : INSERTDATE : DATE
+수정일 : UPDATEDATE : DATE 
+
+TEST_BOOK 테이블 생성
+---------------------------------
+DROP TABLE TEST_BOOK;
+CREATE TABLE TEST_BOOK(
+	 BNUM VARCHAR2(20) PRIMARY KEY
+	,BTITLE VARCHAR2(100)
+    ,BAUTH VARCHAR2(50)
+	,ISBN VARCHAR2(20) NOT NULL
+	,BCOMP VARCHAR2(100)	
+    ,BPRICE NUMBER
+	,BQTY NUMBER	
+    ,BCOVER VARCHAR2(100)
+	,DELETEYN VARCHAR2(20) NOT NULL
+	,INSERTDATE DATE
+	,UPDATEDATE DATE 
+);
+
+
+
+
+인덱스 확인
+---------------------------------
+-- SYS_C0011177
+SELECT A.INDEX_NAME, A.COLUMN_NAME, A.TABLE_NAME
+FROM ALL_IND_COLUMNS A
+WHERE a.table_name IN ('TEST_BOOK');
+
+
+채번 확인
+---------------------------------
+SELECT  /*+ INDEX_DESC(A SYS_C0011177) */
+        NVL(MAX(A.BNUM), 0) + 1 MAXNUM 
+FROM TEST_BOOK A;
+
+
+클래스 설계 
+---------------------------------
+a.b.c.com.book.controller
+	BookController
+
+a.b.c.com.book.service
+	BookService
+		public ArrayList<BookVO> bookSelectAll(BookVO bvo);
+		public ArrayList<BookVO> bookSelect();	
+		public int bookInsert(BookVO bvo);
+		public int bookUpdate(BookVO bvo);
+		public int bookDelete(BookVO bvo);
+	BookServiceImpl
+
+a.b.c.com.book.dao
+	BookDAO
+	BookDAOImpl
+
+a.b.c.com.book.sql
+	BookSqlMap
+		public static String getBookSelectAllQuery(){ return null;}
+		public static String getBookSelectQuery(){ return null;}
+		public static String getBookInsertQuery(){ return null;}
+		public static String getBookUpdateQuery(){ return null;}
+		public static String getBookDeleteQuery(){ return null;}
+a.b.c.com.book.vo
+	BookVO
+		private String bnum;
+		private String btitle;
+		private String bauth;
+		private String isbn;
+		private String bcomp;
+		private String bcover;
+		private String bqty;
+		private String bprice;
+		private String deleteyn;
+		private String insertdate;
+		private String updatedate;
+
+a.b.c.com.common
+	ConnProperty
+	DateFormatUtil
+	GetBookMaxNum
+	GetChabun
+
+	
+화면
+---------------------------------
+book.html
+bookSelectAll.jsp
+bookSelect.jsp
+bookInsert.jsp
+bookUpdate.jsp
+bookDelete.jsp
+
+

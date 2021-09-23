@@ -1,0 +1,138 @@
+게시판 :: Model 2 + Web MVC 패턴  
+=======================================
+
+0. datasource : 데이터소스
+----------------------
+Oracle 11g 2 Release
+jdbc : ojdbc6.jar : Context/WebContent/WEB-INF/lib/ojdbc6.jar 
+
+sid : orclKOSMO00
+account : hbe00/hbe1234
+url : jdbc:oracle:thin:@localhost:1521:orclKOSMO00
+jdbc driver : oracle.jdbc.driver.OracleDriver
+
+오라클 SID : Service Name 확인하기 
+---------------------------------
+DB_UNIQUE_NAME 이름 사용하기 
+
+콘솔에서 
+sqlplus / as sysdba 또는 sqlplus "/as sysdba"
+
+SQL> SELECT NAME, DB_UNIQUE_NAME FROM V$DATABASE;
+
+NAME               DB_UNIQUE_NAME
+------------------ ------------------------------------------------------------
+ORCLHBE0           orclHBE00
+
+SQL> SELECT INSTANCE FROM V$THREAD;
+
+INSTANCE
+--------------------------------------------------------------------------------
+orclhbe00
+
+
+요구사항
+---------------
+BNUM  : 글번호 : BD0001 : BD 접두어 + XXXX 숫자 4개
+BSUBJECT : 글제목 : 길이 100
+BWRITER : 글쓴사람 : 50
+BPW : 글쓸때 사용한 패스워드 : 8자리 
+BMEMO : 글내용 : 2천자 
+BPHOTO : 이미지 : 이미지 파일 : 파일이름만 :  사이즈 10메가 
+
+DELETEYN : 삭제여부 : Y : N
+INSERTDATE : 등록일 : YYYY-MM-DD
+UPDATEDATE : 수정일 : YYYY-MM-DD
+
+테이블 설계
+테이블 이름 : MVC_BOARD
+
+
+테이블 생성
+CREATE TABLE MVC_BOARD(
+
+	 BNUM VARCHAR2(20) PRIMARY KEY 
+	,BSUBJECT VARCHAR2(100) NOT NULL
+	,BWRITER VARCHAR2(50) NOT NULL
+	,BPW VARCHAR2(8)
+	,BMEMO VARCHAR2(2000)
+	,BPHOTO VARCHAR2(100)
+	,DELETEYN VARCHAR2(1) NOT NULL
+	,INSERTDATE DATE
+	,UPDATEDATE DATE
+);
+
+인넥스 확인 
+-- SYS_C0011181
+SELECT A.INDEX_NAME, A.COLUMN_NAME, A.TABLE_NAME
+FROM ALL_IND_COLUMNS A
+WHERE a.table_name IN ('MVC_BOARD');
+
+채번 확인
+SELECT  /*+ INDEX_DESC(A SYS_C0011181) */
+        NVL(MAX(A.BNUM), 0) + 1 MAXNUM 
+FROM MVC_BOARD A;
+
+
+클래스 설계 
+a.b.c.com.common
+	ConnProperty
+	DateFormatUtil
+	CommonUtils
+	GetChabun
+	GetBoardMaxNum
+	FileUploadUtil
+	FileReName
+
+
+a.b.c.com.kosmo.board
+a.b.c.com.kosmo.board.controller
+	BoardController
+
+a.b.c.com.kosmo.board.service
+	BoardService
+		public ArrayList<BoardVO> boardSelectAll();
+		public ArrayList<BoardVO> boardSelect(BoardVO bvo);
+		public boolean boardInsert(BoardVO bvo);
+		public boolean boardUpdate(BoardVO bvo);
+		public boolean boardDelete(BoardVO bvo);
+	BoardServiceImpl
+
+a.b.c.com.kosmo.board.dao
+	BoardDAO
+	BoardDAOImpl
+
+a.b.c.com.kosmo.board.sql
+	BoardSqlMap
+		public static String getBoardSelectAllQuery(){ return null;}
+		public static String getBoardSelectQuery(){ return null;}
+		public static String getBoardInsertQuery(){ return null;}
+		public static String getBoardUpdateQuery(){ return null;}
+		public static String getBoardDeleteQuery(){ return null;}
+
+a.b.c.com.kosmo.board.vo
+	BoardVO
+		private String bnum;
+		private String bsubject;
+		private String bwriter;
+		private String bpw;
+		private String bmemo;
+		private String bphoto;
+		private String deleteyn;
+		private String insertdate;
+		private String updatedate;
+
+view : jsp 
+testKosmo/WebContent/kosmo/board/
+board.html
+boardSelectAll.jsp
+boardSelect.jsp
+boardInsert.jsp
+boardUpdate.jsp
+boardDelete.jsp
+
+
+a.b.c.com.kosmo.book
+a.b.c.com.kosmo.login
+a.b.c.com.kosmo.mem
+a.b.c.com.kosmo.notice
