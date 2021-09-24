@@ -9,10 +9,10 @@
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	
 	<script type="text/javascript">
-		alert("자바스크립트 블럭 시작 >>> : ");
+		// alert("자바스크립트 블럭 시작 >>> : ");
 		
 		$(document).ready(function(){
-			alert("제이쿼리 블럭 시작 >>> : ");
+			// alert("제이쿼리 블럭 시작 >>> : ");
 			// 회원번호
 			// 이름
 			
@@ -21,9 +21,10 @@
 				alert("idCheck >>> : Ajax 배워서 할 예정임 ㅋ");
 				console.log("idCheck >>> : ");
 				
-				let midVal = $("#mid").Val();
+				let midVal = $("#mid").val();
 				if(midVal == ''){
 					alert("중복 체크할 아이디를 입력하세요 >>> : ");
+					// 원하는 id 칸으로 넘어가게 해주는 함수 focus()
 					$("#mid").focus();
 					return false;
 				}
@@ -39,16 +40,18 @@
 				alert(pw + " : " + pw_r);
 				if(pw == pw_r){
 					alert("비밀번호가 같습니다.");
-					// pw_r.val('');
+					// pw_r.val(''); 비워주기
 					document.memForm.mpw_r.value = "";
+					// 원하는 id 칸으로 넘어가게 해주는 focus()
 					$("#mgender").focus();
 					return true;
 				}else{
 					alert("비밀번호가 다릅니다.");
-					// pw.val('');
-					// pw_r.val('');
+					// pw.val('');		비워주기
+					// pw_r.val('');	비워주기
 					document.memForm.mpw.value = "";
 					document.memForm.mpw_r.value = "";
+					// 비밀번호가 다르므로 다시 입력하기 위해 id=mpw로 이동
 					// pw.focus();
 					document.memForm.mpw.focus();
 					return false;
@@ -93,8 +96,8 @@
 					var aa = $("#memail1").val();
 					//alert("aa >>> : " + aa);
 					$("#memail1").val('');	// 값 초기화
-					$("#memail1").attr("readonly", faluse);	// 활성화
-				}else{
+					$("#memail1").attr("readonly", false);	// 활성화
+				}else{	// 직접입력이 아닐 경우
 					$("#memail1").val($(this).text());		// 선택값 입력
 					$("#memail1").attr("readonly", true);	// 비활성화
 				}
@@ -122,13 +125,86 @@
 				alert("btn click() 함수 진입 >>> : ");
 				console.log("btn click() 함수 진입 >>> : ");
 				
+				/*
+					form 태그에서 서블릿으로 전송되는 데이터
+					콘솔에서 또는 alert로 확인하기
+				*/
+				var i = 0;
+				console.log(++i + " : mnum >>> : " + document.memForm.mnum.value);
+				console.log(++i + " : mname >>> : " + document.memForm.mname.value);
+				console.log(++i + " : mid >>> : " + document.memForm.mid.value);
+				console.log(++i + " : mpw >>> : " + document.memForm.mpw.value);
+				console.log(++i + " : mgender >>> : " + document.memForm.mgender.value);
+				console.log(++i + " : mbirth >>> : " + document.memForm.mbirth.value);
+				console.log(++i + " : mhp >>> : " + document.memForm.mhp.value);
+				console.log(++i + " : mhp1 >>> : " + document.memForm.mhp1.value);
+				console.log(++i + " : mhp2 >>> : " + document.memForm.mhp2.value);
+				console.log(++i + " : mtel >>> : " + document.memForm.mtel.value);
+				console.log(++i + " : mtel1 >>> : "+ document.memForm.mtel1.value);
+				console.log(++i + " : mtel2 >>> : "	  + document.memForm.mtel2.value);
+				console.log(++i + " : memail >>> : " + document.memForm.memail.value);
+				console.log(++i + " : mzonecode >>> : " + document.memForm.mzonecode.value);
+				console.log(++i + " : mroadaddress >>> : " + document.memForm.mroadaddress.value
+									+ 	" "				   + document.getElementsByName(mroadaddressdetail).value);
+				console.log(++i + " : mgibunaddress >>> : " + document.memForm.mgibunaddress.value);
+				
+				// hobby 출력하기 도전 : 할 수 있다.
+//				var hobby = new Array();
+//				var hobby_value = hobby.values();
+//				console.log("hobby_value >>> : " + hobby_value);	// hobby_value >>> : [object Array Iterator]
+				/* 
+					Iterator 메소드에는 hasNext(), next(), remove()가 있다.
+					hasNext() : 읽어올 요소가 남아있는지 확인하는 메소드이다. 요소가 있으면 true, 없으면 false
+					next() : 다음 데이터를 반환한다.
+					remove() : next()로 읽어온 요소를 삭제한다.
+					출처: https://thefif19wlsvy.tistory.com/41 [FIF's 코딩팩토리]
+				*/
+//				console.log("document.memForm.mhobby[0].value >>> : " + document.memForm.mhobby[0].value);
+//				console.log("document.memForm.mhobby[1].value >>> : " + document.memForm.mhobby[1].value);
+//				console.log("document.memForm.mhobby[2].value >>> : " + document.memForm.mhobby[2].value);
+//				console.log("document.memForm.mhobby[3].value >>> : " + document.memForm.mhobby[3].value);
+//				console.log("document.memForm.mhobby[4].value >>> : " + document.memForm.mhobby[4].value);
+				// console.log("document.memForm.mhobby[5].value >>> : " + document.memForm.mhobby[5].value);		// Uncaught TypeError: Cannot read properties of undefined (reading 'value')
+//					for(var i=0; i < 4; i++){
+//						hobby += document.memForm.mhobby[i].value;
+//						console.log("for반복문 안의 hobby >>> : " + hobby);
+//					}
+//				console.log("typeof(hobby) >>> : " + typeof(hobby)); 	// typeof(hobby) >>> : object
+//				console.log("hobby.length >>> : " + hobby.length);		// hobby.length >>> : 0
+//					for (var a=0; a < hobby.length; a++){
+//						var mhobby = "";
+//						console.log("mhobby["+a+"] >>> : " + document.memForm.mhobby[a].value);
+						// mhobby = mhobby + document.memForm.mhobby[a].value;
+//					}
+				// console.log(++i + " : mhobby >>> : " + typeof(mhobby));
+				// console.log(++i + " : mhobby >>> : " + hobby);
+				var mhobby_check = document.getElementsByName('mhobby');
+				for (let i=0; i < mhobby_check.length; i++){
+					if (mhobby_check[i].checked == true){
+						console.log("mhobby_check["+i+"].value >>> : " + 
+									mhobby_check[i].value);
+						var mhobby = new Array();
+						mhobby[i] += mhobby_check[i].value;
+					}
+				}
+				console.log(++i + " : mhobby >>> " + mhobby);
+				console.log(++i + " : minfo >>> : " + document.memForm.minfo.value);
+				console.log(++i + " : mphoto >>> : " + document.memForm.mphoto.value);
+				
+				let v1 = $("#ISUD_TYPE").val();
+				alert("v1 >>> : " + v1);
 				$("#memForm")
 				.attr({
-					"action":"/testWeb/jsp/formTest.jsp",
-					"method":"GET",
-					"enctype":"application/x-www-form-urlencoded"
+					"action":"/testJso/member?ISUD_TYPE="+v1,
+					"method":"POST",
+					"enctype":"multipart/form-data"
 				})
 				.submit();
+			});
+			
+			// 전체정보 조회 : 목록으로 페이지 이동하기
+			$("#btnSA").click(function(){
+				location.href="/testJso/member?ISUD_TYPE=SALL";
 			});
 		});
 		
@@ -141,8 +217,8 @@
 		<table border="1" align="center">
 			<tr>
 				<td colspan="2" align="center">
-				KOSMO 93기
-				<img src="/testWeb/img/ase.gif" width="25" height="25" alt="image">
+				<font size="4" style="color:blue" >KOSMO 93기</font>
+				<img src="/testJso/img/img_mando/ase.gif" width="25" height="25" alt="image">
 				</td>
 			</tr>
 			
@@ -167,7 +243,8 @@
 			<tr>
 				<td>패스워드</td>
 				<td>
-					<input type="text" id="mpw" id="mpw" style="width:100px" /><br>
+					<!-- name="mpw" 가 없어서 컨트롤러(서블릿)에서 못 불러오고 null값이 데이터베이스로 입력돼서 오류 발생 -->
+					<input type="text" id="mpw" name="mpw" style="width:100px" /><br>
 					<input type="text" id="mpw_r" name="mpw_r" placeholder="비밀번호확인" style="width:100px" />
 					<input type="button" value="비밀번호확인" id="pwCheck" /><br>
 				</td>
@@ -176,8 +253,8 @@
 			<tr>
 				<td>성별</td>
 				<td>
-					<input type="radio" name="mgender" id="mgender" value="F" checked />여자
-					<input type="radio" name="mgender" id="mgender" value="M" />남자
+					<input type="radio" name="mgender" id="mgender" value="01" checked />여자
+					<input type="radio" name="mgender" id="mgender" value="02" />남자
 				</td>
 			</tr>
 			
@@ -185,16 +262,8 @@
 				<td>생년월일</td>
 				<td>
 					<input type="text" name="mbirth" id="mbirth" placeholder="년 (4자)" maxlength="4" style="width:50px" />
-					<select name="mbirth1" id="mbirth1">
-						<option value="01">01</option>
-						<option value="02">02</option>
-						<option value="03">03</option>		
-					</select>
-					<select name="mbirth2" id="mbirth2">
-						<option value="01">01</option>
-						<option value="02">02</option>
-						<option value="03">03</option>
-					</select>
+					<select name="mbirth1" id="mbirth1"></select>
+					<select name="mbirth2" id="mbirth2"></select>
 				</td>
 			</tr>
 			
@@ -255,12 +324,11 @@
 			<tr>
 				<td>취미</td>
 				<td>
-					<input type="checkbox" name="mhobby" value="mh1" />알고리즘
-					<input type="checkbox" name="mhobby" value="mh2" />코딩
-					<input type="checkbox" name="mhobby" value="mh3" />분석설계<br>
-					<input type="checkbox" name="mhobby" value="mh4" />데이터베이스
-					<input type="checkbox" name="mhobby" value="mh5" />스크립트
-					
+					<input type="checkbox" name="mhobby" value="01" />알고리즘
+					<input type="checkbox" name="mhobby" value="02" />코딩
+					<input type="checkbox" name="mhobby" value="03" />분석설계<br>
+					<input type="checkbox" name="mhobby" value="04" />데이터베이스
+					<input type="checkbox" name="mhobby" value="05" />스크립트
 				</td>
 			</tr>
 			
@@ -281,9 +349,10 @@
 			
 			<tr>
 				<td colspan="2">
-					<input type="hidden" name="isud_type" id="isud_type" value="I" />
-					<input type="button" id="btn" value="보내기"></button>
-					<input type="reset">다시</button>
+					<input type="hidden" name="ISUD_TYPE" id="ISUD_TYPE" value="I" />
+					<button type="button" id="btn">보내기</button>
+					<button type="button" id="btnSA">목록</button>
+					<button type="reset">다시</button>
 				</td>
 			</tr>
 			

@@ -1,0 +1,66 @@
+로그인 :: MODEL 2 + Web MVC 패턴
+=========================================
+
+0. datasource : 데이터소스
+------------------------------------
+데이터베이스 : Oracle 11g 2 Release
+jdbc : ojdbc6.jar : Context/WebContent/WEB-INF/lib/ojdbc6.jar
+
+sid : orclKOSMO00
+account : jso00/jso1234
+url : jdbc:orcl:thin:@localhost:1521:orclKOSMO00
+jdbc driver: oracle.jdbc.driver.OracleDriver
+
+cmd 창에서
+sqlplus /as sysdba, sqlplus "/as sysdba"
+SELECT NAME, DB_UNIQUE_NAME FROM V$DATABASE;
+
+
+1. 요구사항
+로그인 하기
+MID
+MPW
+
+카운트
+0 : 로그인 실패
+1 : 로그인 성공
+1 이상 : 로그인 실패
+
+중복 로그인 허용 : 협의대상
+싱글 사인 온
+
+하나의 브라우저에서 하나의 서버에서 로그인
+다중 브라우저 서버가 여러대에서 로그인 처리
+
+로그인 쿼리
+SELECT COUNT(A.MNUM) NCNT
+FROM MVC_MEMBER A
+WHERE	A.DELETEYN = 'Y'
+AND 	A.MID = ?
+AND		A.MPW = ?;
+
+
+2. 클래스 설계
+a.b.c.com.jso.login
+
+a.b.c.com.jso.login.controller
+	LoginController
+a.b.c.com.jso.login.dao
+	LoginDAO
+		public int loginCheckCnt(MemberVO mvo);
+	LoginDAOImpl
+a.b.c.com.jso.login.service
+	LoginService
+		public int loginCheckCnt(MemberVO mvo);
+	LoginServiceImpl
+a.b.c.com.jso.login.sql
+	LoginSqlMap
+		public static String getloginCheckQuery() { return null; }
+a.b.c.com.jso.mem.vo
+	MemberVO		
+
+view : jsp
+/testJso/WebContent/jso/login/
+login.html
+login.jsp
+logout.jsp

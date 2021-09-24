@@ -1,0 +1,143 @@
+회원가입 :: Model 2 + Web MVC 패턴
+==============================
+
+0. datasource : 데이터소스
+------------------------------
+Oracle 11g 2 Release
+jdbc : ojdbc6.jar : Context/WebContent/WEB-INF/lib/ojdbc6.jar
+
+sid : orclKOSMO00
+account : jso00/jso1234
+url : jdbc:orcl:thin:@localhost:1521:orclKOSMO00
+jdbc driver : oracle.jdbc.driver.OracleDriver
+
+오라클 SID : Service Name 확인하기
+--------------------------------
+
+요구사항 (19개)
+---------------------------------
+ MNUM			회원번호 : M + YYYYMMDD + 0001
+,MNAME			이름 :
+,MID			아이디 : 영문 : 8자
+,MPW			패스워드 : 8자
+,MGENDER		성별 : 여자 : 01, 남자 : 02
+,MBIRTH			생년월일 : YYYY + MM + DD : YYYYMMDD
+,MHP			핸드폰 : 010 + XXXX + XXXX : 010 - XXXX - XXXX
+,MTEL			전화번호 : 02 + XXXX + XXXX : 02 - XXXX - XXXX
+,MEMAIL			이메일 : XXX@XXX.COM
+,MZONECODE		도로명 주소 우편번호 : 5자리, 지번주소 우편번호 : 6자리
+,MROADADDRESS		도로명 주소 + 도로명 주소 상세주소
+,MGIBUNADDRESS		지번 주소
+,MHOBBY			취미 : 알고리즘 : 01, 코딩 : 02, 분석설계 : 03, 데이터베이스 : 04, 스크립트 : 05
+,MINFO			소개글 : 글자수 제한 300자
+,MPHOTO		사진 : 파일 이름만 : 사진 파일을 서버 폴더에 저장
+,MADMIN			비관리자 : 00, 관리자 : 01, 02, ....
+,DELETEYN		회원 : Y, 비회원 : N
+,INSERTDATE		YYYY-MM-DD
+,UPDATEDATE		YYYY-MM-DD
+
+회원 테이블 (19개 컬럼)
+-------------------------------------
+CREATE TABLE MVC_MEMBER (
+ MNUM			VARCHAR2(20) PRIMARY KEY
+,MNAME			VARCHAR2(20)
+,MID			VARCHAR2(20) NOT NULL
+,MPW			VARCHAR2(300) NOT NULL
+,MGENDER		VARCHAR2(2)
+,MBIRTH			VARCHAR2(10)
+,MHP			VARCHAR2(16)
+,MTEL			VARCHAR2(16)
+,MEMAIL			VARCHAR2(200) NOT NULL
+,MZONECODE		VARCHAR2(10)
+,MROADADDRESS		VARCHAR2(300)
+,MGIBUNADDRESS		VARCHAR2(300)
+,MHOBBY			VARCHAR2(200)
+,MINFO			VARCHAR2(300)
+,MPHOTO		VARCHAR2(200)
+,MADMIN			VARCHAR2(2) NOT NULL
+,DELETEYN		VARCHAR2(1) NOT NULL
+,INSERTDATE		DATE
+,UPDATEDATE 		DATE
+);
+
+인덱스 확인하기
+--------------------------------
+SELECT A.INDEX_NAME, A.COLUMN_NAME, A.TABLE_NAME
+FROM ALL_IND_COLUMNS A
+WHERE a.table_name IN ('MVC_MEMBER');
+
+채번 확인하기
+--------------------------------
+SELECT /*+ A SYS_C0011464 */
+NVL(MAX(SUBSTR(A.MNUM, -4)) ,0) + 1 MAXNUM 
+FROM MVC_MEMBER A;
+
+클래스 설계 (MODEL, CONTROLLER)
+--------------------------------
+a.b.c.com.common
+	CommonProperty
+	GetChabun
+	GetMemberMaxNum
+
+a.b.c.com.jso.mem.controller
+	MemberController
+		protected void doGet(HttpServletRequest request, HttpServletResponse response) {}
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) {}
+a.b.c.com.jso.mem.service
+	MemberService
+		public ArrayList<MemberVO> memberSelectAll();
+		public ArrayList<MemberVO> memberSelect(MemberVO mvo);
+		public boolean memberInsert(MemberVO mvo);
+		public boolean memberUpdate(MemberVO mvo);
+		public boolean memberDelete(MemberVO mvo);
+	MemberServiceImpl
+a.b.c.com.jso.mem.dao
+	MemberDAO
+		public ArrayList<MemberVO> memberSelectAll();
+		public ArrayList<MemberVO> memberSelect(MemberVO mvo);
+		public boolean memberInsert(MemberVO mvo);
+		public boolean memberUpdate(MemberVO mvo);
+		public boolean memberDelete(MemberVO mvo);
+	MemberDAOImpl
+a.b.c.com.jso.mem.sql
+	MemberSqlMap (abstract)
+		public static String getMemberChabunQuery(){ return null; }
+		public static String getMemberSelectAllQuery(){ return null; }
+		public static String getMemberSelectQuery() { return null; }
+		public static String getMemberInsertQuery() { return null; }
+		public static String getMemberUpdateQuery() { return null; }
+		public static String getMemberDeleteQuery() { return null; }
+a.b.c.com.jso.mem.vo
+	MemberVO
+		String mnum;	// 1
+		String mname;	// 2
+		String mid;	// 3
+		String mpw;	// 4
+		String mgender;	// 5
+		String mbirth;	// 6
+		String mhp;	// 7
+		String mtel;	// 8
+		String memail;	// 9
+		String mzonecode;	// 10
+		String mroadaddress;	// 11
+		String mgibunaddress;	// 12
+		String mhobby;		// 13
+		String minfo;		// 14
+		String mphoto;		// 15
+		String madmin;		// 16
+		String deleteyn;		// 17
+		String insertdate;		// 18
+		String updatedate;		// 19
+
+		public MemberVO() {}
+		public MemberVO(String mnum, String mname, ...) {}
+
+화면 (VIEW) : jsp
+--------------------------------
+/testJso/WebContent/jso/mem/
+mem.html
+memSelectAll.jsp
+memSelect.jsp
+memInsert.jsp
+memUpdate.jsp
+memDelete.jsp
