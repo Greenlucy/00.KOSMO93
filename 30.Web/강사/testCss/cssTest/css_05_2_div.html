@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>BOX Sizing</title>
+		<!--  
+		    1. 각각 다 지정해 주는 방법, 순서는 상우하좌, 시계방향
+				margin: [margin-top] [margin-right] [margin-bottom] [margin-left];			
+			2. 상하의 마진이 같고, 좌우 마진이 같을 때
+				margin: [margin-top=margin-bottom] [margin-left = margin-right];
+			3. 좌우는 같은데, 상하가 다를 때
+				margin: [margin-top] [margin-left = margin-right] [margin-bottom];
+			4. 상우하좌 동일하게 
+				margin: [margin-top = margin-bottom = margin-left = margin-right];
+			5. 0 상하 여백을 주지않음, auto 좌우 여백을 자동으로
+				margin:0 auto;
+			
+			float : 정렬을 하기 위한 속성, 이미지난 객체를 오른쪽 왼쪽에 띄움
+			none : 띄우지 않음(기본값)
+			left : 왼쪽에 띄움
+			right : 오른쪽에 띄움
+			
+		-->
+		<style type="text/css">
+			#div1 { 
+					width:300px;
+			      	height:300px;
+			      	background:lightblue;
+			      	border: 20px solid lightgreen;
+			      	float:left;
+			      	margin-top:150px;
+			      	margin-right:50px;
+			      	margin-bottom:50px;
+			      	margin-left:50px;
+			      	/* margin:100px 50px 50px 50px; */
+			      	font-size:60px;
+				}
+			#div2 { 
+					width:300px;
+			      	height:300px;
+			      	background:lightblue;
+			      	border: 20px solid lightgreen;
+			      	float:left;
+			      	margin:100px 50px;
+			      	font-size:60px;
+				}	
+			#div3 { 
+					width:300px;
+			      	height:300px;
+			      	background:lightblue;
+			      	border: 20px solid lightgreen;
+			      	float:left;
+			      	margin:50px 5px 25px;
+			      	/* 50px top, 5px left right, 25px bottom*/
+			      	font-size:60px;
+				}
+			#div4 { 
+					width:300px;
+			      	height:300px;
+			      	background:lightblue;
+			      	border: 20px solid lightgreen;
+			      	float:left;
+			      	margin:10px;
+			      	font-size:60px;
+				}		
+			#div5 { 
+					width:300px;
+			      	height:300px;
+			      	background:lightblue;
+			      	border: 20px solid lightgreen;
+			      	float:left;
+			      	margin:0 auto;
+			      	font-size:60px;				
+		</style>		
+	</head>
+	<body>
+		<div id="div1">BOX1</div>
+		<div id="div2">BOX2</div>
+		<div id="div3">BOX3</div>
+		<div id="div4">BOX4</div>
+		<div id="div5">BOX5</div>
+	</body>
+</html>

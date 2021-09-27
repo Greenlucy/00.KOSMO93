@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>BOX Sizing</title>
+		<!-- 
+			box-sizing은 박스의 크기를 어떤 것을 기준으로 계산할지를 정하는 속성입니다.
+			기본값 : content-box
+			상속 : No
+			애니메이션 : No
+			버전 : CSS Level 3
+		
+			box-sizing: content-box | border-box | initial | inherit			
+			content-box : 콘텐트 영역을 기준으로 크기를 정합니다.
+			border-box : 테두리를 기준으로 크기를 정합니다.
+			initial : 기본값으로 설정합니다.
+			inherit : 부모 요소의 속성값을 상속받습니다.
+		
+			둘 다
+			width 값을 500px로 정하였으나, box-sizing 속성값에 따라 크기기 달라집니다. 
+			
+			첫번째 박스는 콘텐트 영역이 500px이고 테두리를 포함한 크기는 580px입니다.
+			두번째 박스는 테두리를 포함한 크기가 500px이고, 콘텐트 영역의 크기는 420px입니다.
+		 -->
+		<style type="text/css">
+			body {
+		        margin: 0px;
+		    }
+		    div {
+		        margin: 20px;
+		        padding: 20px;
+		        border: 20px solid #dddddd;
+		        width: 500px;
+		    }
+		    .cb {
+		        box-sizing: content-box;
+		    }
+		    .bb {
+		        box-sizing: border-box;
+		    }
+
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div class="cb">
+      		<p>content-box</p>
+    	</div>
+    	<div class="bb">
+      		<p>border-box</p>
+    	</div>
+	</body>
+</html>

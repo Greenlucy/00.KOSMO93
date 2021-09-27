@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>박스모델</title>
+<style type="text/css">
+	body { background: ghostwhite; }
+	span { background: deepskyblue;}
+	div.box{
+		background: yellow;
+		border-style: solid;
+		border-color: peru;
+		border-width: 30px;
+		/*
+			콘텐츠(width, height) : HTML 태그의 텍스트나 이미지 부분
+			패딩(padding) : 콘텐츠를 직접 둘러 싸고 있는 내부 여백
+			테두리(border) : 패딩 외부의 외곽선으로 직선이나 점선 혹은 이미지로 입힐 수 있다.
+			여백 (margin): 박스의 맨 바깥 영역, 테두리 바깥 공간으로 아래위 인접한 태그와 만나는 공간
+		*/		
+		width: 250px;
+		height: 100px;
+		margin: 40px;		
+		padding: 20px;
+	}
+	div.box1{
+		background: red;
+		border-style: solid;
+		border-color: blue;
+		border-width: 5px;
+		width: 250px;
+		height: 100px;
+		margin: 5px;		
+		padding: 5px;		
+	}
+</style>
+</head>
+<body>
+<div class="box">
+	<span>
+		div(Division) box<br>
+		div는 웹페이지에서 논리적 구분을 정의하는 태그이다.
+	</span>	
+</div>
+<div class="box1">
+	<span>
+		top right bottom left
+	</span>	
+</div>
+</body>
+</html>

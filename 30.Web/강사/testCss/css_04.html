@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>External CSS</title>
+<!-- 외부 *.css 불러오기 -->
+<link rel="stylesheet" type="text/css" href="/testCss/css/externalCss.css">	
+<style type="text/css">		
+	/* id Selector(선택자) : 엘리먼트 하나에만 적용) */
+	#p01 {
+		color: yellow;
+		border: 1px solid powderblue;
+	}	
+	#p02 {
+		color: red;
+		border: 10px solid red;
+	}
+	/* class Selector(선택자) : 엘리먼트 여러개 적용 */	
+	.error {
+		height: 100px;
+		width: 500px;
+		color: red;
+		border: 10px solid black;
+		text-align:center;
+		font-family:courier;
+		font-size:300%;
+	}	
+</style>
+</head>
+<body>
+	<h1>This is a heading</h1>
+	<p>This is a paragraph.</p>	
+	<p class="error">I am different.</p>
+	<p id="p02">This is a paragraph.</p>
+	<p class="error">I am different too.</p>	
+	<p id="p01">I am different.</p>		
+</body>
+</html>

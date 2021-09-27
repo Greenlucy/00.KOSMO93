@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>HTML CSS</title>
+		
+		<style type="text/css">
+			body {background-color: yellow;}
+			h1   {color: blue;}
+			p    {color: red;}
+		
+		</style>
+	</head>
+	<body>
+		<!--  Inline CSS -->
+		<h1 style="color:blue;">This is a Blue Heading</h1> 
+		<!-- Internal CSS 적용 됨 -->
+		<h1>This is a heading</h1>
+		<h1>나는 문서 제목</h1>
+		<p>This is a paragraph.</p>
+		<p>나는 문단 태그</p>
+		
+		<h1>HTML CSS</h1>
+		<hr>
+		CSS : Cascading Style Sheets<br>
+		HTML와 같이 CSS는 실제로 프로그래밍 언어 도 마크업(markup) 언어도 아닌 <br>
+		Style sheet 언어이다. <br>
+		HTML 문서에 있는 요소들에 선택적으로 스타일을 적용할 수 있다.<br>
+		HTML 페이지에서 모든 문단 요소들을 선택하고 그 문단 요소들 안에 있는 <br>
+		텍스트를 빨갛게 바꾸려면 다음과 같이 CSS를 작성하면 된다.<br>
+		p{ color: red; }
+		
+		<h1>인라인 스타일(Inline Style) :</h1>
+		<hr>
+			한 줄짜리 짤막한 스타일 태그 안에 직접 지정하여 사용. HTML과 섞어서 사용<br>
+			&lt;p style='background-color:#00f; color:ff0'&gt;즐거운 하루!</p><br>
+			
+		<h1>내부 스타일 시트(Internal Style Sheet) :</h1>
+		<hr>
+			HTML 파일 안에 별도 영역으로 스타일 정의<br>
+			일반적으로 &lt;head>...&lt;/head> 안에 style을 사용<br>
+			HTML 문서 하나가 고유한 CSS 내용을 가진다고 생각될 때 사용<br>
+			&lt;style&gt; 태그를 사용하여 지정<br>
+			HTML 페이지 안에 위치하므로 영향을 주는 범위는 페이지 안의 전체 태그<br>
+			다른 HTML 페이지에서 똑같은 내용으로 사용하고 싶다면 복사해서 사용<br>
+			 &lt;head&gt;<br>
+				&lt;style type='text/css'&gt;<br>
+					h1{font-family:'굴림체'<br>
+					font-size:30px; }<br>
+				&lt;/style&gt;<br>
+		     &lt;/head&gt;<br>
+		<h1>외부 스타일 시트(External Style Sheet) : </h1>
+		<hr>
+			스타일 내용을 별도의 페이지로 만들어서 사용<br>
+			여러번 복사해야 하는 내부 스타일 시트의 단점 보완<br>
+			확장자는 .css<br>
+			하나의 스타일로 여러 개의 HTML 페이지에 적용하여 사용하고자 할 때 편리<br>
+			하나의 스타일 페이지만 바꾸면 연결된 전체 HTML 페이지가 바뀌므로 유지, 
+			보수에 편리<br>
+			각각의 HTML 페이지 문서는 &lt;head&gt;...&lt;/head&gt; 
+			안에 &lt;link&gt; 태그를 사용하여 스타일 페이지와 연결<br>
+		   &lt;head&gt;<br>
+				&lt;link rel='stylesheet' type='text/css' 
+				     href='외부스타일시트명.css'><br>
+		   &lt;/head&gt;<br>
+		
+		
+		<h1>Selector(선택자)</h1>
+		<hr> 
+		id attribute 선택자 : 엘리먼트 하나에만 적용<br>
+		class attribute 선택자 : 엘리먼트 여러개 적용<br>
+		
+		<h1>CSS Attributes</h1>
+		style attribute : 엘리먼트에서 인라인 스타일 적용<br>
+		&lt;style&gt; : internal CSS 적용<br>
+		&lt;link&gt; : external CSS file 불러오기<br>
+		&lt;head&gt; : &lt;style&gt; , &lt;link&gt; elements 사용<br>
+		color property : 텍스트 컬러 적용<br>
+		font-family property : text fonts 적용<br>
+		font-size property : text sizes 적용<br>
+		border property : borders에 적용<br>
+		padding property : 보더와 텍스트 사이 padding(스페이스) 적용<br>
+		margin property :보더와 밖같쪽 margin(스페이스) 적용<br>
+		
+		<h1>HTML 문자 엔티티</h1>
+		&lt; : 오른쪽이 열린 꺽쇠 : 태그를 여는 꺽쇠<br>
+		&gt; : 왼쪽이 열린 꺽쇠 : 태그를 닫는 꺽쇠<br>
+			  &lt;head&gt;&lt;title&gt;타이틀
+			  &lt;/title&gt;&lt;/head&gt;<br>
+		&nbsp; : 공백문자 한칸 의미, Space 한칸<br>
+		&amp; : 앰퍼샌드(Ampersand) 문자<br>			
+		&quot; : 쌍따옴표 하나<br>
+				 난 &quot;쌍따옴표&quot; 입니다.<br>
+		&copy; : 카피라이트 기호
+		
+		<h1>HTML Formatting</h1>
+		<b>This text is bold</b><br>
+		<strong>This text is strong</strong><br> 
+		<i>This text is italic</i><br> 
+		<em>This text is emphasized : 기울여서 구문 강조</em><br> 
+		<h2>HTML <small>Small</small> Formatting</h2><br>
+		<h2>HTML <mark>Marked</mark> Formatting</h2><br>
+		<p>My favorite color is <del>blue</del> red.</p><br>
+		<p>My favorite <ins>color</ins> is red.</p><br>
+		<p>This is <sub>subscripted : 아래첨자 </sub> text.</p><br>
+		<p>This is <sup>superscripted : 윗첨자</sup> text.</p><br>
+	
+	</body>
+</html>

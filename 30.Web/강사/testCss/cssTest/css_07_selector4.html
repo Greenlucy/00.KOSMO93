@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>jQuery Selector</title>
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				
+				$(".sp").on("click", function(){
+					$("span").siblings().css({ "color":"red"});
+				});
+				
+				$(".abc").on("click", function(){
+					$("ul").find(".abc").css({ "color":"blue"});
+				});
+				
+			});
+		</script>
+		<style type="text/css">			
+			
+		</style>
+	</head>
+	<body>	
+		.siblings() 형제 요소 선택하기, find() 특정 요소 찾아서 선택하기 
+		<hr>
+		<ul>
+			<li><span class="sp">test1</span><em>....siblings1</em></li>
+			<li><span class="sp">test2</span><em class="abc">....siblings2</em></li>
+			<li><span class="sp">test3</span><em>....siblings3</em></li>
+		</ul>
+	</body>
+</html>

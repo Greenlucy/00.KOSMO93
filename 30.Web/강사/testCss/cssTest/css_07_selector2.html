@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>jQuery Selector</title>
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				
+				$(".btn1").on("click", function(){
+					$(".frame img").attr(
+										  {	
+											"src":"/testCss/img/img_kakaofriends/04 (2).png", 											
+											"alt":"카카오프렌즈1"
+										  }
+										);
+					}
+				});
+				
+				$(".btn2").on("click", function(){
+					$(".frame img").attr(
+											{
+												"src":"/testCss/img/img_kakaofriends/1__(3).png", 
+												"alt":"카카오프렌즈2"
+											}
+										);
+											
+				});
+				
+			});
+		</script>
+		<style type="text/css">			
+			div { 
+				width: 320px;
+				margin: 10px auto;		
+			}
+		
+			.frame {
+				width: 320px;
+				border: 2px solid red; 
+				margin: 10px auto;				
+			}
+			.frame img { width: 100% }
+		</style>
+	</head>
+	<body>
+		<div>		
+			<button class="btn1">이미지 속성 변경하기 1</button>
+			<button class="btn2">이미지 속성 변경하기 2</button>
+		</div>
+		
+		<p class="frame"><img src="/testCss/img/img_kakaofriends/04 (2).png" alt="카카오프렌즈1"></p>
+	</body>
+</html>

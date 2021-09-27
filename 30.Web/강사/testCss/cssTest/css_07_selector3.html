@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>jQuery Selector</title>
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				
+				$("ul li").on("click", function(){
+					$("li").children("span").css({ "color":"red"});
+				});
+				
+				$(".txt1").on("click", function(){
+					$(".txt1").parent().css({ "color":"red"});
+				});
+				
+				$(".txt2").on("click", function(){
+					$(".txt2").parent().css({ "color":"blue"});
+				});
+				
+				$(".txt3").on("click", function(){
+					$(".txt3").parents().css({ "color":"cyan"});
+				});
+			
+			});
+		</script>
+		<style type="text/css">			
+			
+		</style>
+	</head>
+	<body>
+		.children() 자식 요소 선택하기
+		<hr>
+		<ul>
+			<li>
+				<span>list1</span>
+			</li>
+			<li>list2</li>
+			<li><span>list3</span></li>
+			<li>list4</li>
+		</ul>
+		<br>
+		.parent() 부모 요소 선택하기
+		<hr>
+		<p>
+			<span class="txt1">
+				text1
+			</span>
+		</p>
+		<p>
+			<span class="txt2">
+				text2
+			</span>
+		</p>
+		<br>
+		.parents() 부모 요소 선택하기
+		<hr>
+		<p><span class="txt3">text3</span></p>		
+		<br>
+		
+	</body>
+</html>

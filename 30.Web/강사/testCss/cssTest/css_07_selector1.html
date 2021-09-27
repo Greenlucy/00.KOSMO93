@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>jQuery Selector</title>
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				
+				$("ul li").css({ "color":"blue" });
+				
+				$(".red").css({"color":"red"});
+				
+				$(".box2").css(
+								{
+									"width":"300px", 
+									"height":"300px"				
+								}
+							  );
+			});
+		</script>
+		<style type="text/css">
+			ul li {
+				font-size:20px;
+				color:#666; /* 회색 */
+				margin:20px; 
+			}
+			
+			div {
+				width:200px;
+				height:200px;
+				float:left;
+				margin:50px;
+			}
+			
+			.box1 { background:blue; }
+			.box2 { background:red; }
+			
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>리스트1</li>
+			<li>리스트2</li>
+			<li class="red">리스트3</li>
+			<li>리스트3</li>
+		</ul>
+		<hr>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div style="background-color:black;color:white;padding:20px;">
+			<h2>KOSMOP</h2>
+			<p>자바 93기</p>
+			<p>응용SW활용 빅데이터구축 전무가양성과정</p>
+		</div> 		
+	</body>
+</html>
