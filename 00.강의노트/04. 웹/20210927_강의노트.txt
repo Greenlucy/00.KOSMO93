@@ -1,0 +1,293 @@
+2021-09-27
+--------------------------
+
+6개월(5개월 반정도) 동안 공부하는 목표 ? 취업 
+
+무엇으로, 어디에 취업 할 꺼냐 ?????
+
+IT(정보기술, Information Technology) 
+SI(System Integration) 
+소프트 엔지니어 
+Web Developer : 웹 프로그래밍을 하는 능력을 가진 사람 
+웹 프로그램 :	웹 브라우저를 통해서 구동되는 프로그램 
+			웹 페이지에서 데이터를 이동 시키는 프로그램 
+			##############################
+			9월 달의 절반 이상을 
+			웹 페이지에서 데이터 이동 연습을 한 것이다. 
+			게시판 4개, 로그인 1개, 
+			엑셀로 데이터 이동 드래프트 하는 것 
+			##############################
+
+html 
+	DOM Tree
+
+javaScipt
+	BOM 객체 : 윈도우, 네비게이터, 히스토리, 로케이션, 스크린
+	DOM 객체 : 도큐먼트
+
+jsp 페이지 스코프 4가지 객체 
+	page
+	request <-- 현재까지 이것만 사용함 
+	session
+	application
+
+html, javaScript & jsp, Servlet 페이지 이동
+	a 링크
+	location.href
+	form 태그
+	액션 포워드
+	액션 인쿨르드
+	정적 인쿨르드
+	리퀘스트디스패쳐
+	sendRedirect
+
+jsp, Servlet 에서 요청한 데이터를 받는 방법
+	
+	파라미터(parameter)
+		java.lang.String getParameter(java.lang.String name)		
+		java.lang.String[] getParameterValues(java.lang.String name)		
+		java.util.Enumeration<java.lang.String> getParameterNames()		
+		java.util.Enumeration<java.lang.String>	getHeaderNames()
+	
+	속성(attribute) : 초기화, 리턴, 삭제 		
+		void setAttribute(java.lang.String name, java.lang.Object o)		
+		java.lang.Object getAttribute(java.lang.String name)	
+		void removeAttribute(java.lang.String name)
+		java.util.Enumeration<java.lang.String> getAttributeNames()
+
+
+-----------------------------------------------
+
+페이지 이동
+Model II + Web MVC + Dao Panttern + JDBC
+
+CSS
+XML
+Json
+Mail
+form 태그 : 꼭 리프레쉬를 해야 한다. --> 이 것을 개선한 Ajax
+Open API
+Session Tracking : Cookie, session
+
+페이지 이동 
+Spring Framework + Mybatis Framework + JDBC
+
+
+BIGDATA
+Python : 크롤링, 스크래핑, 시각화, 객체디비
+OpenCV : 영상 
+react, vue + node.js 
+공공기관 Open API
+민간기업 Open API 
+안드로이드 
+
+#################################################
+HTML : 하이퍼텍스트 마크업 랭귀지 : 태그 
+<html></html>
+DOM Tree  구성 되어 있다 
+
+JavaScript, jQuery 
+태그에 이벤트를 주었다
+
+CSS : Cascading Style Sheet 
+: '위에서 아래로 흐르는 스타일 시트'
+: 중복선언을 허용한다. 
+
+CSS Selector : Css 셀렉터로 태그를 선택한다. 
+id, class, 요소이름, 상속
+
+
+CSS 셀렉터 우선순위 
+-------------------------------------------
+1. 속성값 뒤에 !important 를 붙인 속성 
+2. HTML에서 style을 직접 지정한 속성 : 태그에 inline으로 style 속성 지정  : 1000점		
+	<div style="background-color: green" id="id-style" class="class-style">  
+3. #id 로 지정한 속성  : 100점	: 한개만 적용한다. 	
+	#id-style-2 {
+			background-color: skyblue;
+			margin: 50px;
+			padding: 50px;
+		}	
+	<div id="id-style-2">
+4. .class 및 pseude(추상) 클래스(:hover 같은 것)로 지정한 속성 : 10점 : 한번에 여러개 적용할 때 
+	.ul-class {
+				background-color: salmon;
+				color: mediumpurple;
+			}	
+	<ul class="ul-class">
+5. 요소이름으로 지정한 속성 : 1점 	
+	ul {
+			color: black;
+		}	
+	<ul></ul>
+6. 상속된 속성
+단: 같은 우선순위에 있는 경우, 나중에 선언된 것이 우선 적용된다. 
+
+CSS Selector
+===============================
+jQuery 선택자(Selector) 
+--------------------------
+$(selector) or jQuery(selector) 
+: jQuery()보다 표현상 간단한 $()를 더 많이 사용.
+---------------------------------------------
+
+$(this) : 자기 자신을 나타냄.
+$("*") : All Selector  ; 모든 엘리먼트 선택
+$("#id") : ID Selector : 유니크 하개 엘리먼트 하나만 적용 
+$(".class name") : Class Selector : 엘리먼트 여러개 할 때 
+$("element name") : Element Selector, 특정 요소 모두 가져오기
+	ex) $('div') : 문서안의 모든 div엘리먼트를 선택
+
+	$("element#id") : 특정 엘리먼트 중 해당 id 를 가진 엘리먼트 선택
+	$("element.class") : 특정 엘리먼트 중에 클래스명이 class 인 엘리먼트를 선택
+
+// 엘리먼트는 계층구조를 가지고 있으며 배열 구조로 되어있다.
+// 엘리먼트는 부모, 자식, 형제 관계를 가지고 있다. 
+// 자기자신 엘리먼트를 중심으로 부모, 형제, 자식 관계를 갔는다. 
+$("s1, s2, s3, ..") : Multiple Selector, 다중 선택자 : 다중 요소를 가져올때는 콤마(,) 사용 구분
+
+
+$(":input") : 입력(Input)요소 가져오기 ; 모든 입력 관련되 요소에 대한 선택 기능.
+$(":contains()")  :  특정 요소의 내용에 포함된 요소 가져오기 
+	//myContainer 단어가 포함된 div요소들 가져오기, 대소문자 구분.
+	ex) $('div:contains("myContainer")');  
+$(":even) 짝수번째 요소 가져오기
+	//인덱스 시작은 0부터 ; 짝수번째 글자색을 그린으로.
+	ex) $('ul li:even').css("color","green"); 
+$(":odd") 홀수번째 요소 가져오기
+	//인덱스 시작은 0부터 ; 홀수번째 글자색을 블루로.
+	ex) $('ul li:odd').css("color","blue"); 
+$("요소:first-child") : 특정요소의 첫번째 자식 요소 반환
+$("요소:last-child") : 특정요소의 마지막 자식 요소 반환
+$("요소:only-child") : 특정요소를 기준으로 자식요소가 딱 하나인 요소
+$("요소:nth-child(n)") : 부모 요소를 기준으로 n번째 위치한 요소
+$("요소:empty") : 부모 요소를 기준으로 자식을 갖지 않는 요소.
+$("요소:not(Selector)") : 다른 선택자를 제외한 요소
+
+CSS3 스타일 시트 구성 
+=================================
+프로퍼티:값; 프로퍼티:값;
+
+/* span 태그 스타일 선언 */
+span { color: blue; font-size: 20px;} 
+
+span : 셀렉터 :  span 태그 이름(요소 이름)을 셀렉터로 사용 하는 중 
+{    : 블럭 시작 
+	
+	color : 프로퍼티
+	:    : 콜론 : 구분자 
+	blue : 값
+	;    : 세미콜론
+
+	font-size : 프로퍼티
+	:    : 콜론 : 구분자 
+	20px : 값 
+	:    : 세미콜론
+}    : 블럭 끝 
+/* ... */  : 주석 
+
+##############################
+pt vs px
+--------------------------
+
+dpi : dots per inch : 가로세로 1인치 속에 찍힐 도트의 숫자 
+	가로*세로 1인치에 72pixel이 들어 있으며 72dpi : 웹 표준 : 해상도(Resolutin)
+	가로*세로 1인치에 300pixel 들어 있으며 300dpi : 출판물, 인쇄용 
+
+해상도 : 800x600, 1024x768, 1920x1080
+
+모니터 : 15", 19", 23"
+
+
+폰트 크기 
+==================================
+pt : point(포인트) : inch 단위 : 절대적인 값
+	1pt : 72분의 1인치(1/72 인치) : 0.35146mm
+	1인치(inch) 2.54cm
+	포인트는 1pt ~ 72pt 까지 있다. 
+
+px : pixel(픽셀) : 사각형단위 : 상대적인 값
+	1px은 격자 하나의 크기를 뜻한다.
+	픽셀은 모니터에 가로/세로로 이루어진 하나의 격자(사각형)를 말한다. 
+	모니터의 격자 간격을 픽셀피치라고 한다. 
+	대체로 데스크탑 모니터 보다 노트북 모니터가 픽셀피치가 작고, 따라서 글자가 더 작게 보인다. 
+	똑같은 1024*768 픽셀이라도 모니터의 크기가 다르기 때문에 간격은 다 다르다.
+
+
+1pt는 몇 px 일까 ??
+Window : 9pt는 12px 정도 
+Max : 9pt는 9px
+
+Window 화면 해상도는 96dpi : 1인치당 96개 점
+Mac 화면 해상도는 72ppi : 1인치당 72개 점 
+1인치(inch) 당 96개의 점, 7
+
+1 inch = 72 point = 96 pixel
+
+9pt = 12px
+10px = 13.333px
+12pt = 16px
+14pt = 18.6667px
+18pt = 24px
+24pt = 32px
+
+웹에사 자주사용하는 크기 
+12px = 9pt
+11px 
+
+
+대부분의 브라우저는 폰트 사이즈의 기본값이 12pt, 16px, 1em, 100% 입니다. 
+예를 들어, 
+본문 전체가 12pt으로 설정되어 있는 상태에서 
+본문내의 테이블에서는 좀더 작은 9pt를 사용하고자 한다면, 
+em단위로 본문의 폰트사이즈는 1em이 되고 테이블내 폰트사이즈는 0.75em이 되는 것입니다.
+px = pt / 0.75
+pt = px * 0.75 
+em = pt / 12
+% = pt * 100 / 12
+
+
+% : percent(퍼센트) : 상대적인 값
+	퍼센트는 백분율이며
+	상위요소(부모요소, parent element)에 대한 상대적인 비율을 이다.
+	50%는 부모요소 크기의 절반크기, 100%는 부모요소와 크기가 같다라는 의미
+
+
+em : emphaize(이엠) 강조하다 : 상대적인 값 
+	"Equal to the width of the capital letter M"
+	이엠은 현재 지정되어 있는 폰트에서 알파벳 대문자 "M"의 가로 너비를 기준으로 
+	한 상대적인 크기를 배율로 표시하는 단위이다. 퍼센트(%)와 같은 개념
+	
+	1em은 현재 지정되어 있는 글자 크기와 같은 크기 : 100%와 같은 결과
+	0.5em은 현재 적용되어 있는 크기의 절반 크기 :  50%와 같은 크기
+	1.5em은 현재 적용되어 있는 크기의 1.5배 :  150%와 같은 크기
+
+rem : root em : 상대적인 값
+########################################
+
+server.xml 
+<Context 
+		docBase="testCss" 
+		path="/testCss" 
+		reloadable="true" 
+		source="org.eclipse.jst.jee.server:testCss"/>
+
+server.xml 
+<Context docBase="testCss" path="/testCss" reloadable="true" source="org.eclipse.jst.jee.server:testCss"/>
+<Context docBase="testKosmo" path="/testKosmo" reloadable="true" source="org.eclipse.jst.jee.server:testKosmo"/>
+<Context docBase="testWeb" path="/testWeb" reloadable="true" source="org.eclipse.jst.jee.server:testWeb"/>
+      
+
+
+## xml 파일이 변경되면 탐캣 서버를 리스타트해야 적용된다.
+// path 경로 앨리어스 사용하는 방법
+<Context docBase="testCss" path="/testCss" reloadable="true" source="org.eclipse.jst.jee.server:testCss"/>
+http://localhost:8088/testCss/cssTest/hello.html
+
+
+<Context docBase="testCss" path="/aaa" reloadable="true" source="org.eclipse.jst.jee.server:testCss"/>
+http://localhost:8088/aaa/cssTest/hello.html
+
+
+<Context docBase="testCss" path="/" reloadable="true" source="org.eclipse.jst.jee.server:testCss"/>
+http://localhost:8088/cssTest/hello.html
