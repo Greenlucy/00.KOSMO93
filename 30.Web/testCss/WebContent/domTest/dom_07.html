@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>HTML 태그에 리스너 작성</title>
+	<script>
+		var p;
+		var pp;
+		var ppp;
+		
+		function init() {	// 문서가 완전히 로드되었을 때 호출
+			p = document.getElementById("p");
+			p.onmouseover = over;	// over() 함수를 onmouseover 리스너로 등록
+			p.onmouseout = out;	//out() 함수를 onmouseout 리스너로 등록
+			
+			pp = document.getElementById("pp");
+			pp.addEventListener("mouseover", over);	// 이벤트 리스너 등록
+			pp.addEventListener("mouseout", out);	// 이벤트 리스너 등록
+			
+			ppp = document.getElementById("ppp");
+			ppp.onmouseover = function () {	// 익명 함수
+				this.style.backgroundColor = "blue";
+			};
+			
+			ppp.addEventListener("mouseout",
+				function () {	// 익명 함수
+					this.style.backgroundColor="yellow";
+				}
+			);
+		}
+		
+		function over() {
+				p.style.backgroundColor="orchid";
+				pp.style.backgroundColor="red";		
+		}
+		
+		function out() {
+			p.style.backgroundColor="cyan";
+			pp.style.backgroundColor="yellow";
+		}
+	</script>
+</head>
+<body onload="init()">
+	<!-- onload 함수는 연습하려고 쓴 거고, 원래는 잘 안 씀
+		dtd : xml 문법을 적어둔 것 (loose.dtd ...)
+		시퀀스 = 순차 = 인덱스 (문서에, head 읽고 body 읽겠다는 규칙으로 되어 있음)
+	 -->
+	<h3>HTML 태그에 리스터 작성</h3>
+	<hr>
+	<p onmouseover="this.style.backgroundColor='orchid'"
+		onmouseout="this.style.backgroundColor='white'">
+		마우스 올리면 orchid 색으로 변경
+	</p>
+	
+	<h3>DOM 객체의 이벤트 리스터 프로퍼티에 함수 등록</h3>
+	<hr>
+	<p id="p">마우스 올리면 orchid 색으로 변경</p>
+	
+	<h3>addEventListener()를 이용한 리스터 등록</h3>
+	<hr>
+	<p id="pp">마우스 올리면 red색으로 변경</p>
+	
+	<h3>익명 함수로 이벤트 리스너 작성</h3>
+	<hr>
+	<p id="ppp">마우스 올리면 blue 색으로 변경</p>
+</body>
+</html>

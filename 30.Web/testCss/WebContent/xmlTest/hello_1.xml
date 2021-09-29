@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<!-- xml 문서에서는 항상 루트 태그가 1개만 존재해야 한다. -->
+<kosmo93>
+	<title>응용 SW활용 빅데이터구축 전문가 양성과정</title>
+	<delivery>22021년06월28일 ~ 2021년12월15일</delivery>
+	<total>31</total>
+	<user>
+		<name>이희진</name>
+		<gender>여자</gender>
+		<age>27</age>
+	</user>
+	<user>
+		<name>정예지</name>
+		<gender>여자</gender>
+		<age>24</age>
+	</user>
+	<user>
+		<name>김상진</name>
+		<gender>남자</gender>
+		<age>29</age>
+	</user>
+</kosmo93>
+<!-- 
+http://www.weather.go.kr./wheather/forecast/mid-term-rss3.jsp?stnId=108
+
+국가에서 민간에
+국가에서 보유하고 있는 공공정보를 민간에게 제공하는 행위
+전세계 73개국에서 공공기관 정보를 민간에게 제공한다.
+
+민간정보를 사용할 수 있다.
+ -->

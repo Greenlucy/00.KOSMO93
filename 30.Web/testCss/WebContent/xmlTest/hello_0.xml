@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<!-- xml 문서에서는 항상 루트 태그가 1개만 존재해야 한다. -->
+<xmlroottag>
+	<dept1tag>
+		<dept2tag>
+			<dept3tag>
+				Hello XML 11!!!!
+			</dept3tag>
+		</dept2tag>
+	</dept1tag>
+	<dept1tag>
+		<dept2tag>
+			<dept3tag>
+				Hello XML 22!!!!
+			</dept3tag>
+		</dept2tag>
+	</dept1tag>
+	<dept1tag>
+		<dept2tag>
+			<dept3tag>
+				Hello XML 33!!!!
+			</dept3tag>
+		</dept2tag>
+	</dept1tag>
+</xmlroottag>
