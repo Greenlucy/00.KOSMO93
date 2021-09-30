@@ -1,0 +1,72 @@
+2021-09-30
+-------------------------------
+
+apache tomcat 스타트 
+
+1. conf 디렉토리에서 : tomcat 서버 전체에 적용되는 환경 설정 파일 
+
+server.xml
+====================
+1.1 : 커넥터 엘리먼트에서 인코딩, 포트
+	<Connector 
+		URIEncoding="EUC-KR" : 이 탐켓 서버의 컨텍스트에 들어오는 스트림 중 
+							   HTTP 프로토콜의 GET 방식으로 들어오는 스트림을 
+							   한글로 인코딩 하세요 
+							   UTF-8 로 변경해됨 
+		port="8088" : 클라이언트에서 웹서버로 들어오는 포트 설정하기 
+		connectionTimeout="20000" 	
+		protocol="HTTP/1.1" 
+		redirectPort="8443"/>
+
+1.2 : 컨텍스트 엘리먼트에서 
+	독베이스 : docBase : 컨텍스트의 이름 : 이클립스 워크스페이스에서 컨텍스가 있는 경로를 의미한다.
+			 C:\00.KOSMO93\30.Web\el_web_neon _work\testCss :  도메인 
+	패스 : path : 이 컨텍스트를 찾아오는 상대 가상 경로 : 변경이 가능함 : 변경해서 사용할 것 : 보안 때문에
+	<Context 
+		docBase="testCss" 
+		path="/testCss" 
+		reloadable="true" 
+		source="org.eclipse.jst.jee.server:testCss"/>
+
+content.xml
+==============
+
+/testCss/WebContent/WEB-INF/web.xml
+WebContent 는 이클립스에서 사용하는 가상경로 이다. 실제 경로에는 포함하지 않는다.
+<WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+<WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+
+스프링할 때 이곳에 datesource 를 설정한다. 
+
+
+web.xml
+==============
+세션 시간을 30분으로 하세요 
+<session-timeout>30</session-timeout>
+
+마임 세팅 : MIME : Multipurpose Internet Mail Extensions : 파일의 형식 지정
+text/html, text/css
+이 탐캐서버에서 mime-mapping 세팅된 마임 타입을 읽어 줄 수 있다. 
+<mime-mapping>
+	<extension>123</extension>
+	<mime-type>application/vnd.lotus-1-2-3</mime-type>
+</mime-mapping>
+
+
+2. /Conatext/WebContent/WEB-INF/web.xml : 해당 컨텍스트에만 적용되는 환경설정 파일 
+
+2.1 : 웰컴 파일 
+	<welcome-file>index.jsp</welcome-file>
+
+인코딩, url 패턴 지정, 스프링 시작 화일 세팅, 스프링 환경설정 파일 세팅 등 ....
+	
+
+tomcat 서버를 시작하면
+server.xml, 
+content.xml, 
+web.xml 등 tomcat 서버 전체를 관장하는 환경설정 파일을 읽고
+
+요청하는 컨텍스트의 
+WEB-INF/web.xml 환경설정 파일을 읽은 후에 
+서비스를 처리한다. 
