@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>ID PW CHECK</title>
+<!-- jQuery CDN 불러오기  -->
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){	
+		
+		// 아이디 중복체크		
+		$("#midCheckBtn").click(function(){		
+			alert("midCheckBtn 함수 진입 >>> : ");		
+			
+			let urlVal = "/testCss/idpwCheck";
+			let typeVal = "GET";
+			let midVal = $("#mid").val();
+			let isudtypeVal = $("#ISUD_TYPE").val('IDCHECK');
+			isudtypeVal = isudtypeVal.val();
+			
+			if (midVal == '') {
+				alert("중복 체크할 아이디를 입력하세요 >>> : ");
+				$("#mid").focus();
+				return false;
+			}
+					
+			alert("urlVal >>> : " + urlVal);
+			alert("typeVal >>> : " + typeVal);
+			alert("midVal >>> : " + midVal);
+			alert("isudtypeVal >>> : " + isudtypeVal);
+			console.log("urlVal >>> : " + urlVal);
+			console.log("typeVal >>> : " + typeVal);
+			console.log("midVal >>> : " + midVal);
+			console.log("isudtypeVal >>> : " + isudtypeVal);
+			
+			$.ajax({			
+					url : urlVal,		
+					type : typeVal,			
+					data : {					
+						"mid": midVal,
+						"ISUD_TYPE": isudtypeVal, // data 는 쿼리 스트링 				
+					},
+					success : whenSuccess,					
+					error : whenError
+			}); // end of ajax()
+			
+			function whenSuccess(resData){
+				
+				var sVal = $(resData).find("result").text();			    				    	 
+		    	
+				if (sVal == 'IDGOOD'){
+		    		 alert("사용할 수 있는 아이디 입니다.");
+		    		 $("#mid").css("background-color", "yellow"); 
+		    		 $("#mid").attr("readonly", true); 
+		    		 $("#mid").focus();
+		    	}else{
+		    		 alert("이미 아이디가 사용중 입니다.");
+		    		 $("#mid").val('');
+		    		 $("#mid").focus();
+		    	 } 			    
+			}
+			function whenError(){
+				alert("error");
+			}
+		});
+		
+		// 비밀번호 체크 
+		$("#mpwCheckBtn").click(function(){
+			alert("mpwCheckBtn 함수 진입 >>> : ");
+						
+			let urlVal = "/testCss/idpwCheck";
+			let typeVal = "GET";
+			let mpwVal = $("#mpw").val();
+			let isudtypeVal = $("#ISUD_TYPE").val('PWCHECK');
+			isudtypeVal = isudtypeVal.val();
+			
+			if (mpwVal == '') {
+				alert("비밀번호를  입력하세요 >>> : ");
+				$("#mpw").focus();
+				return false;
+			}
+					
+			alert("urlVal >>> : " + urlVal);
+			alert("typeVal >>> : " + typeVal);
+			alert("mpwVal >>> : " + mpwVal);
+			alert("isudtypeVal >>> : " + isudtypeVal);
+			console.log("urlVal >>> : " + urlVal);
+			console.log("typeVal >>> : " + typeVal);
+			console.log("mpwVal >>> : " + mpwVal);
+			console.log("isudtypeVal >>> : " + isudtypeVal);
+			
+			$.ajax({			
+					url : urlVal,		
+					type : typeVal,			
+					data : {					
+						"mpw": mpwVal,
+						"ISUD_TYPE": isudtypeVal, // data 는 쿼리 스트링 				
+					},
+					success : whenSuccess,					
+					error : whenError
+			}); // end of ajax()
+			
+			function whenSuccess(resData){
+				
+				var sVal = $(resData).find("result").text();			    				    	 
+		    	
+				if (sVal == 'PW_GOOD'){
+		    		 alert("비밀번호가 확인 되었습니다.");
+		    		 $("#mpw").css("background-color", "cyan"); 
+		    		 $("#mpw").attr("readonly", true); 
+		    		 $("#mpw").focus();
+		    	}else{
+		    		 alert("비밀번호가 다릅니다.");
+		    		 $("#mpw").val('');
+		    		 $("#mpw").focus();
+		    	 } 			    
+			}
+			function whenError(){
+				alert("error");
+			}		
+		});		
+	});
+
+</script>
+</head>
+<body>
+<h3>ID PW CHECK</h3>
+<hr>
+<form name="memForm" id="memForm">
+<table border="1">
+	
+<tr>
+<td>아이디</td>
+<td>
+	<input type="hidden" name="ISUD_TYPE" id="ISUD_TYPE">
+	<input type="text" name="mid" id="mid" placeholder="아이디체크" style="width:100px" />
+	<input type="button" id="midCheckBtn" value="아이디중복확인"  />
+</td>
+</tr>
+<tr>
+<td>패스워드</td>
+<td>
+	<input type="text" name="mpw" id="mpw" placeholder="비밀번호체크" style="width:100px" />
+	<input type="button" id="mpwCheckBtn" value="비밀번호확인" />		
+</td>
+</tr>
+</table>
+</form>
+</body>
+</html>
