@@ -1,0 +1,36 @@
+2021-10-07
+----------------------------------
+
+Ajax 통신 
+-------------------------------
+웹브라우저 : html, javaScrpt, jQuery + Ajax 함수(XMLHttpRequest 자바스크립트 객체)
+			웹서버에 전송 : 요청 : request
+웹서버 : reqeust.getParameter("html input 엘리먼트에 있는 name 어트리뷰트 속성의 값")
+			웹서버 <--> 서블릿 컨테이너 <--> 데이터베이스 
+			웹브라우저로 전송 : 응답 : resopnse
+웹브라우저 : Ajax 함수(XMLHttpRequest 자바스크립트 객체)가 응답을 받는다. + html, javaScript, jQuery
+
+
+Ajax 통신할 때 사용하는 데이터는 
+-------------------------------
+1. plain text
+2. XML : find() 함수 : 태그 찾는 함수 
+3. JSON : JSON.stringify(), JSON.parse()
+
+Ajax 코딩할 때는항시 로그를 찍으세요
+------------------------------------
+$.ajax({url, type, data, datatype, success, error});
+$.get({ url, {}, function(){});
+$.post({ url, {}, function(){}});
+
+에이작스함수의 매개변수로 사용하는 
+자바스크립트 오브젝트 블럭에서는 로그를 찍을 수 없다.
+자바스크립트 오브젝트 블럭에서는 Ajax에서 정한 키워드만 사용을 해야 한다. 
+keyword :	url, type, data, <-- 요청(request)에 사용되는 키워드 
+			datatype, success, error <-- 응답(response)에 사용되는 키워드 
+			asynce, timeout, ...
+
+$.ajax({
+	alert(); <--- 사용할 수 없음
+	console.log();  <--- 사용할 수 없음
+});

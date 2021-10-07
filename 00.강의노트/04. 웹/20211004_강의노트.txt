@@ -1,0 +1,66 @@
+2021-10-05
+-----------------------------------
+
+html : DOM Tree
+CSS : 위에서 아래로 흐른다. 중복을 허용한다.
+xml : 태그의 정의를 알아야 한다. 
+		데이터 이동
+		환경 설정 파일 
+		Open API :	RESTfull Web Service
+apache-tomcat
+server.xml
+content.xml
+web.xml
+Context/WEB-INF/web.xml
+JSON :	자바스크립트 오브젝트 사용법 아는 것 : 프로퍼티키:프로퍼티값 : 오브젝트 
+		자바스크립트의 오브젝트를 문자열로 표현한 것이 JSON 데이터 이다. : "프로퍼티키":"프로퍼티값" :스트링
+		웹 브라우저에서 JSON 을 사용하려면
+		JSON 스트링을 자바스크립트 오브젝트로 변환해야 한다. 
+eval() : 이발함수 : 보안취약성때문에 사용 금지 
+text() vs html()
+attr() vs prop()
+자바스크립트 지역변수 vs 전역변수
+
+IBM 의 엡시딕 부호체계코드 
+============================
+http://localhost:8088/testKosmo/kosmo/notice/notice.html
+?
+nnum=
+&
+nsubject=TEST
+&
+nmemo=TEST+CONTENT
+&
+nphoto=
+&ISUD_TYPE=I#/testKosmo/notice?ISUD_TYPE=I
+
+
+
+http://localhost:8088/testKosmo/kosmo/notice/notice.html
+?
+nnum=
+&
+nsubject=1111
+&
+nmemo=11111
+&nphoto=
+&
+ISUD_TYPE=I#/testKosmo/notice?ISUD_TYPE=I
+
+
+http://localhost:8088/testKosmo/kosmo/notice/notice.html
+?
+nnum=
+&
+nsubject=%C5%D7%BD%BA%C6%AE+
+&
+nmemo=%C5%D7%BD%BA%C6%AE+%B3%BB%BF%EB%C0%BA+
+&
+nphoto=&ISUD_TYPE=I#/testKosmo/notice?ISUD_TYPE=I
+
+escape 함수 
+============================
+
+
+Ajax
+Spring 

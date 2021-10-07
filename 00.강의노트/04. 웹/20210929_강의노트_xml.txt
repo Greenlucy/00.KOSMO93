@@ -1,0 +1,153 @@
+2021-09-29
+-----------------------------------
+
+html :	태그로 구성 되어 있다.
+		만들어진 태그를 사용한다. 
+		4.01 : 82ea
+		5.0 : 102ea
+
+xml :	태그로 구성 되어 있다.
+		사용자 정의로 태그를 만든다. 
+
+xml 을 파서가 읽어준다.
+---------------------
+크롬 웹브라우저에 xml을 읽어주는 파서가 있다. 
+ie 웹브라우저에 xml을 읽어주는 파서가 있다. 
+
+우리가 자바에서는 jdk 에서 지원하는 
+org.w3c.dom.* : 돔파서 : xml 문서 전체를 한번에 읽어서 동작한다.
+org.xml.sax.* : 삭스파서 : xml 문서에서 엘리먼트에 이벤트가 동작할 때 읽어서 동작한다. 
+현대에서는 
+돔파서 와 삭스파서를 병행 해서 사용한다. 
+
+vender 들이 만들 파서를 사용한다.
+Oracle, Sun, MS, Google .....
+
+
+xml 작성 규칙은 
+--------------------
+문서의 헤더를 같는다.
+	<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+태그는 배열로 되어있다. 
+
+루트 태그를 같는다.
+<사용자정의 태그이름></사용자정의 태그이름>
+<html></html>
+
+
+
+
+xml : 데이터를 이동시키는 환경설정 파일 용도로만 사용한다.
+-----------------------------------------------------
+server.xml
+<Connector 
+	URIEncoding="EUC-KR" 
+	connectionTimeout="20000" 
+	port="8088" 
+	protocol="HTTP/1.1" 
+	redirectPort="8443"/>
+
+<Context 
+	docBase="testCss" 
+	path="/testCss" 
+	reloadable="true" source="org.eclipse.jst.jee.server:testCss"/>
+
+<Context 
+	docBase="testKosmo" 
+	path="/testKosmo" 
+	reloadable="true" source="org.eclipse.jst.jee.server:testKosmo"/>
+
+web.xml
+	<session-timeout>30</session-timeout>
+
+content.xml
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+
+켄텍스트/WebContent/WEB-INF/web.xml
+	<welcome-file>index.jsp</welcome-file>
+
+
+===================================================
+
+
+html : 하이퍼 텍스트 Markup Language  
+xml : eXtensible Markup Language 
+
+xml 은 데이터로 사용한다. 
+xml 은 DTD, Namespace xml 규칙을 만든다. 
+xml 은 환경설정 파일로 사용한다. 
+---------------------------------------------------
+1. 사용자가 만들어 사용할 수 있는 태그 스크립트이다. 
+2. xml 를 만들 대는 DTD 문법으로 태그 규칙을 정할 수 있다. 
+3. xml 에서는 root 태그는 하나만 존재 해야 한다. 
+4. root 태그를 기준으로 하위 태그의 들의 계층 구조를 정확하게 알고 있서야 한다. 
+   모든 태그 스크립트도 마찬 가지이다. 
+5. xml 태그는 root 태그 기준으로 배열로 처리 된다. (html 도 같다).
+
+xml 파일을 읽을 때는 파서(Parser)를 사용해야 한다. 
+
+xml Parser 
+	DOM Parser : 문서 전체를 맨 처음 한번에 메모리에 올려 놓고 읽는 방식 
+	SAX Parser : 문서 전체가 아니고 이벤트 중심으로 읽어 오는 방식 
+
+
+==================================================
+XML 를 데이터 사용할 할 때는 
+태크의 길이(LEVEL)를 동일하게 사용한다. 
+
+좋은 예 :
+<ROOT>
+	<LEVEL1>
+		<LEVEL2>
+		</LEVEL2>
+	</LEVEL1>
+	<LEVEL1>
+		<LEVEL2>
+		</LEVEL2>
+	</LEVEL1>
+</ROOT>
+
+나쁜 예 :
+<ROOT>
+	<LEVEL1>
+		<LEVEL2>
+		</LEVEL2>
+	</LEVEL1>
+	<LEVEL1>
+		<LEVEL2>
+			<LEVEL3>
+			</LEVEL3>
+		</LEVEL2>
+	</LEVEL1>
+</ROOT>
+==================================================
+
+
+
+JSON : JavaScript Object Notation
+---------------------------------------------------
+1. 데이터 전달 용도 
+xml
+----
+<dog>
+    <name>식빵</name>
+    <family>웰시코기<family>
+    <age>1</age>
+    <weight>2.14</weight>
+</dog>
+
+json
+----
+{
+    "name": "식빵",
+    "family": "웰시코기",
+    "age": 1,
+    "weight": 2.14
+}
+
+---------------------------------------------------
+XML, JSON : 데이터를 이동하는 스크립트로 사용 한다.
+---------------------------------------------------
