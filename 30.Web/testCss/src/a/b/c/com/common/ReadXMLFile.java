@@ -10,11 +10,16 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 
+/* xml 파싱하여 html 파일과 동일한 내용인데, java에서 읽은 버전. */
 public class ReadXMLFile {
 	public static void main(String argv[]){
 		try{
 			String xmlFilePath = CommonXML.XML_FILE_PATH;
+			System.out.println("xmlFilePath >>> : " + xmlFilePath);
+			// File 객체 이용해서 물리적 경로(절대 경로)에 있는 xmlFile 가져온 것
 			File fXmlFile = new File(xmlFilePath + "/file.xml");
+			
+			// 팩토리 패턴 ::
 			// xml로 만들 공장을 만들고
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			// 공장에서 작업 준비하고

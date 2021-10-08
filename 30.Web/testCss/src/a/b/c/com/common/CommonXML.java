@@ -7,7 +7,7 @@ public abstract class CommonXML {
 	
 	// file path
 	// C:\00.KOSMO93\30.Web\el_web_neon_work\testCss\WebContent\xmlTest
-	public static final String XML_FILE_PATH = "C:\\00.KOSMO93\\30.Web\\el_Web_neon_work\\testCss\\WebContent\\xmlTest";
+	public static final String XML_FILE_PATH = "C:\\00.KOSMO93\\30.Web\\el_web_neon_work\\testCss\\WebContent\\xmlTest";
 	
 	private static final String KOS_URL = "jdbc:oracle:thin:@localhost:1521:orclKOSMO00";
 	private static final String KOS_USER = "scott";
