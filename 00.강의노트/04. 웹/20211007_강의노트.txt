@@ -48,18 +48,23 @@ EL : 표현 언어 : (Expression Language) 문법(표현식)
 			<%= "출력값" %>
 			<% out.println("출력값"); %>
 
-Context/WEB-INF/lib/el-api.jar
+
 C:\Program Files\Apache Software Foundation\Tomcat 8.5\lib\el-api.jar
+Context/WEB-INF/lib/el-api.jar
 C:\Program Files\Java\jre1.8.0_291\lib\ext\el-api.jar
 C:\Program Files\Java\jdk1.8.0_291\jre\lib\ext\el-api.jar
 
 ${ param.변수이름 }	: reqeust.getParameter("addr"); 	ex) ${param.addr }		
 
+###########################################################
 ${ 객체이름.속성이름 }	EL_MemberVO mvo = new EL_MemberVO()
 					mvo.getAddr(); ex) ${mvo.addr }		
-					
+###########################################################
+
 ${ 객체이름 }						ex) ${irum }					
+
 ${ paramValues.배열이름[인덱스] }	ex)	${paramValues.animal[0] }	
+
 ${ 수식(계산식, 비교 연산) }			ex)	${param.num1 + param.num2 }	
 ${ 배열이름[인덱스] }				ex) ${study[0] }				
 ${ 배열이름[인덱스].속성이름 }		ex) ${mlist[0].irum }
@@ -67,14 +72,74 @@ ${ 배열이름[인덱스].속성이름 }		ex) ${mlist[0].irum }
 
 JSTL : 표준 태그 라이브러리 : [JSP Standard Tag Library]
 ----------------------------------------
+##########################################
+jsp 태그
+<%@ page %>
+<%! %>
+<% %>
+<%= %>
+<%-- --%>
+
+<jsp:forward></jsp:forward>
+<jsp:include></jsp:include>   
+<jsp:parame></jsp:parame>
+<jsp:setAttribute>
+<jsp:getAttribute>
+<jsp:useBean>
+##########################################
+
+##########################################
+jstl 표준 태그 라이브러리 : jstl.jar, standard.jar
+기존 제공되는 jsp 태그를 사용하는데
+더 유용하게 jsp를 사용하라고 태그를 만들어서 라이브러리로 제공하는 태그 
+변수를 지원하는 태그 
+흐름을 지원하는 태그 
+url을 처리하는 태그
+sql 지원하는 태그 
+....
+##########################################
+
+##########################################
+커스텀 태그 
+사용자가 태그를 직접 만드는 것 
+jsp 1.1 : jsp 1.2, jsp 2.0 ...
+
+##########################################
+
+
 JSTL 라이브러리 설치
+https://apache.org/
+하단에 APACHE PROJECT LIST 에서 자기가 하고 싶은 프로젝트를 찾아서 공부하고 일하는 것
+인덱스 T : Tomcat 링크 클릭 
+http://tomcat.apache.org/
+
+#######################################
+java : rt.jar 
+Oralce : ojdbc6.jar 
+fileupload : cos.jar
+json : json-simple-1.1.jar
+tomcat el : el-api.jar
+jstl : jstl.jar, standard.jar
+#######################################
+
+라이브러리 포팅하기 
+===========================
+JSTL 라이브러리 설치
+https://apache.org/
+하단에 APACHE PROJECT LIST 에서 자기가 하고 싶은 프로젝트를 찾아서 공부하고 일하는 것
+인덱스 T : Tomcat 링크 클릭 
+http://tomcat.apache.org/
 tomcat.apache.org → Download → Taglibs → Standard 1.1.2 다운로드
 jstl.jar, standard.jar 복사
-WebContent\WEB-INF\lib 붙여넣기
+Context/WebContent/WEB-INF/lib/jstl.jar
+Context/WebContent/WEB-INF/lib/standard.jar
+
+
 	
 JSTL Tag 종류 : JSP 문서 상단에 지시자를 작성할 것
 기본 프로그래밍 Tag(변수, 배열, if, for, switch~case 등) : core
-	<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 #########################################################################
 포맷팅 Tag(날짜, 시간, 통화 기호 등 표시 형식) : format
@@ -82,3 +147,29 @@ JSTL Tag 종류 : JSP 문서 상단에 지시자를 작성할 것
 JSTL 제공되는 함수(메서드) : function
 	<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 #########################################################################
+
+
+jsp 2.0 커스텀 태그 처리기로 커스텀 태그 만들어 보기 
+-----------------------------------------------
+
+태그 처리기 
+	: Tag Handler 
+	: Java Resources/src/*.java 
+	: 태그를 처리하는 자바파일, SimpleTagSupport 상속
+	: javax.servlet.jsp.tagext.SimpleTagSupport;
+
+태그 라이브러리 
+	: TLD 
+	: WEB-INF/tlds/*.tld 
+	: 태그 처리기에서 만든 태그를 jsp에서 사용할 수 있도록 태그 이름 등록
+
+태그 활용 jsp : 
+	JSP : WebContent/*.jsp 
+	: 태그 라이브러리를 기술해서 등록한 태그이름을 taglib 지시자를 사용하여 이용
+
+
+<myfirsttag:hello /> 만들기 
+태그 클래스 : Java Resources/src/a.b.c.com.common.HelloCustomTag.java
+TLD : WEB-INF/tlds/HelloCustomTag.tld <-- xml 형식의 화일 : 마법사 : Wizard 로 만들기 
+태그 활용 jsp : testCss/WebContent/jstlTest/helloCustomTag.jsp 
+	
