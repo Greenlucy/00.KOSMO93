@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>prop2</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$("#textBtn_1").click(function(){
+				
+				$("#text_1").text("Hello World");
+			});
+			
+			$("#textBtn_2").click(function(){
+				
+				$("#text_2").text("<b>Hello Worold<b>")
+			});
+			
+			$("#htmlBtn_1").click(function(){
+				
+				$("#html_1").html("Hello Wolrd");
+			});
+			
+			$("#htmlBtn_2").click(function(){
+				
+				$("#html_2").html("<b>Hello World<b>");
+			});
+			
+		});
+	</script>
+</head>
+<body>
+	<h3>text()</h3>
+	<hr>
+	<p id="text_1">text() 함수 테스트 해보기</p>
+	<p id="text_2">text() 함수 테스트 해보기</p>
+	<button id="textBtn_1">textBtn_1</button>
+	<button id="textBtn_2">textBtn_2</button>
+	
+	<h3>html()</h3>
+	<hr>
+	<p id="html_1">html() 함수 테스트 해보기</p>
+	<p id="html_2">html() 함수 테스트 해보기</p>	
+	<button id="htmlBtn_1">htmlBtn_1</button>
+	<button id="htmlBtn_2">htmlBtn_2</button>
+</body>
+</html>

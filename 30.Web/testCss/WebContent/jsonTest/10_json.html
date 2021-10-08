@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>prop3</title>
+</head>
+<body>
+	<h3>
+		전역변수(Global Variable) vs 지역변수(Local Variable)<br>
+		전역변수 : 함수 외부에서 선언된 변수, 프로그램 전체에서 접근할 수 있는 변수<br>
+		지역변수 : 함수 내부에서 선언된 변수, 함수가 실행되면 만들어지고 함수가 종료되면 소멸되는 변수, 함수 외부에서 접근할 수 없음
+	</h3>
+	<hr>
+	
+	<h4>
+		변수 abc0의 값을 함수 외부에서는 abc0, 함수 내부에서는 def0으로 초기화<br>
+		함수 외부에서 abc0에서 호출했으므로 전역변수 값이 호출된다.<br>
+		abc0
+	</h4>
+	<hr>
+	<script>
+		var abc0 = "abc0";
+		function a() {
+			var abc0 = "def0";
+			document.write("a0() 내부 >>> : " + abc0 + "<br>");
+		}
+		a();
+		document.write("a0() 외부 >>> : " + abc0 + "<br>");
+	</script>
+	
+	<h4>
+		함수 내부에서 abc1의 값을 호출했으므로 지역변수 값이 출력된다.<br>
+		def1
+	</h4>
+	<hr>
+	<script>
+		var abc1 = "abc1";
+		function a1() {
+			var abc1 = "def1";
+			document.write("a1() 내부 >>> : " + abc1 + "<br>");
+		}
+		a1();
+		document.write("a1() 외부 >>> : " + abc1 + "<br>");
+	</script>
+	
+	<h4>
+		함수 내부에서 var를 사용하지 않고 변수의 값을 정하면 전역변수의 값을 변경한다.<br>
+		58라인에 선언한 abc2 = "def2" 변수가 전역변수 역할을 함., var를 선언하지 않고 사용하는 변수 <br>
+		def2
+	</h4>
+	<script>
+		var abc2 = "abc2";
+		function a2(){
+			abc2 = "def2";
+			document.write("a2() 내부 >>> : " + abc2 + "<br>");
+		}
+		a2();
+		document.write("a2() 외부 >>> : " + abc2 + "<br>");
+	</script>
+</body>
+</html>

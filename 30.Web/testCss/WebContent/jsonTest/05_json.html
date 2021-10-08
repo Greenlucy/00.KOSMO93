@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>05_json.html</title>
+	<script type="text/javascript">
+		var sayHello = {
+				"name" : "javaScript"
+				,"eng" : function() {
+							// 변수console 선언, 할당
+							// <body> 태그의 <id=console>에 대한 설정을 조정하기 위해 
+							var console = document.getElementById("console");
+							console.innerHTML = "Hello " + this.name;
+							conole.style.color = "#ff0000";
+						}
+				,"kor" : function() {
+							var console = document.getElementById("console");
+							// this.name :: 이 변수 sayHello의 "name"키에 대한 value를 호출.
+							// 			>> 출력값 : javaScript
+							console.innerHTML = "안녕하세요 " + this.name;
+							console.style.color = "#0000ff";
+						}
+		}
+	</script>
+</head>
+<body>
+	<h1>JSON으로 그룹화된 함수 호출</h1>
+	<input type="button" value="sayEng" onclick="sayHello.eng()" />
+	<!-- Hello javaScript (검정색으로) -->
+	<input type="button" value="sayKor" onclick="sayHello.kor()" />
+	<!-- 안녕하세요 javaScript (파란색으로) -->
+	<h1 id="console"></h1>
+</body>
+</html>

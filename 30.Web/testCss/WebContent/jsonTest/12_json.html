@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>문자 80바이트 이하로 끊기</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.js-sms-content').keyup(function() {
+				
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="content">
+		<textarea name="" id="" cols="35" rows="5" class="js-sms-content"></textarea>
+		<div class="bytes-wrapper">
+			<span class="bytes">0</span> bytes
+		</div>
+		<button class="js-send-sms">확인</button>
+	</div>
+</body>
+</html>

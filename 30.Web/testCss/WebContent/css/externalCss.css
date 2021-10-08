@@ -1,0 +1,11 @@
+body {
+	background-color: yellow;
+}
+h1 {
+	background-color: cyan;
+	color: blue;
+}
+p {
+	background-color: cyan;
+	color: red;
+}

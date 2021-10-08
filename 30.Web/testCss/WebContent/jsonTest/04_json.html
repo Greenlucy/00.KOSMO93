@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>04_json.html</title>
+	<script type="text/javascript">
+		var bbs = {
+				"title" : "Javascript + jQuery + Ajax",
+				"description" : "완벽 가이드",
+				"total" : 4,
+				"item" :
+					[  {
+							"no" : "공지",
+							"subject" : "강의자료",
+							"hit" : 4,
+							"date" : "2019.01.29"
+						},
+						{
+							"no" : 3,
+							"subject" : "강의자료",
+							"hit" : 6,
+							"date" : "2019.02.19"
+						},
+						{
+							"no" : 2,
+							"subject" : "강의자료",
+							"hit" : 15,
+							"date" : "2019.03.19"
+						},
+						{
+							"no" : 1,
+							"subject" : "강의자료",
+							"hit" : 19,
+							"date" : "2019.04.19"
+						}
+					]
+				
+		};
+		alert("bbs >>> : " + bbs);
+		
+		var html = "<h1>" + bbs.title + "</h1>";
+		html += "<p>" + bbs.description + "</p>";
+		html += "<p>총 게시물 수 : " + bbs.total + "</p>";
+		html += "<ul>";
+		
+		for (var i=0; i < bbs.item.length; i++){
+			var item = bbs.item[i];
+			html += "<li>("
+						+ item.no + ") "
+						+ item.subject
+						+ " (조회수 : "
+						+ item.hit
+						+ " / 날짜 : "
+						+ item.date
+						+ ")</li>";
+		}
+		
+		html += "</ul>";
+		
+		document.write(html);
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>
