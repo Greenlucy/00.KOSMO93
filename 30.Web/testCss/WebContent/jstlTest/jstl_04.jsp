@@ -13,6 +13,8 @@
 	<!-- jstl_04.jsp?num=2 -->
 	<!-- jstl_04.jsp?num=3 -->
 	<%
+		// Integer.parseInt() : String > int로 바꿔주는 함수 :: null값을 받지 못 해서
+		// int num = Integer.parseInt(request.getParameter("num")); 하면 HTTP 상태 500 오류 발생 함.
 		int num = Integer.parseInt(request.getParameter("num"));
 		if(num == 1){
 			out.println("처음 뵙겠습니다. (java:if)");
