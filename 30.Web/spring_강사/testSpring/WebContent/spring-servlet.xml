@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:c="http://www.springframework.org/schema/c"
+	   	xmlns:context="http://www.springframework.org/schema/context" 
+	   	xmlns:lang="http://www.springframework.org/schema/lang"
+	   	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   	xmlns:p="http://www.springframework.org/schema/p"
+	   	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                       	http://www.springframework.org/schema/beans/spring-beans.xsd
+	                       	http://www.springframework.org/schema/context 
+						   	http://www.springframework.org/schema/context/spring-context.xsd
+						   	http://www.springframework.org/schema/lang 
+						   	http://www.springframework.org/schema/lang/spring-lang.xsd
+		                   	http://www.springframework.org/schema/mvc 
+		                   	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+          
+    <!-- 핸들러 매핑 -->           	
+	<mvc:annotation-driven />	
+	
+	<!-- 
+		base-package에서 지정한 패키지내의 클래스를 스캔한다. 클래스를 찾는다.
+		Annotaion
+			@Component : 컴포넌트 클래스
+			@Controller : 컨트롤러 클래스 
+			@Service : 서비스 클래스
+			@Repository :  DAO, Mapper 클래스 
+		어노테이션으로 인식한 Bean를 인스턴스 한다. 
+		** : ant 카디널리티 형식 : 모두
+	 -->
+	<context:component-scan base-package="a.b.c.com.**" />	 
+	 
+	<!-- 
+		뷰 분석 : 뷰 리졸빙 
+		testSpring/WebConent/WEB-INF/view 에 확장자 jsp 화일를 두세요 
+		콘트롤러에서 해당 파일을 찾아가서 view 페이지를 보여 준다.
+	 -->
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />	
+	</bean>		        
+	                 	
+</beans>
