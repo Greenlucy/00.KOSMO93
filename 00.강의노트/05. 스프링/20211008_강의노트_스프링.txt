@@ -1,0 +1,90 @@
+2021-10-08
+-----------------------------------
+
+웹 프로그래밍 
+
+
+html
+CSS (Bootstrap 프레임워크 3, 4, 5)
+javaScript (ECMAScript 3, ECMAScript 5, ECMAScript 6)
+jQuery
+Ajax
+
+plain text
+XML : rt.jar, msxml.dll
+JSON : json-simple-1.1.jar
+
+el : el-api.jar
+jstl : jstl.jar, standard.jar
+jsp : jsp-api.jar
+Servlet : servlet-api.jar 
+fileupload : cos.jar
+
+java : rt.jar
+JDBC : ojdbc6.jar
+Oralce
+
+Model II + MVC 패턴 으로 게시판 5개 만들었다.
+문서 드래트 : 테이블 정의서, 클래스 다이어그램, 데이터 프로세스 
+=====================================================
+||
+||
+스프링 프레임워크 + 마이바이티스 프레임워크 똑같이 구현 한다. 
+
+겨울
+자바 : J2EE : 엔터프라이즈 : 이기종 플렛폼에서 데이터를 주고 받는 것 
+			 NT 플랫폼 : MS 솔루션 : COM, DCOM ... : C, C++
+			 UNIX 플랫폼 : SUN : JAVA : 
+			 코바, 메시지 드리븐 .... 기술로 데이터 주고 받는 기술 
+
+봄
+스프링 
+프레임워크 : 
+프로그램은 요청한 사람이 돈을 지불하고 결과 나올 때 까지 기달려야 한다. 
+고객 : 프로그램이 나오는 동안에 중간 중간 감시를 하고 싶어
+고객이 요청하는 것 : 프로그램을 감시 할 수 있었으면 좋겠서, 개발자 통제 
+				 저렴한 비용으로 생산성을 향상할 수 있다. 
+
+한국 IT 에서
+자바 올 스프링으로 프로젝트를 한다. 
+2010년 공공기관 프로젝트를 일원화 하기 위해서
+당시 온라인에서 유명한 사람들을 불러모아서 
+공통으로 사용할 수 있는 프레임워크를 개발해 주세요 
+스프링을 이용해서 만들 프로젝트 이름 전자정부프레이임워크 
+
+2010 중반에 조달청에서 
+스프링으로 프로젝트를 납품하지 않으면 프로젝트를 수주할 수 없다. 
+
+
+
+스프링 프레임워크 
+
+스프링 사이트 
+https://spring.io/
+스프링 라이브러리 다운받는 사이트
+https://repo.spring.io/release/org/springframework/spring/
+
+공부
+Index of release/org/springframework/spring/3.2.9.RELEASE
+프로젝트
+Index of release/org/springframework/spring/4.3.16.RELEASE
+
+스프링 개발환견
+-----------------------------
+1. STS : 스프링 사이트에서 지원 : 이클립스에 STS가 플러그인 : 엄청 무거움
+2. STS 부트 : 라이브러리를 손쉽게 다운로드 할 수 있다. 
+3. 이클립스 + STS 플러그인 : 우리는 이것으로 공부한다. : 손으로
+4. 빌드 프레임워크 
+
+
+콘트롤러 - 서비스 - 다오 - 쿼리.xml
+WEB-INF/web.xml
+WEB-INF/spring-servlet.xml
+WEB-INF/servlet-context.xml
+WEB-INF/view/*.jsp
+WebContent/index.jsp
+
+
+index.jsp -> 
+server.xml, context.xml, web.xml ->
+-> WEB-INF/web.xml -> spring-servlet.xml -> 콘트롤러 -> 서비스 - 다오 - 쿼리.xml

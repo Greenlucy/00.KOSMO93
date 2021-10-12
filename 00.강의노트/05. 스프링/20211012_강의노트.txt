@@ -1,0 +1,334 @@
+2021-10-12
+-----------------------------------------
+
+웹 프로그래밍 
+
+Client Side Script
+----------------------------
+html (DOM Tree)
+CSS (Bootstrap 프레임워크 3, 4, 5)
+javaScript (ECMAScript 3, ECMAScript 5, ECMAScript 6)
+jQuery
+Ajax
+
+Server Side Script
+---------------------------
+el : el-api.jar
+jstl : jstl.jar, standard.jar
+jsp : jsp-api.jar
+Servlet : servlet-api.jar 
+
+
+기능
+----------------------------
+fileupload : cos.jar
+
+데이터를 나를는데 사용
+---------------------------
+plain text
+XML : rt.jar, msxml.dll
+JSON : json-simple-1.1.jar
+
+java : rt.jar
+JDBC : ojdbc6.jar
+Oralce
+
+Model II + MVC 패턴 으로 게시판 만드는 것
+
+index.html -> Controller -> Service -> DAO -> Connection -> SQL
+SQL -> DAO -> Service -> Controller -> jsp -> 화면 
+
+웹 브라우저에서 데이터베이스를 연동하는 프로그램의 형태가 있는데 
+
+위 패턴을 프레임워크 형태로 바꾸는 것 들이 있는데 
+그중에 하나가 스프링 
+
+--------------------------------------------------------
+
+스프링 
+========
+
+J2EE 기술 : 매우 복잡하고 어렵다 <-- 자바에서 겨울이라고 표현한다. 
+Web Service 기술로 대처가 될 것이다. : RESTfull Web Service, SOAP 
+
+Spring : 봄
+
+############################################################
+
+프리젠테이션
+------------------
+웹브라우저에서 웹서버로 데이터를 요청한 여기를 처리하는 곳이 프리젠테이션 
+비지니스 결과를 웹서버를 통해서 웹브라우저에게 전달하는 곳이 프리젠티이션 이다. 
+
+
+html form 태그에서 서브밋 
+자바스크립트, 제이쿼리에서 에이작스
+
+서블릿 이 받는다.
+	웹서블릿 어노테이션을 이용해서 연결된다. 
+	로직을 만드라고 
+	doGet() 함수에서 플래그를 사용한다. 
+	플래그 : isud_type :  I S SALL U D 
+jsp 받는다. 
+	jsp 화일 이름으로 연결된다. 
+	insert.jsp
+	select.jsp 
+
+
+프리젠테이션
+	Struts 프레임워크에서는 xml 을 사용해서 html form 태그에서 Servlet 을 찾아간다. 
+	Spring : 콘트롤러 어노테이션 사용
+
+비즈니스
+	IoC : 인버전 어브 콘트롤 : 역제어 : 
+
+		객체 지향에서는
+		
+		견고함 : rubuste
+		new : 즉시 인스턴스 
+		
+		인터페이스 inheritance : 상속 : 내가 다른 클래스이용해서 인스턴스 하는 것 
+		
+		느스한 : loosly
+		xml 화일에 인터페이스 inheritance 네임스페이스를 태그에 기술하고 
+		내가 필요할 때 사용하고 싶은 인터페이스를 호출하는 것 
+
+	역제어 : 
+		스프링 프레임워크를 사용하는 WAS 서버에서는 
+		WAS 서버를 기동하면 그 스프링 프레임워크에 포함 되어 있는 클래스는들은
+		모두 메모리에 올라가야 WAS 서버가 시작할 수 있다. 
+
+################################################################
+		이클립스에 스프링프레임워크를 반영해서 
+		testSpring 프로젝트를 만들어서 서비스를 하기 위해서 
+		아파치 탐캣를 기동 시키면 
+		testSpring 프로젝트에 적용된 모든 클래스들이 모두 메모리에 올라가야
+		아파치 탐캣 서버가 켜진다. 
+################################################################
+
+	AOP : 보안, 로그 등 공통으로 사용하는 컴포넌트 관리
+
+퍼시스턴스 
+	데이터 베이스를 연동하는 기술 
+
+	ibatis, Mybatis : 데이터 베이스 연동을 XML로 하는 것 
+############################################################
+
+프리젠테이션	
+	struts : 웹브라우저 -> 웹서버 : xml 
+	Spring : Controller
+비즈니스 
+	IoC : Inversion of Control : 역제어 : xml 
+	
+	역제어 : new 를 서버 : 스프링 프레임워크 가 하는 것 
+			:	클래스를 메모리에 올리는 것을 개발자가 하는 것이 하니고 
+				스프링 프레임워크가 한다. 
+				요청을 스프링 프레임워크가 한다. 
+				메모리에 올리는 것은 JVM 
+			  
+	순제어 : new 를 개발자가 하는 것 
+			:	클래스를 메모리에 올리는 것을 개발자가 한다. 
+				요청을 개발자가 한다.
+				메모리에 올리는 것은 JVM 
+
+데이터베이스
+	ibatis, Mybatis : xml 
+
+
+프리젠테이션 <---> 비즈니스 <---> 데이터베이스 
+====================
+스프링 프레임워크 
+				=======================
+					마이바티스 프레임워크 
+
+
+
+스프링 프레임워크
+
+1. conf/server.xml
+2. conf/context.xml
+3. conf/web.xml
+4. WEB-INF/web.xml
+5. WEB-INF/spring-servlet.xml : 스프링 프레임워크 환경설정파일
+   WEB-INF/servlet-context.xml : 마이바티스 프레임워크 환경설정파일
+6. 디츠패쳐서블릿 : 스프링 프레임워크에 내장된 서블릿 클래스 
+7. 사용자 정의 콘트롤러 클래스 : 서블릿 : @Controller
+8. 사용자 정의 서비스 클래스 : 자바 : @Service
+9. 사용자 정의 매퍼(다오) 클래스 : 자바 : @Repository 
+
+코바 CORBA : 이기종 플랫폼에서 데이터를 주고 받는 기술 : C, C++ <--> 자바
+
+POJO : Plain Old Java Object
+
+
+Spring Framework 구현해 보기 
+=====================================
+면접 볼 때 면접관이 스프링 프레임워크을 무었으로 했서요 ??? 
+1. jdk : jdk 1.8
+2. was : apache-tomcat 8.5
+3. ide : 이클립스 4.16 버전 사용 : eclipse2020-6(4.16)
+4. 프로젝트 : 다이나믹 웹 프로젝트 : Dynamic Web Project
+5. Spring Framework library (API) : 공부할 때는 3.2.9, 프로젝트 : 4.3.16
+6. STS : Spring Tools Suite : 스프링 개발 도구 
+   이클립스에 STS 플러그인 해서 사용 했서요
+7. spring-servlet 환경설정 파일 사용 했서요 
+
+
+스프링 개발 환경 
+1. STS : spring.io 제공하는 ide : 이클립스 + sts 최신버전 + Pivotal tc Server or Tomcat Server
+2. 스프링 부트 : 라이브러리를 웹에서 다운로드 하는 방식 : 최신 버전 : 
+3. 이클립스 + STS 플러그 인 
+4. 빌드 환경 
+	Dynamic Web Proejct + sts + 환경설정 파일 
+	Maven : pom.xml + ant + 환경설정파일
+	Gradle : Groovy(자바와 같은 언어 : { key:value }) + 환경설정 파일 
+
+
+스프링 사이트 
+https://spring.io/
+스프링 라이브러리 다운받는 사이트
+https://repo.spring.io/release/org/springframework/spring/
+
+공부
+Index of release/org/springframework/spring/3.2.9.RELEASE
+프로젝트
+Index of release/org/springframework/spring/4.3.16.RELEASE
+
+C:\00.KOSMO93\90.download\spring\spring-framework-3.2.9.RELEASE-dist
+\spring-framework-3.2.9.RELEASE\libs_1>del *-javadoc.jar
+C:\00.KOSMO93\90.download\spring\spring-framework-3.2.9.RELEASE-dist
+\spring-framework-3.2.9.RELEASE\libs_1>del *-sources.jar
+
+21개 포조 라이브러리 사용하기 
+
+
+개발 환경 세팅하기 
+----------------------------
+1. 이클립스 워크스페이스 만들기 : eclipse2020-6(4.16)
+	C:\00.KOSMO93\30.Web\el_spring
+	C:\00.KOSMO93\30.Web\el_spring_work
+
+2. jdk 플러그인 확인 
+3. tomcat 플러그인 수동 
+4. STS 플러그인 수동 
+	Help -> Eclipse Markeplace -> 클릭 
+	Eclipse Markeplace 팝업에서 
+	Find 텍스트필드 : sts key-in 하고 옆에 Go 버튼 클릭 
+	Spring Tools 3(Standalone Edition) 3.9.14.RELEASE
+	에 있는 Install 버튼 누르기 
+	Confirm Selected Features 창에서 Confirm 버튼 누르기 
+		파일 다운로드 하니라 시간이 걸린다
+	Review License 창이 뜬다.
+		I accept the terms of the license agreements 
+		래디오 버튼 체크하면 Finish 버튼이 활성화 됨 
+		Finish 버튼 누르기 
+	이클립스에 파일 다운로드하면서 설치 작업을 오래 한다. 
+	중간에 팝업이 뜨면 OK 하고 이클립스가 재 시작한다. 
+
+5. testStpring 컨텍스트 만들기 : 스프링 프로젝트 만들기 
+	스프링 프로젝트 이름 : testStpring
+	File -> New -> Dynamic Web Project 선택 하기 
+	Dynamic Web Project 창 Project name : testStpring 입력하고 Next 버튼 클릭
+	Java 창 아래에 있는 Default output foler 아래 텍스트 필드에서 
+	src 폴더가 없으면 edit 버튼을 눌러서 src 폴더 만들기
+	build\classes --> WebContent\WEB-INF\classes 변경하고 Next 버튼 클릭하기 
+	-- testStpring\WebContent\WEB-INF\classes
+	Web Module 창에서
+	Generate web.xml deployment descripter 체크박스 체크하고 Finish 버튼 누르기
+	Prlect Exploer 에 
+	testStpring 프로젝트가 생성된다. 
+	testStpring 프로젝트에 마우스로 우클릭 하면 
+	아래에 Spring 메뉴아이템 보인다. 
+	Spring 메뉴아이템에 마우스를 롤오버 해서 Add Spring Projext Nature 클릭 하면 
+	testStpring 프로젝트 폴더에 파란색 S 이미지가 보인다. 
+
+
+스프링 Hello 보기 
+with Spring 3.2.9 libaray 사용하기 
+---------------------------------
+
+1. 라이브러리 포팅하기 
+------------------------
+21개 *.jar 화일이 스프링 프레임워크 라이브러이당. 
+경량 컴포넌트 라고 부르고 : POJO library 라고 부른다. .
+POJO : Plain Old Java Object : 순수 퓨어 자바여서 엄청 가볍고 기능은 엄청 많다. 
+
+beans
+context
+core
+expression
+tx
+webmvc
+
+aop : 
+
+21개의 pojo 라이브러리중에서 대부분 상기에 언급한 library 만 사용한다. 
+나머지 library 에 대체 되는 (더 기능이 좋은) 컴포넌트가 많아서 
+기능이 더 좋은 컴포넌트만 사용한다.
+
+spring 3.2.9 library 21개 
+
+https://archive.apache.org/dist/commons/logging/binaries/
+commons-logging-1.1.2.jar
+
+https://tomcat.apache.org/taglibs/standard/
+jstl.jar
+standard.jar
+
+
+testSpring/WebContent/WEB-INF/lib/ 에 24개 라이브러리 복사하기 
+
+2. 환경설정 파일 세팅하기 
+------------------------
+2.1 : WebContent/WEB-INT/web.xml
+	1. welcom file 세팅 : index.jsp
+	2. DispatcherServlet 세팅
+	3. spring-servlet.xml 연결하고
+	4. url-pattern 을 정한다. 
+
+2.2 : WebContent/WEB-INT/spring-servlet.xml
+	: spring-servlet.xml 명명규칙 
+	--> spring 명을 변경해도 된다. 
+	--> -servlet.xml 은 변경하지 않는다. 
+	WEB-INF 폴더에서 New -> Other -> Spring Bean Configuration File 선택 -> spring-servlet.xml 만들기 
+	스프링 라이브러리 21개 중에서 
+	이 스프링 프로젝트에서 사용하려고 하는 라이브러리를 불러오는 기능 
+
+spring-servlet.xml
+----------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:c="http://www.springframework.org/schema/c"
+	   xmlns:context="http://www.springframework.org/schema/context" 
+	   xmlns:lang="http://www.springframework.org/schema/lang"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                       http://www.springframework.org/schema/beans/spring-beans.xsd
+	                       http://www.springframework.org/schema/context 
+							http://www.springframework.org/schema/context/spring-context.xsd
+							http://www.springframework.org/schema/lang 
+							http://www.springframework.org/schema/lang/spring-lang.xsd
+		                   http://www.springframework.org/schema/mvc 
+		                   http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+	<mvc:annotation-driven />
+	
+	<context:component-scan base-package="a.b.c.com.controller" />
+	
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">			
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property> 
+		<property name="prefix" value="/WEB-INF/view/"/> 
+		<property name="suffix" value=".jsp"/> 
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
