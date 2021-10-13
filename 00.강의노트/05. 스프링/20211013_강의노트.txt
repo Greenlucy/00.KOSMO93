@@ -1,0 +1,149 @@
+2021-10-13
+-------------------------------
+
+스프링은 2004년에 출시 
+
+J2EE (EJB : Enterprise Java Beans) 엄청 기술적으로 훌륭한 제품
+이기종 플랫폼에서 데이터를 통신하는 것
+이기종 플랫폼 : NT(윈도우) <--> UNIX <--> 기간계(메인프레임)
+			 C, C++         C, C++, JAVA   COBOL
+
+이제이비를 대체하는 기술로 
+스프링은 2004년에 출시 
+
+스프링 이전에는 스트러츠 기술
+
+프리젠테이션 : 웹브라우저 <---> 웹서버 
+			웹브라우저에서 form 태그로 웹서버에게 데이터를 요청하는 것 
+			웹서버에서 웹브라우저에게 데이터를 응답 한다. 
+	struts 
+		웹브라우저에서 웹서버에게 데이터를 요청할 때 
+		xml 를 이용해서 하는 것 
+		웹브라우저에서 웹서버를 찾아갈 때 xml 을 이용해서 찾아간다.
+	Spring
+		웹브라우저에서 웹서버로 데이터를 요청할 때 
+		웹서버를 통과하고 콘트롤러(디스패처서블릿)로 데이터를 받는 것 
+비즈니스
+	IoC : 이버전 어브 콘트롤러 : 역제어 
+		역제어 : 프레임워크가 사용하려는 클래스를 인스턴스 해준다.
+		순제어 : 개발자가 new 인스턴스를 요청하는 것 
+				클래스 참조변수 = new 클래스생성자();
+################################################################
+		이클립스에 스프링프레임워크를 반영해서 
+		testSpring 프로젝트를 만들어서 서비스를 하기 위해서 
+		아파치 탐캣를 기동 시키면 
+		testSpring 프로젝트에 적용된 모든 클래스들이 모두 메모리에 올라가야
+		아파치 탐캣 서버가 켜진다. 
+################################################################
+
+	AOP : 보안, 로그 등 공통 모듈의 위치 및 사용
+
+퍼시스턴스 
+	데이터 베이스 연동 
+		하이버네이드(ORM), JPA
+		ibatis, Mybatis : 데이터베이스 연동을 XML로 하는 것 
+
+프리젠테이션 <---> 비즈니스 <---> 데이터베이스 
+====================
+스프링 프레임워크(아이바티스가 포함 되어 있다.)
+				=======================
+					마이바티스 프레임워크 
+
+
+스프링
+------------------------
+jdk : jdk 1.8
+was : apache-tomcat 8.5
+ide : 이클립스4.16  eclipse2020-06(4.16)
+sts : Spring Tools 3(Standalone Edition) 3.9.14.RELEASE : sts3, 3.9.14
+빌드프레임워크 : 다이나믹웹프로젝트 + sts 플러그인 
+Spring 버전 api : 공부할 때 : 3.2.9, 프로젝트 할 때 : 4.3.16
+
+
+스프링 프레임워크 : 아키텍쳐 골격
+--------------------------
+1. conf/server.xml
+2. conf/context.xml
+3. conf/web.xml
+4. WEB-INF/web.xml
+5. WEB-INF/spring-servlet.xml : 스프링 프레임워크 환경설정파일
+   WEB-INF/servlet-context.xml : 마이바티스 프레임워크 환경설정파일
+6. 디츠패쳐서블릿 : 스프링 프레임워크에 내장된 서블릿 클래스 
+7. 사용자 정의 콘트롤러 클래스 : 서블릿 : @Controller
+8. 사용자 정의 서비스 클래스 : 자바 : @Service
+9. 사용자 정의 매퍼(다오) 클래스 : 자바 : @Repository 
+
+
+개발환경 세팅
+--------------------------
+1. jdk : jdk 1.8 : 
+	서블릿 api 포팅 : jsp-api.jar, servlet-api.jar 
+	주의할 것 :	jdk 다운 그레이드 하세요 
+				jdk 업그레이드 하세요 
+	jdk 를 지운다 : 제어판에서 지울 것 
+				  지우고난 후 꼭 컴터 리부팅 하세요
+2. was : apache-tomcat 8.5 
+3. 이클립스 설치 :ㅣ 
+	jdk 플러그인 확인
+	tomcat 플러그인 수동으로 하고 라이브러리 확인 
+4. sts 플러그 인 
+5. 스프링 프로젝트 생성 : 다이나믹웹 플로젝트로 할 것 
+6. 스프링 api 포팅 : 
+	WEB-INF/lib/스프링 21개.jar, commons-logging-1.1.2.jar, jstl.jar, standard.jar
+7. 스프링 api 포팅하고 라이브리 확인하기 
+	않되으면 빌드패스 잡기 
+
+
+이클립스에서 프로젝트를 만드는 행위
+============================
+1. Context
+2. Web Proejct
+3. Domain
+4. Web Application
+============================
+war : Web Application Archive
+============================
+1. Context : testSpring
+2. Web Proejct
+3. Domain
+4. Web Application
+============================
+testSpring.war
+
+
+
+스프링에서 Hello 보기 
+----------------------------------------
+1. testSpring/WebContent/WEB-INF/web.xml 
+	testSpring 컨텍스트(프로젝트, 도메인, 웹 응용프로그램)의 환경 설정파일
+	1-1. welcom file
+	1-2. 디스패처서블릿 세팅
+	1-3. 스프링 환경설정파일 불러오기 세팅 
+			/WEB-INF/spring-servlet.xml
+	1-4. url 패턴 정의
+			*.hbe 
+
+2.	testSpring/WebContent/index.jsp
+
+3.	testSpring/WebContent/WEB-INF/spring-servlet.xml 스프링 프레임워크 환경설정파일 세팅하기 
+	3-1 :	프론트콘트롤러(디스패처서블릿)에서 사용자정의 콘트럴러 찾아가는 태그 설정하기 : 핸들러 매핑
+			<mvc:annotation-driven />	
+
+	3-2 :	base-package 속성에 컴포넌트 스캔할 패키지명 설정하기 
+			컴포넌트를 스캔이 완료되면 모두 다 bean을 인스턴스한다.(컴포넌트 클래스를 메모리에 로드한다.)
+			이 과정에서 클래스 하나라도 오류가 나면 서버가 켜지지 않는다. 
+			<context:component-scan base-package="a.b.c.com.**" />
+
+	3-3 :	디스패처서블리이 뷰 리졸빙을 한다.
+			<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+				<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+				<!-- jsp를 모아둘 디렉토리 설정하기, 항상 WEB-INF 폴더 하위에 두어야 한다. -->
+				<property name="prefix" value="/WEB-INF/view/" />
+				<property name="suffix" value=".jsp" />	
+			</bean>
+
+
+
+
+
+
