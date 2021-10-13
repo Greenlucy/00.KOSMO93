@@ -28,6 +28,7 @@ J2EE (EJB : Enterprise Java Beans) 엄청 기술적으로 훌륭한 제품
 		역제어 : 프레임워크가 사용하려는 클래스를 인스턴스 해준다.
 		순제어 : 개발자가 new 인스턴스를 요청하는 것 
 				클래스 참조변수 = new 클래스생성자();
+
 ################################################################
 		이클립스에 스프링프레임워크를 반영해서 
 		testSpring 프로젝트를 만들어서 서비스를 하기 위해서 
@@ -116,7 +117,8 @@ testSpring.war
 ----------------------------------------
 1. testSpring/WebContent/WEB-INF/web.xml 
 	testSpring 컨텍스트(프로젝트, 도메인, 웹 응용프로그램)의 환경 설정파일
-	1-1. welcom file
+
+	1-1. welcome file
 	1-2. 디스패처서블릿 세팅
 	1-3. 스프링 환경설정파일 불러오기 세팅 
 			/WEB-INF/spring-servlet.xml
@@ -134,7 +136,7 @@ testSpring.war
 			이 과정에서 클래스 하나라도 오류가 나면 서버가 켜지지 않는다. 
 			<context:component-scan base-package="a.b.c.com.**" />
 
-	3-3 :	디스패처서블리이 뷰 리졸빙을 한다.
+	3-3 :	디스패처서블릿이 뷰 리졸빙을 한다.
 			<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 				<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
 				<!-- jsp를 모아둘 디렉토리 설정하기, 항상 WEB-INF 폴더 하위에 두어야 한다. -->
@@ -143,6 +145,49 @@ testSpring.war
 			</bean>
 
 
+4. Controller 만들기 : HelloWorldController
+	4-1 :	jsp 요청하는 url 명을 콘트롤러 함수 위에 
+			@RequestMapping 리퀘스트 어노테이션 함수에 url(jsp 요청하는 url 명) 명을 
+			동일하게 기술해야 한다.
+	4-2 :	/WEB-INF/view/*.jsp 로 리턴하는 jsp 파일이름을 
+			파일명만 기술하면 된다.
+
+
+5. VIEW 만들기 : helloWorld_return_jspfile_name.jsp
+	5-1 :	/WEB-INF/view/helloWorld_return_jspfile_name.jsp
+			
+			보안을 위해서 : 웹에서 히트하면 않된다.
+			
+			스프링 프레임워크에서 사용하는 VO(Value Object)를 
+			jsp 파일에서 property 로 사용할 수 있다. 
+			VO property : mid <-- 프로퍼티이다.
+			public class MemberVO {
+				
+				public String mid; 
+			}
+
+
+
+정보: Mapped 
+"{[/helloWorld_Controller_find]
+,methods=[]
+,params=[]
+,headers=[]
+,consumes=[]
+,produces=[]
+,custom=[]}" 
+onto 
+public java.lang.String a.b.c.com.controller.HelloWorldController.helloWorld(org.springframework.ui.Model)
+
+
+스프링 프레임워크
+1. conf/server.xml
+2. conf/context.xml
+3. conf/web.xml
+4. WEB-INF/web.xml
+5. WEB-INF/spring-servlet.xml : 스프링 프레임워크 환경설정파일  
+6. 디츠패쳐서블릿 : 스프링 프레임워크에 내장된 서블릿 클래스 
+7. 사용자 정의 콘트롤러 클래스 : 서블릿 : @Controller
 
 
 
