@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/lang 
+						http://www.springframework.org/schema/lang/spring-lang.xsd
+						http://www.springframework.org/schema/mvc 
+						http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- 
+		핸들러 매핑
+		디스패쳐서블릿(프론트 콘트롤러)에서 사용자정의 컨트롤러 찾아주기
+	 -->
+	 <mvc:annotation-driven/>
+	 
+	 <!-- 
+	 	Context : 자원을 찾아가는 기능을 가지고 있는 컴포넌트
+	 	base-package 속성에 찾아갈 패키지명을 적는다.
+	 	a.b.c.com.** : a.b.c.com 패키지를 찾아가서 그 하위 패키지에 있는 자원을 찾으세요.
+	  	자원을 찾을 때는 어노테이션을 사용한다.
+	  	Annotaion @Component : 컴포넌트 클래스
+	  			  @Controller : 컨트롤러 클래스
+	  			  @Service : 서비스 클래스
+	  			  @Repository : 레파지토리 클래스 : DAO, Mapper 클래스
+	  	위에 있는 컴포넌트를 찾아서 Bean으로 인스턴스 된다. (클래스를 메모리에 올린다.)
+	  	스프링에서는 컴포넌트를 Bean이라고 부름
+	  	
+	  	ant 카디널리티
+	  	** : 전부 다 찾아오기
+	  	*  : 0개 또는 그 이상 글자 매칭
+	  	?  : 한글자만 매칭
+	  	/ 또는 \ : /** 또는 \** : 해당 세퍼레이터 밑으로 찾기	  
+	  -->
+	 <context:component-scan base-package="a.b.c.com.**"/>
+	 
+	 <!-- 뷰 분석 : 뷰 리졸빙 : jsp 파일을 찾는 행위 
+	 	뷰 리졸빙은 디스패쳐서블릿이 한다. 컨트롤러가 하는 일이 아님.
+	 	: 스프링 웹 MVC 프레임워크를 배우는 중.
+	 -->
+	 <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	 	
+	 	<!-- value="org.springframework.web.servlet.view.JstlView"
+	 		: jstl을 사용하겠다는 의미 -->
+	 	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+	 	
+	 	<!-- jsp를 모아둘 디렉토리 설정하기, 항상 WEB-INF 폴더 하위에 두어야 한다.
+	 		왜?	1. 보안 때문 (웹에서 접근하지 못하게 하기 위해)
+	 			2. 깡통클래스 쉽게 사용하기 위해서 (변수명을 프로퍼티로 불러올 수 있다.) -->
+	 	<property name="prefix" value="/WEB-INF/view/"/>
+	 	
+	 	<!-- value=".jsp" 확장자를 jsp로 하겠다 -->
+	 	<property name="suffix" value=".jsp"/>
+	 </bean>
+</beans>
