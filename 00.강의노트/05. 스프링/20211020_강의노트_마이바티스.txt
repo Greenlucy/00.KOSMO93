@@ -1,0 +1,143 @@
+2021-10-19
+-------------------------------
+
+Mybatis Framework : 마이바티스 프레임워크 : sql
+Spring Framework : 스프링 프레임워크 : aop, orm, oxm, webmvc ......
+								 : beans, context, core
+
+
+콘솔 C/S 프로그램 + 마바이티스 프레임워크
+스윙 C/S 프로그램 + 마바이티스 프레임워크
+웹 모델I + 마바이티스 프레임워크
+웹 모델II + 마바이티스 프레임워크
+웹 모델II + 웹 MVC + 마바이티스 프레임워크
+
+스프링
+------------------
+beans, context, core + console + 마바이티스 프레임워크 
+beans, context, core + swing + 마바이티스 프레임워크 
+beans, context, core + web : 스프링 웹프레임워크  + 마바이티스 프레임워크 
+beans, context, core + web + webmvc : 스프링 웹엠브이씨 프레임워크  + 마바이티스 프레임워크 
+
+
+ibatis : 아이바티스 
+Mybatis 는 ibatis 의 상위버전
+구글에서 ibatis 3.0을 인수해서 이름을 Mybatis 로 변경했다.
+
+
+화면 -> 콘트롤러 -> 서비스 -> 다오 -> sql : 모델2 엠브이씨 
+화면 -> 프론트 콘트롤러(디스패처 서블리스) -> 사용자정의 콘트롤러(@Controller) -> 서비스(@Service) -> 다오(@Repository) : 스프링 프레임워크
+
+
+DAO : Data Access Object : 다오
+데이터베이스를 연동하는 디자인 패턴
+
+다오 == 매퍼 라고 부른다. 
+마이바티스 프레임워크에서는 다오(DAO)를 매퍼(Mapper)라고 부른다.
+
+Mybatis Framework : xml를 이용해서 데이터베이스를 연동하는 프레임워크 이다.
+---------------------------
+디스패처 서블릿(프론트 콘트롤러) -> 사용자정의 콘트롤러 -> 서비스 -> DAO + sql.xml
+디스패처 서블릿(프론트 콘트롤러) -> 사용자정의 콘트롤러 -> 서비스 -> Mapper + sql.xml
+
+우리가 공부한 데이터베이스 연동
+---------------------------
+1. 커넥션
+	클래스로 만들어서 사용
+2. 쿼리 
+	클래스에 함수블럭에 StringBuffer 클래스에 담아서 사용
+	SELECT * FROM EMP WHERE EMPNO = ?
+
+마이바티스 프레임워크
+---------------------------
+1. 커넥션
+	xml 을 사용한다.
+	Server/Tomcat v8.5 Server at localhost-config/context.xml
+	C:\Program Files\Apache Software Foundation\Tomcat 8.5\conf\context.xml
+	<Resource 	auth="Container" 				 
+				maxActive="100" 
+				maxIdle="30" 
+				maxWait="10000"  
+				type="javax.sql.DataSource" 
+				name="jdbc/Oracle11g_orclKOSMO00"
+				driverClassName="oracle.jdbc.driver.OracleDriver"
+				url="jdbc:oracle:thin:@127.0.0.1:1521:orclKOSMO00"
+				username="scott" 
+				password="tiger" />
+2. 쿼리
+	xml 을 사용한다.
+	? 플레이스 홀더 == #{프로퍼티명 : 깡통클래스의 변수 이름}
+	select 문 :	<select id="셀렉문 이름" parameterType="깡통클래스참조변수" resultType="깡통클래스참조변수"> 
+					SELECT * FROM EMP WHERE EMPNO = #{empno}						
+				</select>
+
+				form			EmpVO					Controller					*.xml
+				name="empno"    private String empno;	[EmpVO.setEmpno(empno);]	#{empno}
+
+	insert 문 : <insert></insert>
+	update 문 : <update></update>
+	delete 문 : <delete></delete>
+
+3. 환경설정 파일 : servlet-context.xml
+
+	<!-- 
+		현재 서버(탐캣) 에서 datasource 찾아와서  DB 연결 
+		java:comp/env : Java Naming Directory Interface 의 환경변수 이름 : JNDI 
+		jdbc/Oracle11g_orclKOSMO00: dataSource 이름 
+	-->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/Oracle11g_orclKOSMO00"></property>
+												name="jdbc/Oracle11g_orclKOSMO00"
+	</bean>
+	
+	<!-- 마이바티스 쿼리문 찾아서 연결하기  -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>	 	
+		<property name="configLocation" value="classpath:/mybatisconfig/mybatis-config.xml"></property>		
+		<property name="mapperLocations" value="classpath:/mybatisquery/*.xml"></property>				
+	</bean>
+	
+	<!-- 트랜잭션 처리 : spring-mybatis 에서는 개발자가 tx 처리에 관여하지 않는다. -->
+	<bean id="transactionManager" 
+	      class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- DAO 또는 Mapper 찾기  -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage"><value>a.b.c.com.**.dao</value></property>
+	</bean>
+
+##############################################################
+스프링 + 마이바티스 환경설정 파일 
+------------------------
+Context/WEB-INF/web.xml : 현재 컨텍스트의 환경설정 파일
+	1. 웰컴 파일
+	2. 디스패처 서블릴
+	3. 스프링 프레임워크 환경설정 파일 불러오기
+	   [마이바티스 환경설정 파일 불러오기]
+	4. url-pattern 정하기 
+
+Context/WEB-INF/spring-servlet.xml : 스프링 프레임워크 환경설정 파일
+	1. 웹엠브이씨 적용
+	2. 컨텍스트에있는 컴포넌트 스캔
+	3. 뷰 리졸빙 위치 정하기 
+	[4. 마이바티스 환경설정 파일 불러오기]
+
+Context/WEB-INF/servlet-context.xml : 마이바이티스 환경설정 파일
+	1. 데이터소스 불러오기 : jndi 이름으로 데이터 소스 불러오기
+		Server/Tomcat v8.5 Server at localhost-config/context.xml
+		C:\Program Files\Apache Software Foundation\Tomcat 8.5\conf\context.xml
+		<Resource name="jdbc/Oracle11g_orclKOSMO00"
+
+	2. sql xml 파일 불러오기 
+		classpath:/mybatisconfig/mybatis-config.xml
+		classpath:/mybatisquery/*.xml
+	
+	3. 트랜잭션 선언하기 
+		@Service
+		@Transactional
+
+	4. sql xml 과 dao 연결을위해 다오 위치 매핑하기 
+		<property name="basePackage"><value>a.b.c.com.**.dao</value></property>
+##############################################################
