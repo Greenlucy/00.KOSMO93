@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- Mybatis 설정 파일 -->
+	<!-- Datasource
+		JndiObjectFactoryBean
+		value="java:comp/env/ Servers -> Context.xml <Resource>엘리먼트 name과 동일해야 함 
+	-->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/Oracle11g_orclKOSMO00"/>
+	</bean>
+	
+	<!-- Mybatis Setting
+		SqlSessionFactoryBean
+		,mapper 위치 설정 (classpath 설정)
+	 -->
+	<!-- 에러 메시지 - db연결 싸그리 에러 뜸
+	 	org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in ServletContext resource [/WEB-INF/servlet-context.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis/config/mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: Error registering typeAlias for 'boardVO'. Cause: java.lang.ClassNotFoundException: Cannot find class: a.b.c.com.board.vo.BoardVO
+	-->
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/> 	
+		<property name="configLocation" value="classpath:/mybatisconfig/mybatis-config.xml"/>
+		<property name="mapperLocations" value="classpath:/mybatisquery/*.xml"/>			
+	</bean>
+	
+	 <!-- a PlatformTransactionManager is still required -->
+	 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	 	<property name="dataSource" ref="dataSource"/>
+	 </bean>	 
+	 
+	 <!-- mapper 찾아오기
+	 	MapperScannerConfigurer
+	  -->
+	  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	  	<property name="basePackage">
+	  		<value>com.spring.**.dao</value>
+	  	</property>	
+	  </bean>
+</beans>
