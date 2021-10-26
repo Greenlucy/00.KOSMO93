@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="a.b.c.com.board.dao.SpringBoardDAO">
+
+	<resultMap type="a.b.c.com.board.vo.SpringBoardVO" id="bvo">
+		<result property="sbnum"		column="SBNUM"/>
+		<result property="sbsubject"	column="SBSUBJECT"/>
+		<result property="sbname"		column="SBNAME"/>
+		<result property="sbcontent"	column="SBCONTENT"/>
+		<result property="sbfile"		column="SBFILE"/>
+		<result property="sbpw"			column="SBPW"/>
+	</resultMap>
+	<!--
+		<resultMap type="경로url"> 틀렸을 경우 발생하는 에러 메시지
+		조금 신기한 게, ibatis와 관련되고, Mapper XML을 파싱할 수 없다고 뜨고,
+		\classes\ 파일에 spring_board.xml이 컴파일된 바이트코드(=mapping resource로 표시함)를
+		parse할 수 없다고 뜬다. 
+		 
+		org.springframework.beans.factory.BeanCreationException: 
+		Error creating bean with name 'sqlSessionFactory' defined in ServletContext resource [/WEB-INF/servlet-context.xml]: 
+		Invocation of init method failed; 
+		nested exception is org.springframework.core.NestedIOException: 
+		Failed to parse mapping resource: 
+	*	'file [C:\00.KOSMO93\30.Web\el_spring_jso_work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\springJso\WEB-INF\classes\mybatisquery\spring_board.xml]'; 
+		nested exception is org.apache.ibatis.builder.BuilderException: 
+	*	Error parsing Mapper XML. 
+		Cause: org.apache.ibatis.builder.BuilderException: 
+		Error resolving class. 
+	*	Cause: org.apache.ibatis.type.TypeException: 
+	*	Could not resolve type alias 'a.b.c.com.board.dao.SpringBoardVO'. 		>> 여기서 디버깅 힌트를 얻었다.
+		Cause: java.lang.ClassNotFoundException: 
+		Cannot find class: a.b.c.com.board.dao.SpringBoardVO
+	 -->
+	<insert id="boardInsert" parameterType="boardVO">
+		INSESRT INTO SPRING_BOARD(  SBNUM, SBSUBJECT, SBNAME,
+									SBCONTENT, SBFILE, SBPW,
+									SBDELYN, SBINSERTDATE, SBUPDATEDATE)
+							VALUES( #{sbnum, jdbcType=VARCHAR}, 
+									#{sbsubject,jdbcType=VARCHAR}, 
+									#{sbname, jdbcType=VARCHAR},
+									#{sbcontent, jdbcType=VARCHAR},
+									#{sbfile, jdbcType=VARCHAR},
+									#{sbpw, jdbcType=VARCHAR},
+									'Y', SYSDATE, SYSDATE)
+	</insert>
+	
+	<select id="boardSelectAll" parameterType="boardVO" resultType="boardVO">
+		SELECT	 A.SBNUM		SBNUM
+				,A.SBSUBJECT	SBSUBJECT
+				,A.SBNAME		SBNAME
+				,A.SBCONTENT	SBCONTENT
+				,A.SBFILE		SBFILE
+				,A.SBDELYN		SBDELYN
+				,TO_CHAR(A.SBINSERTDATE, 'YYYY-MM-DD') SBINSERTDATE
+				,TO_CHAR(A.SBUPDATEDATE, 'YYYY-MM-DD') SBUPDATEDATE
+		FROM	SPRING_BOARD A
+		WHERE	A.SBDELYN = 'Y'
+		<if test="startdate!=null and startdate!='' and enddate!= null 
+				and enddate!=''">
+			<![CDATA[AND TO_CHAR(A.SBINSERTDATE, 'YYYY-MM-DD') >=
+						 TO_CHAR(TO_DATE(#{startdate, jdbcType=VARCHAR}), 'YYYY-MM-DD']]>		
+			<![CDATA[AND TO_CHAR(A.SBINSERTDATE, 'YYYY-MM-DD') <=
+						  TO_CHAR(TO_DATE(#{enddate, jdbcType=VARCHAR}), 'YYYY-MM-DD')]]>
+		</if>
+		<if test="keyfilter=='key1'">
+		<![CDATA[AND A.SBSUBJECT LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+	</if>
+		<if test="keyfilter=='key2'">
+			<![CDATA[AND A.SBCONTENT LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="keyfilter=='key3'">
+			<![CDATA[AND A.SBSUBJECT LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+			<![CDATA[OR A.SBCONTENT LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="keyfilter=='key4'">
+			<![CDATA[AND A.SBNAME LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test="keyfilter=='key5'">
+			<![CDATA[AND A.SBNUM LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+		</if>
+		ORDER BY 1
+	</select>
+
+</mapper>

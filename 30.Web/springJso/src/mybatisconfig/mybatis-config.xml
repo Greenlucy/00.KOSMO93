@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD config 3.0//EN"
+			"http://mybatis.ofg/dtd/mybatis-3-config.dtd">
+			
+<configuration>
+	<typeAliases>
+		<typeAlias type="a.b.c.com.board.vo.SpringBoardVO" alias="boardVO" />
+	</typeAliases>
+</configuration>
+
+<!--
+	<typeAlias type ="경로 url"> 틀렸을 경우 발생하는 에러 메시지
+	 
+	org.springframework.beans.factory.BeanCreationException: 
+	Error creating bean with name 'sqlSessionFactory' defined in ServletContext resource [/WEB-INF/servlet-context.xml]: 
+	Invocation of init method failed; 
+	nested exception is org.springframework.core.NestedIOException: 
+	Failed to parse config resource: 
+	class path resource [mybatisconfig/mybatis-config.xml]; 
+	nested exception is org.apache.ibatis.builder.BuilderException: 
+	Error parsing SQL Mapper Configuration. 
+	Cause: org.apache.ibatis.builder.BuilderException: 
+	Error registering typeAlias for 'boardVO'. 
+	Cause: java.lang.ClassNotFoundException: 
+	Cannot find class: a.b.c.com.board.vo.BoardVO
+ -->
